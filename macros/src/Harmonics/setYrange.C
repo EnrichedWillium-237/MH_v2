@@ -1,12 +1,12 @@
-double setYmin(TGraphErrors * g, TGraphErrors * gA, TGraphErrors * gB){
-  double ymin = 1.;
-  for (int i = 0; i<g->GetN(); i++) {
-    if(ymin > g->GetY()[i]-g->GetEY()[i]) ymin = g->GetY()[i]-g->GetEY()[i];
-    if(ymin > gA->GetY()[i]-gA->GetEY()[i]) ymin = gA->GetY()[i]-gA->GetEY()[i];
-    if(ymin > gB->GetY()[i]-gB->GetEY()[i]) ymin = gB->GetY()[i]-gB->GetEY()[i];
-  }
-  if(ymin>0) {
-    return 0.;
+double setYmin( TGraphErrors * g, TGraphErrors * gA, TGraphErrors * gB) {
+    double ymin = 1.;
+    for (int i = 0; i<g->GetN(); i++) {
+        if (ymin > g->GetY()[i]-g->GetEY()[i]) ymin = g->GetY()[i]-g->GetEY()[i];
+        if (ymin > gA->GetY()[i]-gA->GetEY()[i]) ymin = gA->GetY()[i]-gA->GetEY()[i];
+        if (ymin > gB->GetY()[i]-gB->GetEY()[i]) ymin = gB->GetY()[i]-gB->GetEY()[i];
+    }
+    if (ymin>0) {
+        return 0.;
   } else if( ymin > -0.01 ){
     return -0.01;
   } else if( ymin > -0.1 ){
