@@ -10,6 +10,8 @@
 # include "TStopwatch.h"
 # include <iostream>
 
+# include "src/HiEvtPlaneList.h"
+
 using namespace hi;
 
 static const int ncentbinsNOFF = 25;
@@ -64,7 +66,6 @@ double resB[50];
 double resAdenom[50];
 double resBdenom[50];
 
-# include "src/HiEvtPlaneList.h"
 # include "src/Types.h"
 # include "src/Efficiency.C"
 # include "src/flip2D.C"
@@ -212,213 +213,203 @@ void GetVNCreate( int replay, int bin ,TGraphErrors * & gint, TGraphErrors * & g
 }
 
 void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double mineta = -0.8, double maxeta = 0.8, bool decor = false, int selbin = -1,
-	   double ptmax = 12, double vnmin=-100, double vnmax=-100, double vnintmin=-100, double vnintmax=-100) {
-  TStopwatch * timer = new TStopwatch();
-  bool found = false;
-  Decor = decor;
-  PTMAX=ptmax;
-  VNMIN=vnmin;
-  VNMAX=vnmax;
-  VNINTMIN=vnintmin;
-  VNINTMAX=vnintmax;
-  string nlabel = name;
-  if(name.find("SUB2")!=std::string::npos) Decor = false;
-  if(name.find("N1MC")!=std::string::npos) Decor = false;
-  if(name.find("N523")!=std::string::npos) Decor = false;
-  if(name.find("N42")!=std::string::npos) Decor = false;
-  if(name.find("N62")!=std::string::npos) Decor = false;
-  if(name.find("N63")!=std::string::npos) Decor = false;
-  if(Decor) nlabel+="_decor";
-  rootFile = rootfile;
-  SetTracking();
-  tag = rootfile.substr(rootfile.find("/")+1,rootfile.find(".root")-rootfile.find("/")-1);
-  TGraphErrors * gint[cbins];
-  TGraphErrors * gintA[cbins];
-  TGraphErrors * gintB[cbins];
-  double x[12];
-  double y[12];
-  double ey[12];
-  for(int i = 0; i<12; i++) x[i]=-2.2+0.4*i;
-  for(int i = 0; i<cbins; i++) {
-    gint[i] = new TGraphErrors(12,x,y,0,ey);
-    gintA[i] = new TGraphErrors(12,x,y,0,ey);
-    gintB[i] = new TGraphErrors(12,x,y,0,ey);
-    gint[i]->SetMarkerStyle(20);
-    gintA[i]->SetMarkerStyle(24);
-    gintB[i]->SetMarkerStyle(24);
-    gintA[i]->SetMarkerColor(kRed);
-    gintB[i]->SetMarkerColor(kBlue);
-    gintA[i]->SetLineColor(kRed);
-    gintB[i]->SetLineColor(kBlue);
-    gint[i]->SetName(Form("sum_%s",nlabel.data()));
-    gintA[i]->SetName(Form("A_%s",nlabel.data()));
-    gintB[i]->SetName(Form("B_%s",nlabel.data()));
-    gint[i]->SetTitle(Form("sum_%s",nlabel.data()));
-    gintA[i]->SetTitle(Form("A_%s",nlabel.data()));
-    gintB[i]->SetTitle(Form("B_%s",nlabel.data()));
-  }
-
-  centRef = new TH1I(Form("centRef_%s",nlabel.data()),Form("centRef_%s",nlabel.data()),ncentbins,centRefBins);
-  EtaMin = mineta;
-  EtaMax = maxeta;
-  stag = "_"+tag;
-  if(tag=="") stag = "";
-  isTight   = false;
-  isNominal = true;
-  isWide    = false;
-  isNarrow  = false;
-  isLoose   = false;
-
-  int en = 0;
-  for(int indx = 0; indx<LAST; ++indx){
-    if(ANALS[indx][0]==name) {
-      found = true;
-      en = indx;
-      break;
+	   double ptmax = 12, double vnmin = -100, double vnmax = -100, double vnintmin = -100, double vnintmax = -100) {
+    TStopwatch * timer = new TStopwatch();
+    bool found = false;
+    Decor = decor;
+    PTMAX = ptmax;
+    VNMIN = vnmin;
+    VNMAX = vnmax;
+    VNINTMIN = vnintmin;
+    VNINTMAX = vnintmax;
+    string nlabel = name;
+    if (name.find("SUB2")!=std::string::npos) Decor = false;
+    if (name.find("N1MC")!=std::string::npos) Decor = false;
+    if (name.find("N523")!=std::string::npos) Decor = false;
+    if (name.find("N42")!=std::string::npos) Decor = false;
+    if (name.find("N62")!=std::string::npos) Decor = false;
+    if (name.find("N63")!=std::string::npos) Decor = false;
+    if (Decor) nlabel+="_decor";
+    rootFile = rootfile;
+    SetTracking();
+    tag = rootfile.substr(rootfile.find("/")+1,rootfile.find(".root")-rootfile.find("/")-1);
+    TGraphErrors * gint[cbins];
+    TGraphErrors * gintA[cbins];
+    TGraphErrors * gintB[cbins];
+    double x[12];
+    double y[12];
+    double ey[12];
+    for (int i = 0; i<12; i++) x[i] = -2.2+0.4*i;
+    for (int i = 0; i<cbins; i++) {
+        gint[i]  = new TGraphErrors(12, x, y, 0, ey);
+        gintA[i] = new TGraphErrors(12, x, y, 0, ey);
+        gintB[i] = new TGraphErrors(12, x, y, 0, ey);
+        gint[i]->SetMarkerStyle(20);
+        gintA[i]->SetMarkerStyle(24);
+        gintB[i]->SetMarkerStyle(24);
+        gintA[i]->SetMarkerColor(kRed);
+        gintB[i]->SetMarkerColor(kBlue);
+        gintA[i]->SetLineColor(kRed);
+        gintB[i]->SetLineColor(kBlue);
+        gint[i]->SetName(Form("sum_%s",nlabel.data()));
+        gintA[i]->SetName(Form("A_%s",nlabel.data()));
+        gintB[i]->SetName(Form("B_%s",nlabel.data()));
+        gint[i]->SetTitle(Form("sum_%s",nlabel.data()));
+        gintA[i]->SetTitle(Form("A_%s",nlabel.data()));
+        gintB[i]->SetTitle(Form("B_%s",nlabel.data()));
     }
-  }
-  if(!found) {
-    cout<<"Failed to locate analysis type"<<endl;
-    return;
-  }
-  FILE * ftest;
-  FigDir = Form("figures%s",stag.data());
-  if((ftest=fopen(FigDir.data(),"r"))!=NULL) {
-    //cout<<"Output directory "<<FigDir.data()<<" exists."<<endl;
-    fclose(ftest);
-  } else {
-    system(Form("mkdir %s",FigDir.data()));
-  }
-  FigSubDir = FigDir+"/"+name.data();
-  if((ftest=fopen(FigSubDir.data(),"r"))==NULL) {
-    system(Form("mkdir %s",FigSubDir.data()));
-  } else {
-    cout<<"Directory "<<FigSubDir.data()<<" exists.  Will overwrite."<<endl;
-    fclose(ftest);
-  }
-  TCanvas * ceta[cbins];
-  timer->Start();
-  for(int bin = 0; bin<cbins; bin++) {
-    timer->Stop();
-    if(selbin>=0 && bin!=selbin) continue;
-    int minb = rcnt->FindBin(cmin[bin]);
-    int maxb = rcnt->FindBin(cmax[bin])-1;
-    if(maxb<minb) maxb=minb;
-    int cnt = rcnt->Integral(minb,maxb);
-    cout<<"time: "<<timer->CpuTime()<<"\t"<<cmin[bin]<<"\t"<<cmax[bin]<<"\t"<<cnt<<endl;
-    timer->ResetCpuTime();
+
+    centRef = new TH1I(Form("centRef_%s",nlabel.data()), Form("centRef_%s",nlabel.data()), ncentbins, centRefBins);
+    EtaMin = mineta;
+    EtaMax = maxeta;
+    stag = "_"+tag;
+    if (tag == "") stag = "";
+    isTight   = false;
+    isNominal = true;
+    isWide    = false;
+    isNarrow  = false;
+    isLoose   = false;
+
+    int en = 0;
+    for (int indx = 0; indx<LAST; ++indx) {
+        if (ANALS[indx][0] == name) {
+            found = true;
+            en = indx;
+            break;
+        }
+    }
+    if (!found) {
+        cout<<"Failed to locate analysis type"<<endl;
+        return;
+    }
+    FILE * ftest;
+    FigDir = Form("figures%s",stag.data());
+    if ((ftest = fopen(FigDir.data(),"r")) != NULL) {
+        fclose(ftest);
+    } else {
+        system(Form("mkdir %s",FigDir.data()));
+    }
+    FigSubDir = FigDir+"/"+name.data();
+    if ((ftest=fopen(FigSubDir.data(),"r")) == NULL) {
+        system(Form("mkdir %s",FigSubDir.data()));
+    } else {
+        cout<<"Directory "<<FigSubDir.data()<<" exists.  Will overwrite."<<endl;
+        fclose(ftest);
+    }
+    TCanvas * ceta[cbins];
     timer->Start();
-    if(cnt<5000) continue;
-    //pt distribution
-    FigSubSubDir = FigSubDir+Form("/eta_%04.1f_%04.1f",EtaMin,EtaMax);
-    if(Decor) FigSubSubDir+="_decor";
-    if((ftest=fopen(FigSubSubDir.data(),"r"))==NULL) {
-      system(Form("mkdir %s",FigSubSubDir.data()));
-      system(Form("mkdir %s/data",FigSubSubDir.data()));
-      system(Form("touch %s/data/integral.dat",FigSubSubDir.data()));
-      soutint = Form("%s/data/integral.dat",FigSubSubDir.data());
-    } else {
-      soutint = Form("%s/data/integral.dat",FigSubSubDir.data());
-      fclose(ftest);
-    }
-    GetVNCreate(en,bin,gint[bin],gintA[bin],gintB[bin]);
-    //eta distribution
-    string FigEtaSubDir = FigSubDir;
-    FigEtaSubDir+="/EtaDistributions";
-    if(Decor) FigEtaSubDir+="_decor";
-    if((ftest=fopen(FigEtaSubDir.data(),"r"))==NULL) {
-      system(Form("mkdir %s",FigEtaSubDir.data()));
-      system(Form("mkdir %s/data",FigEtaSubDir.data()));
-    } else {
-      fclose(ftest);
-    }
+    for (int bin = 0; bin<cbins; bin++) {
+        timer->Stop();
+        if (selbin>=0 && bin!=selbin) continue;
+        int minb = rcnt->FindBin(cmin[bin]);
+        int maxb = rcnt->FindBin(cmax[bin])-1;
+        if (maxb<minb) maxb=minb;
+        int cnt = rcnt->Integral(minb,maxb);
+        cout<<"time: "<<timer->CpuTime()<<"\t"<<cmin[bin]<<"\t"<<cmax[bin]<<"\t"<<cnt<<endl;
+        timer->ResetCpuTime();
+        timer->Start();
+        if (cnt<5000) continue;
 
-    ceta[bin] = new TCanvas(Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),800,500);
-    double xmin,xmax,ymin,ymax;
-    double xminA,xmaxA,yminA,ymaxA;
-    double xminB,xmaxB,yminB,ymaxB;
-    string nl2 = ANALS[en][0];
-    nl2+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
-    if(!ntrkbinning) nl2+="%";
+        //pt distribution
+        FigSubSubDir = FigSubDir+Form("/eta_%04.1f_%04.1f",EtaMin,EtaMax);
+        if (Decor) FigSubSubDir+="_decor";
+        if ((ftest = fopen(FigSubSubDir.data(),"r")) == NULL) {
+            system(Form("mkdir %s",FigSubSubDir.data()));
+            system(Form("mkdir %s/data",FigSubSubDir.data()));
+            system(Form("touch %s/data/integral.dat",FigSubSubDir.data()));
+            soutint = Form("%s/data/integral.dat",FigSubSubDir.data());
+        } else {
+            soutint = Form("%s/data/integral.dat",FigSubSubDir.data());
+            fclose(ftest);
+        }
+        GetVNCreate( en, bin, gint[bin], gintA[bin], gintB[bin] );
 
-    nl2+=")";
-    string nl3 = ANALS[en][1];
-    nl3+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
-    if(!ntrkbinning) nl3+="%";
+        //eta distribution
+        string FigEtaSubDir = FigSubDir;
+        FigEtaSubDir+="/EtaDistributions";
+        if (Decor) FigEtaSubDir+="_decor";
+        if ((ftest=fopen(FigEtaSubDir.data(),"r")) == NULL) {
+            system(Form("mkdir %s",FigEtaSubDir.data()));
+            system(Form("mkdir %s/data",FigEtaSubDir.data()));
+        } else {
+            fclose(ftest);
+        }
 
-    nl3+=")";
+        ceta[bin] = new TCanvas(Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),800,500);
+        double xmin,  xmax,  ymin,  ymax;
+        double xminA, xmaxA, yminA, ymaxA;
+        double xminB, xmaxB, yminB, ymaxB;
+        string nl2 = ANALS[en][0];
+        nl2+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
+        if (!ntrkbinning) nl2+="%";
 
-    TH1D * heta = new TH1D(Form("heta_%s",nl2.data()),Form("heta_%s",nl2.data()),100,-2.5,2.5);
-    gint[bin]->ComputeRange(xmin,ymin,xmax,ymax);
-    gintA[bin]->ComputeRange(xminA,yminA,xmaxA,ymaxA);
-    gintB[bin]->ComputeRange(xminB,yminB,xmaxB,ymaxB);
-    ymin = plotmin(min(ymin,yminA));
-    //ymin = min(ymin,yminB);
-    ymax = plotmax(max(ymax,ymaxA));
-    //ymax = max(ymax,ymaxB);
+        nl2+=")";
+        string nl3 = ANALS[en][1];
+        nl3+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
+        if(!ntrkbinning) nl3+="%";
 
-      ////
-      ymin = -0.02;
-      ymax = 0.005;
-      ////
-    heta->SetMaximum(ymax);
-    heta->SetMinimum(ymin);
-    if(VNINTMIN>-10) heta->SetMinimum(VNINTMIN);
-    if(VNINTMAX>-10) heta->SetMaximum(VNINTMAX);
-    heta->SetXTitle("#eta");
-    heta->SetYTitle(ANALS[en][1].data());
-      heta->SetStats(0);
-    heta->Draw();
-    gint[bin]->Draw("p");
-    gintA[bin]->Draw("p");
-    gintB[bin]->Draw("p");
-    gint[bin]->Draw("p");
-    TLegend * leg2 = new TLegend(0.12,0.13,0.38,0.29);
-    leg2->SetTextFont(43);
-    leg2->SetTextSize(20);
-    leg2->SetFillColor(kWhite);
-    leg2->SetBorderSize(0);
-    if(strncmp(gint[bin]->GetTitle(),"Graph",5)!=0) {
-      leg2->AddEntry(gint[bin],gint[bin]->GetTitle(),"lp");
-    } else {
-      leg2->AddEntry(gint[bin],"Adopted","lp");
-    }
-    if(strncmp(gintA[bin]->GetTitle(),"Graph",5)!=0) {
-      leg2->AddEntry(gintA[bin],gintA[bin]->GetTitle(),"lp");
-    } else {
-      leg2->AddEntry(gintA[bin],"A side","lp");
-    }
-    if(strncmp(gintB[bin]->GetTitle(),"Graph",5)!=0) {
-      leg2->AddEntry(gintB[bin],gintB[bin]->GetTitle(),"lp");
-    } else {
-      leg2->AddEntry(gintB[bin],"B side","lp");
-    }
+        nl3+=")";
 
+        TH1D * heta = new TH1D(Form("heta_%s",nl2.data()), Form("heta_%s",nl2.data()), 100, -2.5, 2.5);
+        gint[bin]->ComputeRange(xmin, ymin, xmax, ymax);
+        gintA[bin]->ComputeRange(xminA, yminA, xmaxA, ymaxA);
+        gintB[bin]->ComputeRange(xminB, yminB, xmaxB, ymaxB);
+        ymin = plotmin(min(ymin,yminA));
+        //ymin = min(ymin,yminB);
+        ymax = plotmax(max(ymax,ymaxA));
+        //ymax = max(ymax,ymaxB);
+        ////
+        ymin = -0.02;
+        ymax = 0.005;
+        ////
+        heta->SetMaximum(ymax);
+        heta->SetMinimum(ymin);
+        if (VNINTMIN>-10) heta->SetMinimum(VNINTMIN);
+        if (VNINTMAX>-10) heta->SetMaximum(VNINTMAX);
+        heta->SetXTitle("#eta");
+        heta->SetYTitle(ANALS[en][1].data());
+        heta->SetStats(0);
+        heta->Draw();
+        gint[bin]->Draw("p");
+        gintA[bin]->Draw("p");
+        gintB[bin]->Draw("p");
+        gint[bin]->Draw("p");
 
-    leg2->Draw();
-//    TLatex * tl = new TLatex( -1,0.3*(ymax-ymin)+ymin,nl3.data());
-//    tl->Draw();
-//    if(ANALS[en][2]!="") {
-//      string tmp = ANALS[en][2];
-//      if(Decor) tmp+=" (EP Decorrelation corrected)";
-//      TLatex * tl2 = new TLatex( -1,0.2*(ymax-ymin)+ymin,tmp.data());
-//      tl2->SetTextFont(43);
-//      tl2->SetTextSize(16);
-//      tl2->Draw();
-//    }
-      TPaveText * tl = new TPaveText(0.12, 0.29, 0.32, 0.35, "NDC");
-      tl->SetFillColor(0);
-      tl->SetBorderSize(0);
-      tl->SetTextAlign(12);
-      tl->SetTextSize(22);
-      tl->SetTextFont(43);
-      tl->AddText(Form("%s",nl3.data()));
-      tl->Draw();
-    ceta[bin]->Print(Form("%s/%s.pdf",FigEtaSubDir.data(),ceta[bin]->GetName()),"pdf");
+        TLegend * leg2 = new TLegend(0.12,0.13,0.38,0.29);
+        leg2->SetTextFont(43);
+        leg2->SetTextSize(20);
+        leg2->SetFillColor(kWhite);
+        leg2->SetBorderSize(0);
+        if (strncmp(gint[bin]->GetTitle(),"Graph",5)!=0) {
+            leg2->AddEntry(gint[bin],gint[bin]->GetTitle(),"lp");
+        } else {
+            leg2->AddEntry(gint[bin],"Adopted","lp");
+        }
+        if (strncmp(gintA[bin]->GetTitle(),"Graph",5)!=0) {
+            leg2->AddEntry(gintA[bin],gintA[bin]->GetTitle(),"lp");
+        } else {
+            leg2->AddEntry(gintA[bin],"A side","lp");
+        }
+        if (strncmp(gintB[bin]->GetTitle(),"Graph",5)!=0) {
+            leg2->AddEntry(gintB[bin],gintB[bin]->GetTitle(),"lp");
+        } else {
+            leg2->AddEntry(gintB[bin],"B side","lp");
+        }
+        leg2->Draw();
 
-    // FILE * fint = fopen(Form("%s/data/%s.dat",FigEtaSubDir.data(),ceta[bin]->GetName()),"w");
-    // for(int i = 0; i<gint[bin]->GetN(); i++) {
-    //   fprintf(fint,"%5.1f\t%10.6f\t%10.6f\n",gint[bin]->GetX()[i],gint[bin]->GetY()[i],gint[bin]->GetEY()[i]);
-    // }
+        TPaveText * tl = new TPaveText(0.12, 0.29, 0.32, 0.35, "NDC");
+        tl->SetFillColor(0);
+        tl->SetBorderSize(0);
+        tl->SetTextAlign(12);
+        tl->SetTextSize(22);
+        tl->SetTextFont(43);
+        tl->AddText(Form("%s",nl3.data()));
+        tl->Draw();
+        ceta[bin]->Print(Form("%s/%s.pdf",FigEtaSubDir.data(),ceta[bin]->GetName()),"pdf");
+
+        // FILE * fint = fopen(Form("%s/data/%s.dat",FigEtaSubDir.data(),ceta[bin]->GetName()),"w");
+        // for(int i = 0; i<gint[bin]->GetN(); i++) {
+        //   fprintf(fint,"%5.1f\t%10.6f\t%10.6f\n",gint[bin]->GetX()[i],gint[bin]->GetY()[i],gint[bin]->GetEY()[i]);
+        // }
     }
 }
