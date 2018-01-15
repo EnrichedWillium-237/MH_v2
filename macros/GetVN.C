@@ -1,13 +1,13 @@
 # include "TCanvas.h"
+# include "TH1D.h"
+# include "TH2D.h"
 # include "TFile.h"
 # include "TGraphErrors.h"
-# include "TH1.h"
-# include "TH2.h"
 # include "TLatex.h"
 # include "TLegend.h"
 # include "TMath.h"
-# include "TPaveText.h"
 # include "TStopwatch.h"
+# include "TPaveText.h"
 # include <iostream>
 
 # include "src/HiEvtPlaneList.h"
@@ -15,8 +15,8 @@
 using namespace hi;
 
 static const int ncentbinsNOFF = 25;
-static const int centBinsNOFF[] = {0, 10, 20, 30, 40, 50, 60, 70, 80, 100, 120, 135, 150, 160, 185, 210, 230, 250, 270, 300, 330, 350, 370, 390, 420, 500};
-static const double centRefBinsNOFF[] = {0, 10, 20, 30, 40, 50, 60, 70, 80, 100, 120, 135, 150, 160, 185, 210, 230, 250, 270, 300, 330, 350, 370, 390, 420, 500};
+static const int centBinsNOFF[]={0, 10, 20, 30, 40, 50, 60, 70, 80, 100, 120, 135, 150, 160, 185, 210, 230, 250, 270, 300, 330, 350, 370, 390, 420, 500};
+static const double centRefBinsNOFF[]={0, 10, 20, 30, 40, 50, 60, 70, 80, 100, 120, 135, 150, 160, 185, 210, 230, 250, 270, 300, 330, 350, 370, 390, 420, 500};
 static const int cbinsNOFF = 25;
 static const int cminNOFF[] = {1, 10, 20, 30, 40, 50, 60, 70, 80, 100, 120, 135, 150, 160, 185, 210, 230, 250, 270, 300, 330, 350, 370, 390, 420};
 static const int cmaxNOFF[] = {10, 20, 30, 40, 50, 60, 70, 80, 100, 120, 135, 150, 160, 185, 210, 230, 250, 270, 300, 330, 350, 370, 390, 420, 500};
@@ -24,9 +24,8 @@ static const int ncentbinsCENT = 11;
 static const int centBinsCENT[] = {0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70};
 static const double centRefBinsCENT[] = {0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70};
 static const int cbinsCENT = 13;
-static const int cminCENT[] = {0,  5, 10, 15, 20, 25, 30, 35, 40, 50, 60,  0, 20, 60};
-static const int cmaxCENT[] = {5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 20, 60,100};
-
+static const int cminCENT[] = {0,  5, 10, 15, 20, 25, 30, 35, 40, 50, 60,  0, 20,  60};
+static const int cmaxCENT[] = {5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 20, 60, 100};
 bool ntrkbinning = false;
 int ncentbins = 0;
 int centBins[50];
@@ -65,6 +64,11 @@ double resA[50];
 double resB[50];
 double resAdenom[50];
 double resBdenom[50];
+double PTMAX = 0;
+double VNMIN = 0;
+double VNMAX = 0;
+double VNINTMIN = 0;
+double VNINTMAX = 0;
 
 # include "src/Types.h"
 # include "src/Efficiency.C"
@@ -73,58 +77,71 @@ double resBdenom[50];
 # include "src/Harmonics.h"
 # include "src/drawSpec.C"
 
-double PTMAX = 0;
-double VNMIN = 0;
-double VNMAX = 0;
-double VNINTMIN = 0;
-double VNINTMAX = 0;
 TH1D * h = 0;
-void GetVNCreate( int replay, int bin ,TGraphErrors * & gint, TGraphErrors * & gintA, TGraphErrors *& gintB, bool plotit=true, bool NumOnly=false, bool DenomOnly = false ){
+
+void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gintA, TGraphErrors * &gintB, bool plotit = true, bool NumOnly = false, bool DenomOnly = false )
+{
     TH1D * hspec = 0;
     string cname = ANALS[replay][0]+"_"+to_string(cmin[bin])+"_"+to_string(cmax[bin])+Form("_eta_%03.1f_%03.1f",EtaMin,EtaMax);
+    
     h = new TH1D("h", "h", 100, 0, PTMAX);
     h->SetDirectory(0);
-    h->SetMinimum(0);
-
-    h->SetMaximum(0.6);
+    h->SetTitle("");
     h->SetStats(0);
+    h->SetMinimum(0);
+    h->SetMaximum(0.6);
     TGraphErrors * g;
     TGraphErrors * gA;
     TGraphErrors * gB;
     TGraphErrors * gspec;
     TGraphErrors * nwspec2;
-    double vint = 0;
-    double vinte = 0;
-    double vintdenom = 0;
-    double vintedenom = 0;
     double ymin = 0;
     double ymax = 1;
-    if ( replay == N1SUB2  || replay == N1SUB3 )  g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB);
-    if ( replay == N1ASUB2 || replay == N1ASUB3 ) g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB);
-    if ( replay == N1BSUB2 || replay == N1BSUB3 ) g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB);
-    if ( replay==N1MCm22SUB3 || replay==N1MCm18SUB3 || replay==N1MCm14SUB3 || replay==N1MCm10SUB3 ||
-        replay==N1MCm06SUB3 || replay==N1MCm02SUB3 || replay==N1MCp22SUB3 || replay==N1MCp18SUB3 ||
-        replay==N1MCp14SUB3 || replay==N1MCp10SUB3 ||  replay==N1MCp06SUB3 || replay==N1MCp02SUB3 )
-        g = N1EVEN( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-    if ( replay == N1MCm22SUB2 || replay == N1MCm18SUB2 || replay == N1MCm14SUB2 || replay == N1MCm10SUB2 ||
-        replay == N1MCm06SUB2  || replay == N1MCm02SUB2 || replay == N1MCp22SUB2 || replay == N1MCp18SUB2 ||
-        replay == N1MCp14SUB2  || replay == N1MCp10SUB2 || replay == N1MCp06SUB2 || replay == N1MCp02SUB2 )
-        g = N1EVEN( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-    if ( replay == N1EVENSUB2 || replay == N1EVENSUB3 ) g = N1EVEN( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-    if ( replay == N112SUB2   || replay == N112SUB3 )   g = N112( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-    if ( replay == N112ASUB2  || replay == N112ASUB3 )  g = N112( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-    if ( replay == N112BSUB2  || replay == N112BSUB3 )  g = N112( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-    if ( replay == N2SUB2     || replay == N2SUB3 )     g =   N2( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-    if ( replay == N3SUB2     || replay == N3SUB3 )     g =   N3( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB );
-
+    double vint = 0;
+    double vinte = 0;
+    double vintA = 0;
+    double vintAe = 0;
+    double vintB = 0;
+    double vintBe = 0;
+    
+    if (replay == N1SUB2   || replay == N1SUB3)  g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N1ASUB2  || replay == N1ASUB3) g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N1BSUB2  || replay == N1BSUB3) g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N1MCm22SUB3 || replay == N1MCm18SUB3 || replay == N1MCm14SUB3 || replay == N1MCm10SUB3 ||
+        replay == N1MCm06SUB3 || replay == N1MCm02SUB3 || replay == N1MCp22SUB3 || replay == N1MCp18SUB3 ||
+        replay == N1MCp14SUB3 || replay == N1MCp10SUB3 || replay == N1MCp06SUB3 || replay == N1MCp02SUB3)
+    g = N1EVEN( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N1MCm22SUB2 || replay == N1MCm18SUB2 || replay == N1MCm14SUB2 || replay == N1MCm10SUB2 ||
+        replay == N1MCm06SUB2 || replay == N1MCm02SUB2 || replay == N1MCp22SUB2 || replay == N1MCp18SUB2 ||
+        replay == N1MCp14SUB2 || replay == N1MCp10SUB2 || replay == N1MCp06SUB2 || replay == N1MCp02SUB2)
+    g = N1EVEN( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N1EVENSUB2 || replay == N1EVENSUB3) g = N1EVEN( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N112SUB2   || replay == N112SUB3)   g = N112( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N112ASUB2  || replay == N112ASUB3)  g = N112( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if (replay == N112BSUB2  || replay == N112BSUB3)  g = N112( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+//    if (replay == N123SUB2   || replay == N123SUB3)   g = N123( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+//    if (replay == N123ASUB2  || replay == N123ASUB3)  g = N123( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+//    if (replay == N123BSUB2  || replay == N123BSUB3)  g = N123( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if ( replay == N2SUB2    || replay == N2SUB3)     g = N2( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    if ( replay == N3SUB2    || replay == N3SUB3)     g = N3( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
+    
     double ymaxspec = 0;
-//  h->SetMinimum(ymin);
-//  h->SetMaximum(ymax);
-    h->SetMinimum(-0.03);
-    h->SetMaximum(0.18);
-    // if(VNMIN>-10) h->SetMinimum(VNMIN);
-    // if(VNMAX>-10) h->SetMaximum(VNMAX);
-
+//    if (replay == N1MCm22SUB3 || replay == N1MCm18SUB3 || replay == N1MCm14SUB3 || replay == N1MCm10SUB3 || replay == N1MCm06SUB3 ||
+//        replay == N1MCm02SUB3 || replay == N1MCp22SUB3 || replay == N1MCp18SUB3 || replay == N1MCp14SUB3 || replay == N1MCp10SUB3 ||
+//        replay == N1MCp06SUB3 || replay == N1MCp02SUB3 || replay == N1MCm22SUB2 || replay == N1MCm18SUB2 || replay == N1MCm14SUB2 ||
+//        replay == N1MCm10SUB2 || replay == N1MCm06SUB2 || replay == N1MCm02SUB2 || replay == N1MCp22SUB2 || replay == N1MCp18SUB2 ||
+//        replay == N1MCp14SUB2 || replay == N1MCp10SUB2 || replay == N1MCp06SUB2 || replay == N1MCp02SUB2) {
+//        ymin = -0.03;
+//        ymax = 0.2;
+//    } else {
+//        ymin = -0.08;
+//        ymax = 0.08;
+//    }
+    h->SetMinimum(ymin);
+    h->SetMaximum(ymax);
+    if(VNMIN>-10) h->SetMinimum(VNMIN);
+    if(VNMAX>-10) h->SetMaximum(VNMAX);
+    
     TCanvas * c = NULL;
     if (plotit) {
         c = new TCanvas(cname.data(),cname.data(),650,500);
@@ -133,63 +150,76 @@ void GetVNCreate( int replay, int bin ,TGraphErrors * & gint, TGraphErrors * & g
         h->SetXTitle("p_{T} (GeV/c)");
     }
     string numdenom = "";
-    if (NumOnly) numdenom=" (Numerator) ";
-    if (DenomOnly) numdenom=" (Denominator) ";
-
+    if (NumOnly) numdenom = " (Numerator) ";
+    if (DenomOnly) numdenom = " (Denominator) ";
+    
+    
     string yt = ANALS[replay][1]+numdenom+" ("+to_string(cmin[bin])+" #leq N_{trk}^{off} < "+to_string(cmax[bin])+")";
     if (!ntrkbinning) yt = ANALS[replay][1]+numdenom+" ("+to_string(cmin[bin])+" - "+to_string(cmax[bin])+"%)";
+    
     FILE * fout;
-
     if (plotit) {
+        
         h->SetYTitle(yt.data());
-        g->Draw("p");
-
-        TLegend * leg = new TLegend(0.63,0.14,0.79,0.28);
+        if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) g->Draw("p");
+        
+        TLegend * leg = new TLegend(0.14, 0.12, 0.64, 0.27);
         leg->SetTextFont(43);
-        leg->SetTextSize(20);
-        leg->SetFillColor(kWhite);
+        leg->SetTextSize(16);
+        leg->SetFillColor(0);
         leg->SetBorderSize(0);
-        if (strncmp(gA->GetTitle(),"Graph",5)!=0) {
-            leg->AddEntry(gA,gA->GetTitle(),"lp");
-        } else {
-            leg->AddEntry(gA,"A only","lp");
+        
+        string s = "A+B only";
+        if(strncmp(g->GetTitle(),"Graph",5)!=0) {
+            s = g->GetTitle();
         }
-        if (strncmp(gB->GetTitle(),"Graph",5)!=0) {
-            leg->AddEntry(gB,gB->GetTitle(),"lp");
-        } else {
-            leg->AddEntry(gB,"B only","lp");
+        string append =Form("%5.4f#pm%5.4f",vint,vinte);
+        s+=" (<> = "+append+")";
+        if(strncmp(g->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(g,s.data(),"lp");
+        
+        string sA = "A only";
+        if(strncmp(gA->GetTitle(),"Graph",5)!=0) {
+            sA = gA->GetTitle();
         }
+        append =Form("%5.4f#pm%5.4f",vintA,vintAe);
+        sA+=" (<> = "+append+")";
+        if(strncmp(gA->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(gA,sA.data(),"lp");
+        
+        string sB = "B only";
+        if(strncmp(gB->GetTitle(),"Graph",5)!=0) {
+            sB = gB->GetTitle();
+        }
+        append =Form("%5.4f#pm%5.4f",vintB,vintBe);
+        sB+=" (<> = "+append+")";
+        if(strncmp(gB->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(gB,sB.data(),"lp");
         leg->Draw();
-
-        gA->Draw("p");
-        gB->Draw("p");
-        g->Draw("p");
-
-        TPaveText * text = new TPaveText(0.63, 0.82, 0.89, 0.88, "NDC");
+        
+        if (strncmp(gA->GetTitle(),"NOGOOD",6)!=0) gA->Draw("p");
+        if (strncmp(gB->GetTitle(),"NOGOOD",6)!=0) gB->Draw("p");
+        if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) g->Draw("p");
+        
+        TPaveText * text = new TPaveText(0.14, 0.27, 0.35, 0.33,"NDC");
+        text->SetTextFont(43);
+        text->SetTextSize(22);
         text->SetFillColor(0);
         text->SetBorderSize(0);
         text->SetTextAlign(12);
-        text->SetTextSize(24);
-        text->SetTextFont(43);
         text->AddText(Form("%s",ANALS[replay][0].data()));
         text->Draw();
-        TPaveText * text2 = new TPaveText(0.63, 0.76, 0.77, 0.81, "NDC");
-        text2->SetFillColor(0);
-        text2->SetBorderSize(0);
-        text2->SetTextAlign(12);
-        text2->SetTextSize(22);
-        text2->SetTextFont(43);
-        text2->AddText(Form("%d - %d%%",cmin[bin],cmax[bin]));
-        text2->Draw();
-
-        TPaveText * t3 = new TPaveText(0.62, 0.69, 0.83, 0.75, "NDC");
-        t3->SetFillColor(0);
-        t3->SetBorderSize(0);
-        t3->SetTextAlign(12);
-        t3->SetTextSize(22);
-        t3->SetTextFont(43);
-        t3->AddText(Form("%4.1f < #eta < %4.1f",EtaMin,EtaMax));
-        t3->Draw();
+        
+        TPaveText * t2 = new TPaveText(0.13, 0.76, 0.33, 0.88,"NDC");
+        t2->SetTextFont(43);
+        t2->SetTextSize(20);
+        t2->SetFillColor(0);
+        t2->SetBorderSize(0);
+        t2->SetTextAlign(12);
+        if (ntrkbinning) {
+            t2->AddText(Form("%d #leq N_{tkr}^{off} < %d",cmin[bin],cmax[bin]));
+        } else {
+            t2->AddText(Form("%d - %d%%",cmin[bin],cmax[bin]));
+        }
+        t2->AddText(Form("%4.1f < #eta < %4.1f",EtaMin,EtaMax));
+        t2->Draw();
         c->Print(Form("%s/%s.pdf",FigSubSubDir.data(), cname.data()),"pdf");
     }
     fout = fopen(Form("%s/data/%s.dat",FigSubSubDir.data(),cname.data()),"w");
@@ -197,23 +227,24 @@ void GetVNCreate( int replay, int bin ,TGraphErrors * & gint, TGraphErrors * & g
         fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",g->GetX()[i],g->GetY()[i],g->GetEY()[i]);
     }
     fclose(fout);
-
+    
     fout = fopen(Form("%s/data/%s_A.dat",FigSubSubDir.data(),cname.data()),"w");
     for (int i = 0; i<gA->GetN(); i++){
-    fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",gA->GetX()[i],gA->GetY()[i],gA->GetEY()[i]);
+        fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",gA->GetX()[i],gA->GetY()[i],gA->GetEY()[i]);
     }
     fclose(fout);
-
+    
     fout = fopen(Form("%s/data/%s_B.dat",FigSubSubDir.data(),cname.data()),"w");
-    for(int i = 0; i<gB->GetN(); i++){
+    for (int i = 0; i<gB->GetN(); i++){
         fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",gB->GetX()[i],gB->GetY()[i],gB->GetEY()[i]);
     }
-
     fclose(fout);
+    
 }
 
-void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double mineta = -0.8, double maxeta = 0.8, bool decor = false, int selbin = -1,
-	   double ptmax = 12, double vnmin = -100, double vnmax = -100, double vnintmin = -100, double vnintmax = -100) {
+void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double mineta = -0.8, double maxeta = 0.8, bool decor = false, int selbin = -1,
+           double ptmax = 12, double vnmin = -100, double vnmax = -100, double vnintmin = -100, double vnintmax = -100)
+{
     TStopwatch * timer = new TStopwatch();
     bool found = false;
     Decor = decor;
@@ -258,7 +289,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double minet
         gintA[i]->SetTitle(Form("A_%s",nlabel.data()));
         gintB[i]->SetTitle(Form("B_%s",nlabel.data()));
     }
-
+    
     centRef = new TH1I(Form("centRef_%s",nlabel.data()), Form("centRef_%s",nlabel.data()), ncentbins, centRefBins);
     EtaMin = mineta;
     EtaMax = maxeta;
@@ -269,9 +300,9 @@ void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double minet
     isWide    = false;
     isNarrow  = false;
     isLoose   = false;
-
+    
     int en = 0;
-    for (int indx = 0; indx<LAST; ++indx) {
+    for (int indx = 0; indx<LAST; ++indx){
         if (ANALS[indx][0] == name) {
             found = true;
             en = indx;
@@ -284,13 +315,14 @@ void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double minet
     }
     FILE * ftest;
     FigDir = Form("figures%s",stag.data());
-    if ((ftest = fopen(FigDir.data(),"r")) != NULL) {
+    if ((ftest=fopen(FigDir.data(),"r"))!=NULL) {
+        //cout<<"Output directory "<<FigDir.data()<<" exists."<<endl;
         fclose(ftest);
     } else {
         system(Form("mkdir %s",FigDir.data()));
     }
     FigSubDir = FigDir+"/"+name.data();
-    if ((ftest=fopen(FigSubDir.data(),"r")) == NULL) {
+    if ((ftest=fopen(FigSubDir.data(),"r"))==NULL) {
         system(Form("mkdir %s",FigSubDir.data()));
     } else {
         cout<<"Directory "<<FigSubDir.data()<<" exists.  Will overwrite."<<endl;
@@ -308,9 +340,9 @@ void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double minet
         cout<<"time: "<<timer->CpuTime()<<"\t"<<cmin[bin]<<"\t"<<cmax[bin]<<"\t"<<cnt<<endl;
         timer->ResetCpuTime();
         timer->Start();
-        if (cnt<5000) continue;
-
-        //pt distribution
+        if(cnt<5000) continue;
+        
+        // pt distribution
         FigSubSubDir = FigSubDir+Form("/eta_%04.1f_%04.1f",EtaMin,EtaMax);
         if (Decor) FigSubSubDir+="_decor";
         if ((ftest = fopen(FigSubSubDir.data(),"r")) == NULL) {
@@ -323,18 +355,18 @@ void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double minet
             fclose(ftest);
         }
         GetVNCreate( en, bin, gint[bin], gintA[bin], gintB[bin] );
-
+        
         //eta distribution
         string FigEtaSubDir = FigSubDir;
         FigEtaSubDir+="/EtaDistributions";
         if (Decor) FigEtaSubDir+="_decor";
-        if ((ftest=fopen(FigEtaSubDir.data(),"r")) == NULL) {
+        if ((ftest = fopen(FigEtaSubDir.data(),"r"))==NULL) {
             system(Form("mkdir %s",FigEtaSubDir.data()));
             system(Form("mkdir %s/data",FigEtaSubDir.data()));
         } else {
             fclose(ftest);
         }
-
+        
         ceta[bin] = new TCanvas(Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),800,500);
         double xmin,  xmax,  ymin,  ymax;
         double xminA, xmaxA, yminA, ymaxA;
@@ -342,71 +374,83 @@ void GetVN( string rootfile = "../MH.root", string name = "N1SUB3", double minet
         string nl2 = ANALS[en][0];
         nl2+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
         if (!ntrkbinning) nl2+="%";
-
+        
         nl2+=")";
         string nl3 = ANALS[en][1];
         nl3+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
         if(!ntrkbinning) nl3+="%";
-
         nl3+=")";
-
+        
         TH1D * heta = new TH1D(Form("heta_%s",nl2.data()), Form("heta_%s",nl2.data()), 100, -2.5, 2.5);
-        gint[bin]->ComputeRange(xmin, ymin, xmax, ymax);
-        gintA[bin]->ComputeRange(xminA, yminA, xmaxA, ymaxA);
-        gintB[bin]->ComputeRange(xminB, yminB, xmaxB, ymaxB);
+        gint[bin]->ComputeRange(xmin,ymin,xmax,ymax);
+        gintA[bin]->ComputeRange(xminA,yminA,xmaxA,ymaxA);
+        gintB[bin]->ComputeRange(xminB,yminB,xmaxB,ymaxB);
         ymin = plotmin(min(ymin,yminA));
-        //ymin = min(ymin,yminB);
+        if (ymin<-0.04) ymin=-0.04;
         ymax = plotmax(max(ymax,ymaxA));
-        //ymax = max(ymax,ymaxB);
-        ////
-        ymin = -0.02;
-        ymax = 0.005;
-        ////
+        if (name == "N1SUB2" || name == "N1SUB3" || name == "N2SUB2" || name == "N2SUB3" || name == "N3SUB2" || name == "N3SUB3") {
+            ymin = -0.02;
+            ymax = 0.02;
+        }
+        heta->SetTitle("");
+        heta->SetStats(0);
         heta->SetMaximum(ymax);
         heta->SetMinimum(ymin);
-        if (VNINTMIN>-10) heta->SetMinimum(VNINTMIN);
-        if (VNINTMAX>-10) heta->SetMaximum(VNINTMAX);
+        if(VNINTMIN>-10) heta->SetMinimum(VNINTMIN);
+        if(VNINTMAX>-10) heta->SetMaximum(VNINTMAX);
         heta->SetXTitle("#eta");
         heta->SetYTitle(ANALS[en][1].data());
-        heta->SetStats(0);
         heta->Draw();
-        gint[bin]->Draw("p");
-        gintA[bin]->Draw("p");
-        gintB[bin]->Draw("p");
-        gint[bin]->Draw("p");
-
-        TLegend * leg2 = new TLegend(0.12,0.13,0.38,0.29);
+        if(strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0) gint[bin]->Draw("p");
+        if(strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) gintA[bin]->Draw("p");
+        if(strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) gintB[bin]->Draw("p");
+        if(strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0) gint[bin]->Draw("p");
+        
+        TLegend * leg2 = new TLegend(0.13, 0.14, 0.33, 0.30);
         leg2->SetTextFont(43);
         leg2->SetTextSize(20);
         leg2->SetFillColor(kWhite);
         leg2->SetBorderSize(0);
-        if (strncmp(gint[bin]->GetTitle(),"Graph",5)!=0) {
-            leg2->AddEntry(gint[bin],gint[bin]->GetTitle(),"lp");
+        if(strncmp(gint[bin]->GetTitle(),"Graph",5)!=0) {
+            if(strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gint[bin],gint[bin]->GetTitle(),"lp");
         } else {
-            leg2->AddEntry(gint[bin],"Adopted","lp");
+            if(strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0)leg2->AddEntry(gint[bin],"Adopted","lp");
         }
-        if (strncmp(gintA[bin]->GetTitle(),"Graph",5)!=0) {
-            leg2->AddEntry(gintA[bin],gintA[bin]->GetTitle(),"lp");
+        if(strncmp(gintA[bin]->GetTitle(),"Graph",5)!=0) {
+            if(strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintA[bin],gintA[bin]->GetTitle(),"lp");
         } else {
-            leg2->AddEntry(gintA[bin],"A side","lp");
+            if(strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintA[bin],"A side","lp");
         }
-        if (strncmp(gintB[bin]->GetTitle(),"Graph",5)!=0) {
-            leg2->AddEntry(gintB[bin],gintB[bin]->GetTitle(),"lp");
+        if(strncmp(gintB[bin]->GetTitle(),"Graph",5)!=0) {
+            if(strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintB[bin],gintB[bin]->GetTitle(),"lp");
         } else {
-            leg2->AddEntry(gintB[bin],"B side","lp");
+            if(strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintB[bin],"B side","lp");
         }
         leg2->Draw();
-
-        TPaveText * tl = new TPaveText(0.12, 0.29, 0.32, 0.35, "NDC");
+        
+        TPaveText * tl = new TPaveText(0.13, 0.81, 0.29, 0.88,"NDC");
+        tl->SetTextFont(43);
+        tl->SetTextSize(20);
         tl->SetFillColor(0);
         tl->SetBorderSize(0);
         tl->SetTextAlign(12);
-        tl->SetTextSize(22);
-        tl->SetTextFont(43);
         tl->AddText(Form("%s",nl3.data()));
         tl->Draw();
+        
+        if(ANALS[en][2]!="") {
+            string tmp = ANALS[en][2];
+            if(Decor) tmp+=" (EP Decorrelation corrected)";
+            TPaveText * tl2 = new TPaveText(0.12, 0.74, 0.50, 0.81,"NDC");
+            tl2->SetTextFont(43);
+            tl2->SetTextSize(16);
+            tl2->SetFillColor(0);
+            tl2->SetBorderSize(0);
+            tl2->SetTextAlign(12);
+            tl2->AddText(Form("%s",tmp.data()));
+            tl2->Draw();
+        }
         ceta[bin]->Print(Form("%s/%s.pdf",FigEtaSubDir.data(),ceta[bin]->GetName()),"pdf");
-
+        
         // FILE * fint = fopen(Form("%s/data/%s.dat",FigEtaSubDir.data(),ceta[bin]->GetName()),"w");
         // for(int i = 0; i<gint[bin]->GetN(); i++) {
         //   fprintf(fint,"%5.1f\t%10.6f\t%10.6f\n",gint[bin]->GetX()[i],gint[bin]->GetY()[i],gint[bin]->GetEY()[i]);
