@@ -1,5 +1,5 @@
-TGraphErrors * N3(int replay, int bin, double eMin, double eMax, double & ymin, double & ymax, TGraphErrors * &g,TGraphErrors * &gA, TGraphErrors * &gB, TGraphErrors * &gSpec, TGraphErrors * &gint, TGraphErrors *& gintA, TGraphErrors *& gintB, double & vint, double & vinte, double & vintA, double & vintAe, double & vintB, double & vintBe){
-  int epindx = HFp3;
+TGraphErrors * N7(int replay, int bin, double eMin, double eMax, double & ymin, double & ymax, TGraphErrors * &g,TGraphErrors * &gA, TGraphErrors * &gB, TGraphErrors * &gSpec, TGraphErrors * &gint, TGraphErrors *& gintA, TGraphErrors *& gintB, double & vint, double & vinte, double & vintA, double & vintAe, double & vintB, double & vintBe){
+  int epindx = HFp7;
   TGraphErrors * gtmp;
   //
   // Start with eta distribution
@@ -29,7 +29,6 @@ TGraphErrors * N3(int replay, int bin, double eMin, double eMax, double & ymin, 
       gintB->SetTitle("p-side");
     }
   }
-
   //
   // Now do requested calculation
   
