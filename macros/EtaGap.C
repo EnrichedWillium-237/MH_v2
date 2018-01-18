@@ -74,16 +74,16 @@ void EtaGap()
                 neta++;
             }
             if (i == 0) gN1MCm22SUB2[cbin] = new TGraphErrors(netabins-i-1, deltaEta, v1val, 0, v1vale);
-            if (i == 1) gN1MCm18SUB2[cbin] = new TGraphErrors(netabins-i-2, deltaEta, v1val, 0, v1vale);
-            if (i == 2) gN1MCm14SUB2[cbin] = new TGraphErrors(netabins-i-3, deltaEta, v1val, 0, v1vale);
-            if (i == 3) gN1MCm10SUB2[cbin] = new TGraphErrors(netabins-i-4, deltaEta, v1val, 0, v1vale);
-            if (i == 4) gN1MCm06SUB2[cbin] = new TGraphErrors(netabins-i-5, deltaEta, v1val, 0, v1vale);
-            if (i == 5) gN1MCm02SUB2[cbin] = new TGraphErrors(netabins-i-6, deltaEta, v1val, 0, v1vale);
-            if (i == 6) gN1MCp02SUB2[cbin] = new TGraphErrors(netabins-i-6, deltaEta, v1val, 0, v1vale);
-            if (i == 7) gN1MCp06SUB2[cbin] = new TGraphErrors(netabins-i-5, deltaEta, v1val, 0, v1vale);
-            if (i == 8) gN1MCp10SUB2[cbin] = new TGraphErrors(netabins-i-4, deltaEta, v1val, 0, v1vale);
-            if (i == 9) gN1MCp14SUB2[cbin] = new TGraphErrors(netabins-i-3, deltaEta, v1val, 0, v1vale);
-            if (i == 10) gN1MCp18SUB2[cbin] = new TGraphErrors(netabins-i-2, deltaEta, v1val, 0, v1vale);
+            if (i == 1) gN1MCm18SUB2[cbin] = new TGraphErrors(netabins-i-1, deltaEta, v1val, 0, v1vale);
+            if (i == 2) gN1MCm14SUB2[cbin] = new TGraphErrors(netabins-i-2, deltaEta, v1val, 0, v1vale);
+            if (i == 3) gN1MCm10SUB2[cbin] = new TGraphErrors(netabins-i-3, deltaEta, v1val, 0, v1vale);
+            if (i == 4) gN1MCm06SUB2[cbin] = new TGraphErrors(netabins-i-4, deltaEta, v1val, 0, v1vale);
+            if (i == 5) gN1MCm02SUB2[cbin] = new TGraphErrors(netabins-i-5, deltaEta, v1val, 0, v1vale);
+            if (i == 6) gN1MCp02SUB2[cbin] = new TGraphErrors(netabins-i-5, deltaEta, v1val, 0, v1vale);
+            if (i == 7) gN1MCp06SUB2[cbin] = new TGraphErrors(netabins-i-4, deltaEta, v1val, 0, v1vale);
+            if (i == 8) gN1MCp10SUB2[cbin] = new TGraphErrors(netabins-i-3, deltaEta, v1val, 0, v1vale);
+            if (i == 9) gN1MCp14SUB2[cbin] = new TGraphErrors(netabins-i-2, deltaEta, v1val, 0, v1vale);
+            if (i == 10) gN1MCp18SUB2[cbin] = new TGraphErrors(netabins-i-1, deltaEta, v1val, 0, v1vale);
             if (i == 11) gN1MCp22SUB2[cbin] = new TGraphErrors(netabins-i-1, deltaEta, v1val, 0, v1vale);
             /*for (int j = 0; j<neta; j++) {
                 cout<<"deltaEta = "<<deltaEta[j]<<"\tv1val = "<<v1val[j]<<"\tv1vale = "<<v1vale[j]<<endl;
@@ -120,29 +120,29 @@ void EtaGap()
         gN1MCp22SUB2[cbin]->SetLineColor(kBlue);
 
         gN1MCm22SUB2[cbin]->SetMarkerStyle(21);
-        gN1MCm18SUB2[cbin]->SetMarkerStyle(21);
-        gN1MCm14SUB2[cbin]->SetMarkerStyle(21);
-        gN1MCm10SUB2[cbin]->SetMarkerStyle(21);
+        gN1MCm18SUB2[cbin]->SetMarkerStyle(20);
+        gN1MCm14SUB2[cbin]->SetMarkerStyle(34);
+        gN1MCm10SUB2[cbin]->SetMarkerStyle(33);
         gN1MCm06SUB2[cbin]->SetMarkerStyle(21);
-        gN1MCm02SUB2[cbin]->SetMarkerStyle(21);
-        gN1MCp02SUB2[cbin]->SetMarkerStyle(25);
+        gN1MCm02SUB2[cbin]->SetMarkerStyle(34);
+        gN1MCp02SUB2[cbin]->SetMarkerStyle(28);
         gN1MCp06SUB2[cbin]->SetMarkerStyle(25);
-        gN1MCp10SUB2[cbin]->SetMarkerStyle(25);
-        gN1MCp14SUB2[cbin]->SetMarkerStyle(25);
-        gN1MCp18SUB2[cbin]->SetMarkerStyle(25);
+        gN1MCp10SUB2[cbin]->SetMarkerStyle(27);
+        gN1MCp14SUB2[cbin]->SetMarkerStyle(28);
+        gN1MCp18SUB2[cbin]->SetMarkerStyle(24);
         gN1MCp22SUB2[cbin]->SetMarkerStyle(25);
 
         gN1MCm22SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCm18SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCm14SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCm10SUB2[cbin]->SetMarkerSize(1.2);
+        gN1MCm18SUB2[cbin]->SetMarkerSize(1.3);
+        gN1MCm14SUB2[cbin]->SetMarkerSize(1.7);
+        gN1MCm10SUB2[cbin]->SetMarkerSize(1.8);
         gN1MCm06SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCm02SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCp02SUB2[cbin]->SetMarkerSize(1.2);
+        gN1MCm02SUB2[cbin]->SetMarkerSize(1.7);
+        gN1MCp02SUB2[cbin]->SetMarkerSize(1.7);
         gN1MCp06SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCp10SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCp14SUB2[cbin]->SetMarkerSize(1.2);
-        gN1MCp18SUB2[cbin]->SetMarkerSize(1.2);
+        gN1MCp10SUB2[cbin]->SetMarkerSize(1.8);
+        gN1MCp14SUB2[cbin]->SetMarkerSize(1.7);
+        gN1MCp18SUB2[cbin]->SetMarkerSize(1.3);
         gN1MCp22SUB2[cbin]->SetMarkerSize(1.2);
     }
 
@@ -164,12 +164,7 @@ void EtaGap()
     gN1MCm10SUB2[setcent-1]->Draw("same p");
     gN1MCm06SUB2[setcent-1]->Draw("same p");
     gN1MCm02SUB2[setcent-1]->Draw("same p");
-    TArrow * ar1 = new TArrow(0.2, 0.2, 0.1, 0.7);
-    ar1->SetAngle(40);
-    ar1->SetLineWidth(2);
-    ar1->SetLineColor(kBlue);
-    ar1->Draw("same");
-    TLegend * leg0 = new TLegend(0.61, 0.57, 0.88, 0.88);
+    TLegend * leg0 = new TLegend(0.66, 0.62, 0.93, 0.93);
     SetLegend(leg0,18);
     leg0->SetHeader(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     leg0->AddEntry(gN1MCm22SUB2[setcent-1],"N1MCm22SUB2","p");
