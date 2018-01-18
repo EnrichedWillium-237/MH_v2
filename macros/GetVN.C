@@ -239,12 +239,6 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
         fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",gB->GetX()[i],gB->GetY()[i],gB->GetEY()[i]);
     }
     fclose(fout);
-    TFile * foutroot = new TFile(Form("%s/data/%s.root",FigSubSubDir.data(),cname.data()),"recreate");
-    foutroot->cd();
-    g->Write();
-    gA->Write();
-    gB->Write();
-    foutroot->Close();
     
 }
 
@@ -459,15 +453,10 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         
         FILE * fint = fopen(Form("%s/data/%s.dat",FigEtaSubDir.data(),ceta[bin]->GetName()),"w");
         for (int i = 0; i<gint[bin]->GetN(); i++) {
-            fprintf(fint,"%5.1f\t%10.6f\t%10.6f\n",gint[bin]->GetX()[i],gint[bin]->GetY()[i],gint[bin]->GetEY()[i]);
+            //fprintf(fint,"%5.1f\t%10.6f\t%10.6f\n",gint[bin]->GetX()[i],gint[bin]->GetY()[i],gint[bin]->GetEY()[i]);
+            fprintf(fint,"%5.1f\t%10.6f\t%10.6f\t%10.6f\t%10.6f\t%10.6f\t%10.6f\n",gint[bin]->GetX()[i],gint[bin]->GetY()[i],gint[bin]->GetEY()[i],gintA[bin]->GetY()[i],gintA[bin]->GetEY()[i],gintB[bin]->GetY()[i],gintB[i]->GetEY()[i]);
             //cout<<gint[bin]->GetX()[i]<<"\t"<<gint[bin]->GetY()[i]<<"\t"<<gint[bin]->GetEY()[i]<<endl;
         }
-        TFile * fintRoot = new TFile(Form("%s/data/%s.root",FigEtaSubDir.data(),ceta[bin]->GetName()),"recreate");
-        fintRoot->cd();
-        gint[bin]->Write();
-        gintA[bin]->Write();
-        gintB[bin]->Write();
-        fintRoot->Close();
     }
 }
 
