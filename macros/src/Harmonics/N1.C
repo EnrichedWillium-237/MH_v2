@@ -1,4 +1,4 @@
-TGraphErrors * N1( int replay, int bin, double eMin, double eMax, double & ymin, double & ymax, TGraphErrors * &g,TGraphErrors * &gA, TGraphErrors * &gB, TGraphErrors * &gSpec, TGraphErrors * &gint, TGraphErrors * &gintA, TGraphErrors * &gintB, double & vint, double & vinte, double & vintA, double & vintAe, double & vintB, double & vintBe ) {
+TGraphErrors * N1( int replay, int bin, double eMin, double eMax, double & ymin, double & ymax, TGraphErrors * &g, TGraphErrors * &gA, TGraphErrors * &gB, TGraphErrors * &gSpec, TGraphErrors * &gint, TGraphErrors * &gintA, TGraphErrors * &gintB, double & vint, double & vinte, double & vintA, double & vintAe, double & vintB, double & vintBe ) {
     fin = new TFile(rootFile.data(),"r");
     TGraphErrors * g2 ;
     TGraphErrors * gA2 ;
@@ -31,7 +31,7 @@ TGraphErrors * N1( int replay, int bin, double eMin, double eMax, double & ymin,
             double EtaMax = EtaMin+0.4;
             if (fabs(EtaMin)<0.001) EtaMin = 0.;
             if (fabs(EtaMax)<0.001) EtaMax = 0.;
-            gtmp = GetVNPt(replay, bin, epindx, EtaMin, EtaMax, gtmp, gtmp, gtmp, vint, vinte, vintA, vintAe, vintB, vintBe, false);
+            gtmp = GetVNPt( replay, bin, epindx, EtaMin, EtaMax, gtmp, gtmp, gtmp, vint, vinte, vintA, vintAe, vintB, vintBe, false );
             gint->GetY()[i] = vint;
             gint->GetEY()[i] = vinte;
             gintA->GetY()[i] = vintA;
@@ -70,7 +70,7 @@ TGraphErrors * N1( int replay, int bin, double eMin, double eMax, double & ymin,
     // Now do requested calculation
     //
     if (replay == N1ASUB2 || replay == N1ASUB3 || replay == N1BSUB2 || replay == N1BSUB3){
-        g = GetVNPt(replay, bin, epindx, eMin, eMax, gA, gB, gSpec, vint, vinte, vintA, vintAe, vintB, vintBe, false);
+        g = GetVNPt( replay, bin, epindx, eMin, eMax, gA, gB, gSpec, vint, vinte, vintA, vintAe, vintB, vintBe, false );
         ymin = setYmin(g, gA, gB);
         ymax = setYmax(g, gA, gB);
         fin->Close();
@@ -80,16 +80,16 @@ TGraphErrors * N1( int replay, int bin, double eMin, double eMax, double & ymin,
         return g;
     }
     if (replay == N1SUB2) {
-        g = GetVNPt(N1ASUB2, bin, epindx, eMin, eMax, gA, gB, gSpec, vint, vinte, vintA, vintAe, vintB, vintBe, false);
+        g = GetVNPt( N1ASUB2, bin, epindx, eMin, eMax, gA, gB, gSpec, vint, vinte, vintA, vintAe, vintB, vintBe, false);
     }  else {
-        g = GetVNPt(N1ASUB3, bin, epindx, eMin, eMax, gA, gB, gSpec, vint, vinte, vintA, vintAe, vintB, vintBe, false);
+        g = GetVNPt(N1ASUB3, bin, epindx, eMin, eMax, gA, gB, gSpec, vint, vinte, vintA, vintAe, vintB, vintBe, false );
     }
     fin->Close();
     fin = new TFile(rootFile.data(),"r");
     if (replay == N1SUB2) {
-        g2 = GetVNPt(N1BSUB2, bin, epindx, eMin, eMax, gA2, gB2, gSpec2, vint2, vinte2, vintA2, vintAe2, vintB2, vintBe2, false);
+        g2 = GetVNPt( N1BSUB2, bin, epindx, eMin, eMax, gA2, gB2, gSpec2, vint2, vinte2, vintA2, vintAe2, vintB2, vintBe2, false );
     }  else {
-        g2 = GetVNPt(N1BSUB3, bin, epindx, eMin, eMax, gA2, gB2, gSpec2, vint2, vinte2, vintA2, vintAe2, vintB2, vintBe2, false);
+        g2 = GetVNPt( N1BSUB3, bin, epindx, eMin, eMax, gA2, gB2, gSpec2, vint2, vinte2, vintA2, vintAe2, vintB2, vintBe2, false );
     }
     fin->Close();
     for (int i = 0; i<g->GetN(); i++) {

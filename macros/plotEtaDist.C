@@ -471,7 +471,7 @@ void plotEtaDist()
     legMCCent22eta->Draw();
     TPaveText * txMCCent22eta = new TPaveText(0.2, 0.81, 0.65, 0.92, "NDC");
     SetTPaveTxt(txMCCent22eta, 20);
-    txMCCent22eta->AddText("Event plane 1.6 < |#eta| < 2.0");
+    txMCCent22eta->AddText("#pm Event plane 2.0 < |#eta| < 2.4");
     txMCCent22eta->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCCent22eta->Draw();
     cMCCent22eta->Print(Form("figures_MH/EtaDists/CentScanMC22_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
@@ -527,10 +527,61 @@ void plotEtaDist()
     legMCCent18eta->Draw();
     TPaveText * txMCCent18eta = new TPaveText(0.2, 0.81, 0.65, 0.92, "NDC");
     SetTPaveTxt(txMCCent18eta, 20);
-    txMCCent18eta->AddText("Event plane 1.6 < |#eta| < 2.0");
+    txMCCent18eta->AddText("#pm Event plane 1.6 < |#eta| < 2.0");
     txMCCent18eta->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCCent18eta->Draw();
     cMCCent18eta->Print(Form("figures_MH/EtaDists/CentScanMC18_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
+
+    TCanvas * cEtaCompareSUB_MC22 = new TCanvas("cEtaCompareSUB_MC22","cEtaCompareSUB_MC22",650,600);
+    TPad * padEtaCompareSUB_MC22 = (TPad *) cEtaCompareSUB_MC22->cd();
+    padEtaCompareSUB_MC22->SetGrid();
+    TH1D * hEtaCompareSUB_MC22 = new TH1D("hEtaCompareSUB_MC22", "hEtaCompareSUB_MC22", 100, -2.5, 2.5);
+    hEtaCompareSUB_MC22->SetStats(0);
+    hEtaCompareSUB_MC22->GetYaxis()->SetRangeUser(-0.02, 0.01);
+    hEtaCompareSUB_MC22->SetXTitle("#eta");
+    hEtaCompareSUB_MC22->SetYTitle("v_{1}^{even}");
+    hEtaCompareSUB_MC22->Draw();
+    gN1MC22SUB2_eta[setcent]->Draw("same");
+    gN1MC22SUB3_eta[setcent]->SetMarkerStyle(25);
+    gN1MC22SUB3_eta[setcent]->SetMarkerSize(1.2);
+    gN1MC22SUB3_eta[setcent]->Draw("same");
+    TLegend * legEtaCompareSUB_MC22 = new TLegend(0.65, 0.81, 0.93, 0.93);
+    SetLegend(legEtaCompareSUB_MC22, 18);
+    legEtaCompareSUB_MC22->AddEntry(gN1MC22SUB2_eta[setcent],"N1MC22SUB2","p");
+    legEtaCompareSUB_MC22->AddEntry(gN1MC22SUB3_eta[setcent],"N1MC22SUB3","p");
+    legEtaCompareSUB_MC22->Draw();
+    TPaveText * txEtaCompareSUB_MC22 = new TPaveText(0.20, 0.81, 0.47, 0.93, "NDC");
+    SetTPaveTxt(txEtaCompareSUB_MC22, 20);
+    txEtaCompareSUB_MC22->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txEtaCompareSUB_MC22->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txEtaCompareSUB_MC22->Draw();
+    cEtaCompareSUB_MC22->Print(Form("figures_MH/EtaDists/CompareSUB_MC22_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cEtaCompareSUB_MC18 = new TCanvas("cEtaCompareSUB_MC18","cEtaCompareSUB_MC18",650,600);
+    TPad * padEtaCompareSUB_MC18 = (TPad *) cEtaCompareSUB_MC18->cd();
+    padEtaCompareSUB_MC18->SetGrid();
+    TH1D * hEtaCompareSUB_MC18 = new TH1D("hEtaCompareSUB_MC18", "hEtaCompareSUB_MC18", 100, -2.5, 2.5);
+    hEtaCompareSUB_MC18->SetStats(0);
+    hEtaCompareSUB_MC18->GetYaxis()->SetRangeUser(-0.02, 0.01);
+    hEtaCompareSUB_MC18->SetXTitle("#eta");
+    hEtaCompareSUB_MC18->SetYTitle("v_{1}^{even}");
+    hEtaCompareSUB_MC18->Draw();
+    gN1MC18SUB2_eta[setcent]->Draw("same");
+    gN1MC18SUB3_eta[setcent]->SetMarkerStyle(25);
+    gN1MC18SUB3_eta[setcent]->SetMarkerSize(1.2);
+    gN1MC18SUB3_eta[setcent]->Draw("same");
+    TLegend * legEtaCompareSUB_MC18 = new TLegend(0.65, 0.81, 0.93, 0.93);
+    SetLegend(legEtaCompareSUB_MC18, 18);
+    legEtaCompareSUB_MC18->AddEntry(gN1MC18SUB2_eta[setcent],"N1MC18SUB2","p");
+    legEtaCompareSUB_MC18->AddEntry(gN1MC18SUB3_eta[setcent],"N1MC18SUB3","p");
+    legEtaCompareSUB_MC18->Draw();
+    TPaveText * txEtaCompareSUB_MC18 = new TPaveText(0.20, 0.81, 0.47, 0.93, "NDC");
+    SetTPaveTxt(txEtaCompareSUB_MC18, 20);
+    txEtaCompareSUB_MC18->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txEtaCompareSUB_MC18->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txEtaCompareSUB_MC18->Draw();
+    cEtaCompareSUB_MC18->Print(Form("figures_MH/EtaDists/CompareSUB_MC18_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 }

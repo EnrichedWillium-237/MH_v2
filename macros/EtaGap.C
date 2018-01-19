@@ -255,7 +255,7 @@ void EtaGap()
     if (!fopen("figures_MH/EtaGapStudy/","r")) system("mkdir figures_MH/EtaGapStudy");
 
     int setcent = 12;
-
+/*
     TCanvas * cMCmScan = new TCanvas("cMCmScan","cMCmScan",650,600);
     TPad * padMCmScan = (TPad *) cMCmScan->cd();
     padMCmScan->SetGrid();
@@ -842,6 +842,72 @@ void EtaGap()
     txCompareSUBMCp14->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txCompareSUBMCp14->Draw();
     cCompareSUBMCp14->Print(Form("figures_MH/EtaGapStudy/Compare_sub_MCp14_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+*/
 
+    setcent = 5;
+    TCanvas * cComparepmMC22_SUB3 = new TCanvas("cComparepmMC22_SUB3","cComparepmMC22_SUB3",650,600);
+    TPad * padComparepmMC22_SUB3_1 = (TPad *) cComparepmMC22_SUB3->cd();
+    padComparepmMC22_SUB3_1->SetGrid();
+    TH1D * hComparepmMC22_SUB3 = new TH1D("hComparepmMC22_SUB3", "", 100, 0, 4.8);
+    hComparepmMC22_SUB3->SetTitle("");
+    hComparepmMC22_SUB3->SetStats(0);
+    hComparepmMC22_SUB3->GetYaxis()->SetRangeUser(0, 0.04);
+    hComparepmMC22_SUB3->SetXTitle("#Delta#eta");
+    hComparepmMC22_SUB3->SetYTitle("|v_{1}^{even}|");
+    hComparepmMC22_SUB3->Draw();
+    gN1MCm22SUB3[setcent]->SetMarkerColor(kBlue);
+    gN1MCp22SUB3[setcent]->SetMarkerColor(kBlack);
+    gN1MCm22SUB3[setcent]->SetLineColor(kBlue);
+    gN1MCp22SUB3[setcent]->SetLineColor(kBlack);
+    gN1MCm22SUB3[setcent]->SetMarkerStyle(21);
+    gN1MCp22SUB3[setcent]->SetMarkerStyle(25);
+    gN1MCm22SUB3[setcent]->SetMarkerSize(1.2);
+    gN1MCp22SUB3[setcent]->SetMarkerSize(1.2);
+    gN1MCm22SUB3[setcent]->Draw("same");
+    gN1MCp22SUB3[setcent]->Draw("same");
+    TLegend * legComparepmMC22_SUB3 = new TLegend(0.48, 0.82, 0.78, 0.93);
+    SetLegend(legComparepmMC22_SUB3, 18);
+    legComparepmMC22_SUB3->AddEntry(gN1MCm22SUB3[setcent],"N1MCm22SUB3 (-2.4 < #eta < -2.0)","p");
+    legComparepmMC22_SUB3->AddEntry(gN1MCp22SUB3[setcent],"N1MCp22SUB3 (2.0 < #eta < 2.4)","p");
+    legComparepmMC22_SUB3->Draw();
+    TPaveText * txComparepmMC22_SUB3 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txComparepmMC22_SUB3, 20);
+    txComparepmMC22_SUB3->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txComparepmMC22_SUB3->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txComparepmMC22_SUB3->Draw();
+    cComparepmMC22_SUB3->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC22_sub3_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cComparepmMC18_SUB3 = new TCanvas("cComparepmMC18_SUB3","cComparepmMC18_SUB3",650,600);
+    TPad * padComparepmMC18_SUB3_1 = (TPad *) cComparepmMC18_SUB3->cd();
+    padComparepmMC18_SUB3_1->SetGrid();
+    TH1D * hComparepmMC18_SUB3 = new TH1D("hComparepmMC18_SUB3", "", 100, 0, 4.8);
+    hComparepmMC18_SUB3->SetTitle("");
+    hComparepmMC18_SUB3->SetStats(0);
+    hComparepmMC18_SUB3->GetYaxis()->SetRangeUser(0, 0.04);
+    hComparepmMC18_SUB3->SetXTitle("#Delta#eta");
+    hComparepmMC18_SUB3->SetYTitle("|v_{1}^{even}|");
+    hComparepmMC18_SUB3->Draw();
+    gN1MCm18SUB3[setcent]->SetMarkerColor(kRed);
+    gN1MCp18SUB3[setcent]->SetMarkerColor(kBlack);
+    gN1MCm18SUB3[setcent]->SetLineColor(kRed);
+    gN1MCp18SUB3[setcent]->SetLineColor(kBlack);
+    gN1MCm18SUB3[setcent]->SetMarkerStyle(21);
+    gN1MCp18SUB3[setcent]->SetMarkerStyle(25);
+    gN1MCm18SUB3[setcent]->SetMarkerSize(1.2);
+    gN1MCp18SUB3[setcent]->SetMarkerSize(1.2);
+    gN1MCm18SUB3[setcent]->Draw("same");
+    gN1MCp18SUB3[setcent]->Draw("same");
+    TLegend * legComparepmMC18_SUB3 = new TLegend(0.48, 0.82, 0.78, 0.93);
+    SetLegend(legComparepmMC18_SUB3, 18);
+    legComparepmMC18_SUB3->AddEntry(gN1MCm18SUB3[setcent],"N1MCm18SUB3 (-2.0 < #eta < -1.6)","p");
+    legComparepmMC18_SUB3->AddEntry(gN1MCp18SUB3[setcent],"N1MCp18SUB3 (1.6 < #eta < 2.0)","p");
+    legComparepmMC18_SUB3->Draw();
+    TPaveText * txComparepmMC18_SUB3 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txComparepmMC18_SUB3, 20);
+    txComparepmMC18_SUB3->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txComparepmMC18_SUB3->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txComparepmMC18_SUB3->Draw();
+    cComparepmMC18_SUB3->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC18_sub3_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 }
