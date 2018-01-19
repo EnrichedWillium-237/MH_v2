@@ -83,7 +83,7 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
 {
     TH1D * hspec = 0;
     string cname = ANALS[replay][0]+"_"+to_string(cmin[bin])+"_"+to_string(cmax[bin])+Form("_eta_%03.1f_%03.1f",EtaMin,EtaMax);
-    
+
     h = new TH1D("h", "h", 100, 0, PTMAX);
     h->SetDirectory(0);
     h->SetTitle("");
@@ -103,7 +103,7 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
     double vintAe = 0;
     double vintB = 0;
     double vintBe = 0;
-    
+
     if (replay == N1SUB2   || replay == N1SUB3)  g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
     if (replay == N1ASUB2  || replay == N1ASUB3) g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
     if (replay == N1BSUB2  || replay == N1BSUB3) g = N1( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
@@ -124,7 +124,7 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
     //    if (replay == N123BSUB2  || replay == N123BSUB3)  g = N123( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
     if ( replay == N2SUB2    || replay == N2SUB3)     g = N2( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
     if ( replay == N3SUB2    || replay == N3SUB3)     g = N3( replay, bin, EtaMin, EtaMax, ymin, ymax, g, gA, gB, gspec, gint, gintA, gintB, vint, vinte, vintA, vintAe, vintB, vintBe );
-    
+
     double ymaxspec = 0;
     //    if (replay == N1MCm22SUB3 || replay == N1MCm18SUB3 || replay == N1MCm14SUB3 || replay == N1MCm10SUB3 || replay == N1MCm06SUB3 ||
     //        replay == N1MCm02SUB3 || replay == N1MCp22SUB3 || replay == N1MCp18SUB3 || replay == N1MCp14SUB3 || replay == N1MCp10SUB3 ||
@@ -141,7 +141,7 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
     h->SetMaximum(ymax);
     if(VNMIN>-10) h->SetMinimum(VNMIN);
     if(VNMAX>-10) h->SetMaximum(VNMAX);
-    
+
     TCanvas * c = NULL;
     if (plotit) {
         c = new TCanvas(cname.data(),cname.data(),650,500);
@@ -152,23 +152,23 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
     string numdenom = "";
     if (NumOnly) numdenom = " (Numerator) ";
     if (DenomOnly) numdenom = " (Denominator) ";
-    
-    
+
+
     string yt = ANALS[replay][1]+numdenom+" ("+to_string(cmin[bin])+" #leq N_{trk}^{off} < "+to_string(cmax[bin])+")";
     if (!ntrkbinning) yt = ANALS[replay][1]+numdenom+" ("+to_string(cmin[bin])+" - "+to_string(cmax[bin])+"%)";
-    
+
     FILE * fout;
     if (plotit) {
-        
+
         h->SetYTitle(yt.data());
         if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) g->Draw("p");
-        
+
         TLegend * leg = new TLegend(0.18, 0.19, 0.60, 0.34);
         leg->SetTextFont(43);
         leg->SetTextSize(16);
         leg->SetFillColor(0);
         leg->SetBorderSize(0);
-        
+
         string s = "A+B only";
         if(strncmp(g->GetTitle(),"Graph",5)!=0) {
             s = g->GetTitle();
@@ -176,7 +176,7 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
         string append = Form("%5.4f#pm%5.4f",vint,vinte);
         s+=" (<> = "+append+")";
         if(strncmp(g->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(g,s.data(),"lp");
-        
+
         string sA = "A only";
         if(strncmp(gA->GetTitle(),"Graph",5)!=0) {
             sA = gA->GetTitle();
@@ -184,7 +184,7 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
         append = Form("%5.4f#pm%5.4f",vintA,vintAe);
         sA+=" (<> = "+append+")";
         if(strncmp(gA->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(gA,sA.data(),"lp");
-        
+
         string sB = "B only";
         if(strncmp(gB->GetTitle(),"Graph",5)!=0) {
             sB = gB->GetTitle();
@@ -193,11 +193,11 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
         sB+=" (<> = "+append+")";
         if(strncmp(gB->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(gB,sB.data(),"lp");
         leg->Draw();
-        
+
         if (strncmp(gA->GetTitle(),"NOGOOD",6)!=0) gA->Draw("p");
         if (strncmp(gB->GetTitle(),"NOGOOD",6)!=0) gB->Draw("p");
         if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) g->Draw("p");
-        
+
         TPaveText * text = new TPaveText(0.18, 0.34, 0.30, 0.40,"NDC");
         text->SetTextFont(43);
         text->SetTextSize(18);
@@ -206,7 +206,7 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
         text->SetTextAlign(12);
         text->AddText(Form("%s",ANALS[replay][0].data()));
         text->Draw();
-        
+
         TPaveText * t2 = new TPaveText(0.20, 0.82, 0.40, 0.92,"NDC");
         t2->SetTextFont(43);
         t2->SetTextSize(18);
@@ -220,26 +220,26 @@ void GetVNCreate( int replay, int bin, TGraphErrors * &gint, TGraphErrors * &gin
         }
         t2->AddText(Form("%4.1f < #eta < %4.1f",EtaMin,EtaMax));
         t2->Draw();
-        c->Print(Form("%s/%s.pdf",FigSubSubDir.data(), cname.data()),"pdf");
+        c->Print(Form("%s/%s.png",FigSubSubDir.data(), cname.data()),"png");
     }
     fout = fopen(Form("%s/data/%s.dat",FigSubSubDir.data(),cname.data()),"w");
     for (int i = 0; i<g->GetN(); i++){
         fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",g->GetX()[i],g->GetY()[i],g->GetEY()[i]);
     }
     fclose(fout);
-    
+
     fout = fopen(Form("%s/data/%s_A.dat",FigSubSubDir.data(),cname.data()),"w");
     for (int i = 0; i<gA->GetN(); i++){
         fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",gA->GetX()[i],gA->GetY()[i],gA->GetEY()[i]);
     }
     fclose(fout);
-    
+
     fout = fopen(Form("%s/data/%s_B.dat",FigSubSubDir.data(),cname.data()),"w");
     for (int i = 0; i<gB->GetN(); i++){
         fprintf(fout,"%5.3f\t%9.7f\t%9.7f\n",gB->GetX()[i],gB->GetY()[i],gB->GetEY()[i]);
     }
     fclose(fout);
-    
+
 }
 
 void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double mineta = -0.8, double maxeta = 0.8, bool decor = false, int selbin = -1,
@@ -289,7 +289,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         gintA[i]->SetTitle(Form("A_%s",nlabel.data()));
         gintB[i]->SetTitle(Form("B_%s",nlabel.data()));
     }
-    
+
     centRef = new TH1I(Form("centRef_%s",nlabel.data()), Form("centRef_%s",nlabel.data()), ncentbins, centRefBins);
     EtaMin = mineta;
     EtaMax = maxeta;
@@ -300,7 +300,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
     isWide    = false;
     isNarrow  = false;
     isLoose   = false;
-    
+
     int en = 0;
     for (int indx = 0; indx<LAST; ++indx){
         if (ANALS[indx][0] == name) {
@@ -341,7 +341,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         timer->ResetCpuTime();
         timer->Start();
         if(cnt<5000) continue;
-        
+
         // pt distribution
         FigSubSubDir = FigSubDir+Form("/eta_%04.1f_%04.1f",EtaMin,EtaMax);
         if (Decor) FigSubSubDir+="_decor";
@@ -355,7 +355,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
             fclose(ftest);
         }
         GetVNCreate( en, bin, gint[bin], gintA[bin], gintB[bin] );
-        
+
         //eta distribution
         string FigEtaSubDir = FigSubDir;
         FigEtaSubDir+="/EtaDistributions";
@@ -366,7 +366,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         } else {
             fclose(ftest);
         }
-        
+
         ceta[bin] = new TCanvas(Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),Form("EtaInt_%s_%d_%d",nlabel.data(),cmin[bin],cmax[bin]),800,500);
         double xmin,  xmax,  ymin,  ymax;
         double xminA, xmaxA, yminA, ymaxA;
@@ -374,13 +374,13 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         string nl2 = ANALS[en][0];
         nl2+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
         if (!ntrkbinning) nl2+="%";
-        
+
         nl2+=")";
         string nl3 = ANALS[en][1];
         nl3+=" ("+to_string(cmin[bin])+"-"+to_string(cmax[bin]);
         if(!ntrkbinning) nl3+="%";
         nl3+=")";
-        
+
         TH1D * heta = new TH1D(Form("heta_%s",nl2.data()), Form("heta_%s",nl2.data()), 100, -2.5, 2.5);
         gint[bin]->ComputeRange(xmin,ymin,xmax,ymax);
         gintA[bin]->ComputeRange(xminA,yminA,xmaxA,ymaxA);
@@ -405,7 +405,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         if(strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) gintA[bin]->Draw("p");
         if(strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) gintB[bin]->Draw("p");
         if(strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0) gint[bin]->Draw("p");
-        
+
         TLegend * leg2 = new TLegend(0.19, 0.17, 0.39, 0.33);
         leg2->SetTextFont(43);
         leg2->SetTextSize(20);
@@ -427,7 +427,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
             if(strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintB[bin],"B side","lp");
         }
         leg2->Draw();
-        
+
         TPaveText * tl = new TPaveText(0.19, 0.84, 0.38, 0.91,"NDC");
         tl->SetTextFont(43);
         tl->SetTextSize(20);
@@ -436,7 +436,7 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         tl->SetTextAlign(12);
         tl->AddText(Form("%s",nl3.data()));
         tl->Draw();
-        
+
         if (ANALS[en][2]!="") {
             string tmp = ANALS[en][2];
             if(Decor) tmp+=" (EP Decorrelation corrected)";
@@ -449,8 +449,8 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
             tl2->AddText(Form("%s",tmp.data()));
             tl2->Draw();
         }
-        ceta[bin]->Print(Form("%s/%s.pdf",FigEtaSubDir.data(),ceta[bin]->GetName()),"pdf");
-        
+        ceta[bin]->Print(Form("%s/%s.png",FigEtaSubDir.data(),ceta[bin]->GetName()),"png");
+
         FILE * fint = fopen(Form("%s/data/%s.dat",FigEtaSubDir.data(),ceta[bin]->GetName()),"w");
         for (int i = 0; i<gint[bin]->GetN(); i++) {
             //fprintf(fint,"%5.1f\t%10.6f\t%10.6f\n",gint[bin]->GetX()[i],gint[bin]->GetY()[i],gint[bin]->GetEY()[i]);
@@ -459,4 +459,3 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3", double minet
         }
     }
 }
-

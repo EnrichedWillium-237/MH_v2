@@ -108,7 +108,7 @@ void EtaGap()
                     gN1MCm06SUB2[cbin]->SetBinError(ebin+1, v1vale[ebin+i]);
                 } else if (i == 5) {
                     gN1MCm02SUB2[cbin]->SetBinContent(ebin+1, v1val[ebin+i]);
-                    gN1MCm02SUB2[cbin]->SetBinContent(ebin+1, v1val[ebin+i]);
+                    gN1MCm02SUB2[cbin]->SetBinError(ebin+1, v1vale[ebin+i]);
                 } else if (i == 6) { // pos side
                     gN1MCp02SUB2[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-6]);
                     gN1MCp02SUB2[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-6]);
@@ -224,7 +224,7 @@ void EtaGap()
     txMCmScan->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCmScan->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txMCmScan->Draw();
-    cMCmScan->Print(Form("figures_MH/EtaGapStudy/MCm_deltaEta_scan_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
+    cMCmScan->Print(Form("figures_MH/EtaGapStudy/MCm_deltaEta_scan_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 
     TCanvas * cMCpScan = new TCanvas("cMCpScan","cMCpScan",650,600);
@@ -233,7 +233,7 @@ void EtaGap()
     TH1D * hMCpScan = new TH1D("hMCpScan", "hMCpScan", 100, 0, 4.8);
     hMCpScan->SetTitle("");
     hMCpScan->SetStats(0);
-    hMCpScan->GetYaxis()->SetRangeUser(0, 0.05);
+    hMCpScan->GetYaxis()->SetRangeUser(0, 0.04);
     hMCpScan->SetXTitle("#Delta#eta");
     hMCpScan->SetYTitle("|v_{1}^{even}|");
     hMCpScan->Draw();
@@ -257,7 +257,7 @@ void EtaGap()
     txMCpScan->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCpScan->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txMCpScan->Draw();
-    cMCpScan->Print(Form("figures_MH/EtaGapStudy/MCp_deltaEta_scan_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
+    cMCpScan->Print(Form("figures_MH/EtaGapStudy/MCp_deltaEta_scan_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 
     TCanvas * cMCmCent22 = new TCanvas("cMCmCent22","cMCmCent22",650,600);
@@ -266,7 +266,7 @@ void EtaGap()
     TH1D * hMCmCent22 = new TH1D("hMCmCent22", "hMCmCent22", 100, 0, 4.8);
     hMCmCent22->SetTitle("");
     hMCmCent22->SetStats(0);
-    hMCmCent22->GetYaxis()->SetRangeUser(0, 0.05);
+    hMCmCent22->GetYaxis()->SetRangeUser(0, 0.04);
     hMCmCent22->SetXTitle("#Delta#eta");
     hMCmCent22->SetYTitle("|v_{1}^{even}|");
     hMCmCent22->Draw();
@@ -306,7 +306,7 @@ void EtaGap()
     txMCmCent22->AddText("N1MCm22SUB2 (-2.4 < #eta < -2.0)");
     txMCmCent22->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCmCent22->Draw();
-    cMCmCent22->Print("figures_MH/EtaGapStudy/MCm22_Cent.pdf","pdf");
+    cMCmCent22->Print("figures_MH/EtaGapStudy/MCm22_Cent.png","png");
 
 
     TCanvas * cMCpCent22 = new TCanvas("cMCpCent22","cMCpCent22",650,600);
@@ -315,7 +315,7 @@ void EtaGap()
     TH1D * hMCpCent22 = new TH1D("hMCpCent22", "hMCpCent22", 100, 0, 4.8);
     hMCpCent22->SetTitle("");
     hMCpCent22->SetStats(0);
-    hMCpCent22->GetYaxis()->SetRangeUser(0, 0.05);
+    hMCpCent22->GetYaxis()->SetRangeUser(0, 0.04);
     hMCpCent22->SetXTitle("#Delta#eta");
     hMCpCent22->SetYTitle("|v_{1}^{even}|");
     hMCpCent22->Draw();
@@ -355,7 +355,7 @@ void EtaGap()
     txMCpCent22->AddText("N1MCp22SUB2 (2.0 < #eta < 2.4)");
     txMCpCent22->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCpCent22->Draw();
-    cMCpCent22->Print("figures_MH/EtaGapStudy/MCp22_Cent.pdf","pdf");
+    cMCpCent22->Print("figures_MH/EtaGapStudy/MCp22_Cent.png","png");
 
 
     TCanvas * cMCmCent18 = new TCanvas("cMCmCent18","cMCmCent18",650,600);
@@ -364,7 +364,7 @@ void EtaGap()
     TH1D * hMCmCent18 = new TH1D("hMCmCent18", "hMCmCent18", 100, 0, 4.8);
     hMCmCent18->SetTitle("");
     hMCmCent18->SetStats(0);
-    hMCmCent18->GetYaxis()->SetRangeUser(0, 0.05);
+    hMCmCent18->GetYaxis()->SetRangeUser(0, 0.04);
     hMCmCent18->SetXTitle("#Delta#eta");
     hMCmCent18->SetYTitle("|v_{1}^{even}|");
     hMCmCent18->Draw();
@@ -404,7 +404,7 @@ void EtaGap()
     txMCmCent18->AddText("N1MCm18SUB2 (-2.0 < #eta < -1.6)");
     txMCmCent18->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCmCent18->Draw();
-    cMCmCent18->Print("figures_MH/EtaGapStudy/MCm18_Cent.pdf","pdf");
+    cMCmCent18->Print("figures_MH/EtaGapStudy/MCm18_Cent.png","png");
 
 
     TCanvas * cMCpCent18 = new TCanvas("cMCpCent18","cMCpCent18",650,600);
@@ -413,7 +413,7 @@ void EtaGap()
     TH1D * hMCpCent18 = new TH1D("hMCpCent18", "hMCpCent18", 100, 0, 4.8);
     hMCpCent18->SetTitle("");
     hMCpCent18->SetStats(0);
-    hMCpCent18->GetYaxis()->SetRangeUser(0, 0.05);
+    hMCpCent18->GetYaxis()->SetRangeUser(0, 0.04);
     hMCpCent18->SetXTitle("#Delta#eta");
     hMCpCent18->SetYTitle("|v_{1}^{even}|");
     hMCpCent18->Draw();
@@ -453,7 +453,7 @@ void EtaGap()
     txMCpCent18->AddText("N1MCp18SUB2 (1.6 < #eta < 2.0)");
     txMCpCent18->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCpCent18->Draw();
-    cMCpCent18->Print("figures_MH/EtaGapStudy/MCp18_Cent.pdf","pdf");
+    cMCpCent18->Print("figures_MH/EtaGapStudy/MCp18_Cent.png","png");
 
 
     setcent = 5;
@@ -463,7 +463,7 @@ void EtaGap()
     TH1D * hComparepmMC22 = new TH1D("hComparepmMC22", "hComparepmMC22", 100, 0, 4.8);
     hComparepmMC22->SetTitle("");
     hComparepmMC22->SetStats(0);
-    hComparepmMC22->GetYaxis()->SetRangeUser(0, 0.05);
+    hComparepmMC22->GetYaxis()->SetRangeUser(0, 0.04);
     hComparepmMC22->SetXTitle("#Delta#eta");
     hComparepmMC22->SetYTitle("|v_{1}^{even}|");
     hComparepmMC22->Draw();
@@ -479,7 +479,7 @@ void EtaGap()
     txComparepmMC22->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txComparepmMC22->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txComparepmMC22->Draw();
-    cComparepmMC22->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC22_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
+    cComparepmMC22->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC22_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 
     TCanvas * cComparepmMC18 = new TCanvas("cComparepmMC18","cComparepmMC18",650,600);
@@ -488,7 +488,7 @@ void EtaGap()
     TH1D * hComparepmMC18 = new TH1D("hComparepmMC18", "hComparepmMC18", 100, 0, 4.8);
     hComparepmMC18->SetTitle("");
     hComparepmMC18->SetStats(0);
-    hComparepmMC18->GetYaxis()->SetRangeUser(0, 0.05);
+    hComparepmMC18->GetYaxis()->SetRangeUser(0, 0.04);
     hComparepmMC18->SetXTitle("#Delta#eta");
     hComparepmMC18->SetYTitle("|v_{1}^{even}|");
     hComparepmMC18->Draw();
@@ -504,7 +504,7 @@ void EtaGap()
     txComparepmMC18->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txComparepmMC18->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txComparepmMC18->Draw();
-    cComparepmMC18->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC18_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
+    cComparepmMC18->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC18_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 
     TCanvas * cComparepmMC14 = new TCanvas("cComparepmMC14","cComparepmMC14",650,600);
@@ -513,7 +513,7 @@ void EtaGap()
     TH1D * hComparepmMC14 = new TH1D("hComparepmMC14", "hComparepmMC14", 100, 0, 4.8);
     hComparepmMC14->SetTitle("");
     hComparepmMC14->SetStats(0);
-    hComparepmMC14->GetYaxis()->SetRangeUser(0, 0.05);
+    hComparepmMC14->GetYaxis()->SetRangeUser(0, 0.04);
     hComparepmMC14->SetXTitle("#Delta#eta");
     hComparepmMC14->SetYTitle("|v_{1}^{even}|");
     hComparepmMC14->Draw();
@@ -529,7 +529,7 @@ void EtaGap()
     txComparepmMC14->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txComparepmMC14->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txComparepmMC14->Draw();
-    cComparepmMC14->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC14_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
+    cComparepmMC14->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC14_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 
 }
