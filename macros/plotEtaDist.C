@@ -71,7 +71,7 @@ TH1D * gN1MC10SUB3_eta[ncentbins];
 TH1D * gN1MC06SUB3_eta[ncentbins];
 TH1D * gN1MC02SUB3_eta[ncentbins];
 
-void plotEven()
+void plotEtaDist()
 {
 
     TH1::SetDefaultSumw2();
@@ -333,7 +333,7 @@ void plotEven()
         }
     }
 
-    if (!fopen("figures_MH/v1even","r")) system("mkdir figures_MH/v1even");
+    if (!fopen("figures_MH/EtaDists","r")) system("mkdir figures_MH/EtaDists");
 
     int setcent = 5;
 
@@ -341,7 +341,6 @@ void plotEven()
     TPad * padEtaCompareEP = (TPad *) cEtaCompareEP->cd();
     padEtaCompareEP->SetGrid();
     TH1D * hEtaCompareEP = new TH1D("hEtaCompareEP", "", 100, -2.5, 2.5);
-    hEtaCompareEP->SetTitle("");
     hEtaCompareEP->SetStats(0);
     hEtaCompareEP->GetYaxis()->SetRangeUser(-0.06, 0.02);
     hEtaCompareEP->SetXTitle("#eta");
@@ -367,6 +366,171 @@ void plotEven()
     txEtaCompareEP->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txEtaCompareEP->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txEtaCompareEP->Draw();
-    cEtaCompareEP->Print(Form("figures_MH/v1even/CompareEPrange_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+    cEtaCompareEP->Print(Form("figures_MH/EtaDists/CompareEPrange_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cEtaMC22_MC18 = new TCanvas("cEtaMC22_MC18","cEtaMC22_MC18",650,600);
+    TPad * padEtaMC22_MC18 = (TPad *) cEtaMC22_MC18->cd();
+    padEtaMC22_MC18->SetGrid();
+    TH1D * hEtaMC22_MC18 = new TH1D("hEtaMC22_MC18", "hEtaMC22_MC18", 100, -2.5, 2.5);
+    hEtaMC22_MC18->SetStats(0);
+    hEtaMC22_MC18->GetYaxis()->SetRangeUser(-0.02, 0.01);
+    hEtaMC22_MC18->SetXTitle("#eta");
+    hEtaMC22_MC18->SetYTitle("v_{1}^{even}");
+    hEtaMC22_MC18->Draw();
+    gN1MC22SUB2_eta[setcent]->Draw("same");
+    gN1MC18SUB2_eta[setcent]->SetMarkerStyle(25);
+    gN1MC18SUB2_eta[setcent]->SetMarkerSize(1.2);
+    gN1MC18SUB2_eta[setcent]->Draw("same");
+    TLegend * legEtaMC22_MC18 = new TLegend(0.65, 0.81, 0.93, 0.93);
+    SetLegend(legEtaMC22_MC18, 18);
+    legEtaMC22_MC18->AddEntry(gN1MC22SUB2_eta[setcent],"N1MC22SUB2","p");
+    legEtaMC22_MC18->AddEntry(gN1MC18SUB2_eta[setcent],"N1MC18SUB2","p");
+    legEtaMC22_MC18->Draw();
+    TPaveText * txEtaMC22_MC18 = new TPaveText(0.20, 0.81, 0.47, 0.93, "NDC");
+    SetTPaveTxt(txEtaMC22_MC18, 20);
+    txEtaMC22_MC18->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txEtaMC22_MC18->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txEtaMC22_MC18->Draw();
+    cEtaMC22_MC18->Print(Form("figures_MH/EtaDists/CompareMC22_MC18_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cEtaMC18_MC14 = new TCanvas("cEtaMC18_MC14","cEtaMC18_MC14",650,600);
+    TPad * padEtaMC18_MC14 = (TPad *) cEtaMC18_MC14->cd();
+    padEtaMC18_MC14->SetGrid();
+    TH1D * hEtaMC18_MC14 = new TH1D("hEtaMC18_MC14", "hEtaMC18_MC14", 100, -2.5, 2.5);
+    hEtaMC18_MC14->SetStats(0);
+    hEtaMC18_MC14->GetYaxis()->SetRangeUser(-0.02, 0.01);
+    hEtaMC18_MC14->SetXTitle("#eta");
+    hEtaMC18_MC14->SetYTitle("v_{1}^{even}");
+    hEtaMC18_MC14->Draw();
+    gN1MC18SUB2_eta[setcent]->Draw("same");
+    gN1MC14SUB2_eta[setcent]->SetMarkerStyle(28);
+    gN1MC14SUB2_eta[setcent]->SetMarkerSize(1.7);
+    gN1MC14SUB2_eta[setcent]->Draw("same");
+    TLegend * legEtaMC18_MC14 = new TLegend(0.65, 0.81, 0.93, 0.93);
+    SetLegend(legEtaMC18_MC14, 18);
+    legEtaMC18_MC14->AddEntry(gN1MC18SUB2_eta[setcent],"N1MC18SUB2","p");
+    legEtaMC18_MC14->AddEntry(gN1MC14SUB2_eta[setcent],"N1MC14SUB2","p");
+    legEtaMC18_MC14->Draw();
+    TPaveText * txEtaMC18_MC14 = new TPaveText(0.20, 0.81, 0.47, 0.93, "NDC");
+    SetTPaveTxt(txEtaMC18_MC14, 20);
+    txEtaMC18_MC14->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txEtaMC18_MC14->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txEtaMC18_MC14->Draw();
+    cEtaMC18_MC14->Print(Form("figures_MH/EtaDists/CompareMC18_MC14_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cMCCent22eta = new TCanvas("cMCCent22eta","cMCCent22eta",650,600);
+    TPad * padMCCent22eta = (TPad *) cMCCent22eta->cd();
+    padMCCent22eta->SetGrid();
+    TH1D * hMCCent22eta = new TH1D("hMCCent22eta", "", 100, -2.5, 2.5);
+    hMCCent22eta->SetTitle("");
+    hMCCent22eta->SetStats(0);
+    hMCCent22eta->GetYaxis()->SetRangeUser(-0.015, 0.015);
+    hMCCent22eta->SetXTitle("#eta");
+    hMCCent22eta->SetYTitle("v_{1}^{even}");
+    hMCCent22eta->Draw();
+    TH1D * gN1MC22SUB2_tmp_0 = (TH1D *) gN1MC22SUB2_eta[0]->Clone("gN1MC22SUB2_eta_tmp_0");
+    TH1D * gN1MC22SUB2_tmp_7 = (TH1D *) gN1MC22SUB2_eta[7]->Clone("gN1MC22SUB2_eta_tmp_7");
+    TH1D * gN1MC22SUB2_tmp_8 = (TH1D *) gN1MC22SUB2_eta[8]->Clone("gN1MC22SUB2_eta_tmp_8");
+    TH1D * gN1MC22SUB2_tmp_9 = (TH1D *) gN1MC22SUB2_eta[9]->Clone("gN1MC22SUB2_eta_tmp_9");
+    TH1D * gN1MC22SUB2_tmp_10 = (TH1D *) gN1MC22SUB2_eta[10]->Clone("gN1MC22SUB2_eta_tmp_10");
+    gN1MC22SUB2_tmp_0->SetMarkerColor(kBlue);
+    gN1MC22SUB2_tmp_7->SetMarkerColor(kRed);
+    gN1MC22SUB2_tmp_8->SetMarkerColor(kGreen+2);
+    gN1MC22SUB2_tmp_9->SetMarkerColor(kMagenta);
+    gN1MC22SUB2_tmp_10->SetMarkerColor(kOrange+7);
+    gN1MC22SUB2_tmp_0->SetLineColor(kBlue);
+    gN1MC22SUB2_tmp_7->SetLineColor(kRed);
+    gN1MC22SUB2_tmp_8->SetLineColor(kGreen+2);
+    gN1MC22SUB2_tmp_9->SetLineColor(kMagenta);
+    gN1MC22SUB2_tmp_10->SetLineColor(kOrange+7);
+    gN1MC22SUB2_tmp_0->SetMarkerStyle(21);
+    gN1MC22SUB2_tmp_7->SetMarkerStyle(27);
+    gN1MC22SUB2_tmp_8->SetMarkerStyle(34);
+    gN1MC22SUB2_tmp_9->SetMarkerStyle(24);
+    gN1MC22SUB2_tmp_10->SetMarkerStyle(33);
+    gN1MC22SUB2_tmp_0->SetMarkerSize(1.2);
+    gN1MC22SUB2_tmp_7->SetMarkerSize(1.8);
+    gN1MC22SUB2_tmp_8->SetMarkerSize(1.7);
+    gN1MC22SUB2_tmp_9->SetMarkerSize(1.3);
+    gN1MC22SUB2_tmp_10->SetMarkerSize(1.8);
+    gN1MC22SUB2_tmp_0->Draw("same");
+    gN1MC22SUB2_tmp_7->Draw("same");
+    gN1MC22SUB2_tmp_8->Draw("same");
+    gN1MC22SUB2_tmp_9->Draw("same");
+    //gN1MC22SUB2_tmp_10->Draw("same");
+    TLegend * legMCCent22eta = new TLegend(0.74, 0.74, 0.93, 0.93);
+    SetLegend(legMCCent22eta, 18);
+    legMCCent22eta->AddEntry(gN1MC22SUB2_tmp_0,Form(" %d-%d%%",cminCENT[0],cmaxCENT[0]),"p");
+    legMCCent22eta->AddEntry(gN1MC22SUB2_tmp_7,Form(" %d-%d%%",cminCENT[7],cmaxCENT[7]),"p");
+    legMCCent22eta->AddEntry(gN1MC22SUB2_tmp_8,Form(" %d-%d%%",cminCENT[8],cmaxCENT[8]),"p");
+    legMCCent22eta->AddEntry(gN1MC22SUB2_tmp_9,Form(" %d-%d%%",cminCENT[9],cmaxCENT[9]),"p");
+    //legMCCent22eta->AddEntry(gN1MC22SUB2_tmp_10,Form(" %d-%d%%",cminCENT[10],cmaxCENT[10]),"p");
+    legMCCent22eta->Draw();
+    TPaveText * txMCCent22eta = new TPaveText(0.2, 0.81, 0.65, 0.92, "NDC");
+    SetTPaveTxt(txMCCent22eta, 20);
+    txMCCent22eta->AddText("Event plane 1.6 < |#eta| < 2.0");
+    txMCCent22eta->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txMCCent22eta->Draw();
+    cMCCent22eta->Print(Form("figures_MH/EtaDists/CentScanMC22_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cMCCent18eta = new TCanvas("cMCCent18eta","cMCCent18eta",650,600);
+    TPad * padMCCent18eta = (TPad *) cMCCent18eta->cd();
+    padMCCent18eta->SetGrid();
+    TH1D * hMCCent18eta = new TH1D("hMCCent18eta", "", 100, -2.5, 2.5);
+    hMCCent18eta->SetTitle("");
+    hMCCent18eta->SetStats(0);
+    hMCCent18eta->GetYaxis()->SetRangeUser(-0.015, 0.015);
+    hMCCent18eta->SetXTitle("#eta");
+    hMCCent18eta->SetYTitle("v_{1}^{even}");
+    hMCCent18eta->Draw();
+    TH1D * gN1MC18SUB2_tmp_0 = (TH1D *) gN1MC18SUB2_eta[0]->Clone("gN1MC18SUB2_eta_tmp_0");
+    TH1D * gN1MC18SUB2_tmp_7 = (TH1D *) gN1MC18SUB2_eta[7]->Clone("gN1MC18SUB2_eta_tmp_7");
+    TH1D * gN1MC18SUB2_tmp_8 = (TH1D *) gN1MC18SUB2_eta[8]->Clone("gN1MC18SUB2_eta_tmp_8");
+    TH1D * gN1MC18SUB2_tmp_9 = (TH1D *) gN1MC18SUB2_eta[9]->Clone("gN1MC18SUB2_eta_tmp_9");
+    TH1D * gN1MC18SUB2_tmp_10 = (TH1D *) gN1MC18SUB2_eta[10]->Clone("gN1MC18SUB2_eta_tmp_10");
+    gN1MC18SUB2_tmp_0->SetMarkerColor(kBlue);
+    gN1MC18SUB2_tmp_7->SetMarkerColor(kRed);
+    gN1MC18SUB2_tmp_8->SetMarkerColor(kGreen+2);
+    gN1MC18SUB2_tmp_9->SetMarkerColor(kMagenta);
+    gN1MC18SUB2_tmp_10->SetMarkerColor(kOrange+7);
+    gN1MC18SUB2_tmp_0->SetLineColor(kBlue);
+    gN1MC18SUB2_tmp_7->SetLineColor(kRed);
+    gN1MC18SUB2_tmp_8->SetLineColor(kGreen+2);
+    gN1MC18SUB2_tmp_9->SetLineColor(kMagenta);
+    gN1MC18SUB2_tmp_10->SetLineColor(kOrange+7);
+    gN1MC18SUB2_tmp_0->SetMarkerStyle(21);
+    gN1MC18SUB2_tmp_7->SetMarkerStyle(27);
+    gN1MC18SUB2_tmp_8->SetMarkerStyle(34);
+    gN1MC18SUB2_tmp_9->SetMarkerStyle(24);
+    gN1MC18SUB2_tmp_10->SetMarkerStyle(33);
+    gN1MC18SUB2_tmp_0->SetMarkerSize(1.2);
+    gN1MC18SUB2_tmp_7->SetMarkerSize(1.8);
+    gN1MC18SUB2_tmp_8->SetMarkerSize(1.7);
+    gN1MC18SUB2_tmp_9->SetMarkerSize(1.3);
+    gN1MC18SUB2_tmp_10->SetMarkerSize(1.8);
+    gN1MC18SUB2_tmp_0->Draw("same");
+    gN1MC18SUB2_tmp_7->Draw("same");
+    gN1MC18SUB2_tmp_8->Draw("same");
+    gN1MC18SUB2_tmp_9->Draw("same");
+    //gN1MC18SUB2_tmp_10->Draw("same");
+    TLegend * legMCCent18eta = new TLegend(0.74, 0.74, 0.93, 0.93);
+    SetLegend(legMCCent18eta, 18);
+    legMCCent18eta->AddEntry(gN1MC18SUB2_tmp_0,Form(" %d-%d%%",cminCENT[0],cmaxCENT[0]),"p");
+    legMCCent18eta->AddEntry(gN1MC18SUB2_tmp_7,Form(" %d-%d%%",cminCENT[7],cmaxCENT[7]),"p");
+    legMCCent18eta->AddEntry(gN1MC18SUB2_tmp_8,Form(" %d-%d%%",cminCENT[8],cmaxCENT[8]),"p");
+    legMCCent18eta->AddEntry(gN1MC18SUB2_tmp_9,Form(" %d-%d%%",cminCENT[9],cmaxCENT[9]),"p");
+    //legMCCent18eta->AddEntry(gN1MC18SUB2_tmp_10,Form(" %d-%d%%",cminCENT[10],cmaxCENT[10]),"p");
+    legMCCent18eta->Draw();
+    TPaveText * txMCCent18eta = new TPaveText(0.2, 0.81, 0.65, 0.92, "NDC");
+    SetTPaveTxt(txMCCent18eta, 20);
+    txMCCent18eta->AddText("Event plane 1.6 < |#eta| < 2.0");
+    txMCCent18eta->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txMCCent18eta->Draw();
+    cMCCent18eta->Print(Form("figures_MH/EtaDists/CentScanMC18_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
 
 }
