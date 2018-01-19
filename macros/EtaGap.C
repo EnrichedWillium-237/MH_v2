@@ -47,6 +47,19 @@ TH1D * gN1MCp14SUB2[cbinsCENT];
 TH1D * gN1MCp18SUB2[cbinsCENT];
 TH1D * gN1MCp22SUB2[cbinsCENT];
 
+TH1D * gN1MCm22SUB3[cbinsCENT];
+TH1D * gN1MCm18SUB3[cbinsCENT];
+TH1D * gN1MCm14SUB3[cbinsCENT];
+TH1D * gN1MCm10SUB3[cbinsCENT];
+TH1D * gN1MCm06SUB3[cbinsCENT];
+TH1D * gN1MCm02SUB3[cbinsCENT];
+TH1D * gN1MCp02SUB3[cbinsCENT];
+TH1D * gN1MCp06SUB3[cbinsCENT];
+TH1D * gN1MCp10SUB3[cbinsCENT];
+TH1D * gN1MCp14SUB3[cbinsCENT];
+TH1D * gN1MCp18SUB3[cbinsCENT];
+TH1D * gN1MCp22SUB3[cbinsCENT];
+
 void EtaGap()
 {
 
@@ -65,6 +78,19 @@ void EtaGap()
         gN1MCp14SUB2[cbin] = new TH1D(Form("N1MCp14SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-2, deltaEtaBins);
         gN1MCp18SUB2[cbin] = new TH1D(Form("N1MCp18SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-1, deltaEtaBins);
         gN1MCp22SUB2[cbin] = new TH1D(Form("N1MCp22SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins, deltaEtaBins);
+
+        gN1MCm22SUB3[cbin] = new TH1D(Form("N1MCm22SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins, deltaEtaBins);
+        gN1MCm18SUB3[cbin] = new TH1D(Form("N1MCm18SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-1, deltaEtaBins);
+        gN1MCm14SUB3[cbin] = new TH1D(Form("N1MCm14SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-2, deltaEtaBins);
+        gN1MCm10SUB3[cbin] = new TH1D(Form("N1MCm10SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-3, deltaEtaBins);
+        gN1MCm06SUB3[cbin] = new TH1D(Form("N1MCm06SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-4, deltaEtaBins);
+        gN1MCm02SUB3[cbin] = new TH1D(Form("N1MCm02SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-5, deltaEtaBins);
+        gN1MCp02SUB3[cbin] = new TH1D(Form("N1MCp02SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-5, deltaEtaBins);
+        gN1MCp06SUB3[cbin] = new TH1D(Form("N1MCp06SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-4, deltaEtaBins);
+        gN1MCp10SUB3[cbin] = new TH1D(Form("N1MCp10SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-3, deltaEtaBins);
+        gN1MCp14SUB3[cbin] = new TH1D(Form("N1MCp14SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-2, deltaEtaBins);
+        gN1MCp18SUB3[cbin] = new TH1D(Form("N1MCp18SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins-1, deltaEtaBins);
+        gN1MCp22SUB3[cbin] = new TH1D(Form("N1MCp22SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", ndeltaEtaBins, deltaEtaBins);
     }
 
     for (int i = 0; i<NANALS; i++) {
@@ -124,10 +150,48 @@ void EtaGap()
                 } else if (i == 10) {
                     gN1MCp18SUB2[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-2]);
                     gN1MCp18SUB2[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-2]);
-                    // if (cbin == 0) cout<<"i: "<<i<<"\tebin: "<<ebin<<"\tdeltaEta: "<<deltaEta[ebin]<<"\tv1val: "<<v1val[neta-ebin-2]<<endl;
                 } else if (i == 11) {
                     gN1MCp22SUB2[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-1]);
                     gN1MCp22SUB2[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-1]);
+
+
+                } else if (i == 12) {
+                    gN1MCm22SUB3[cbin]->SetBinContent(ebin+1, v1val[ebin+i-12]);
+                    gN1MCm22SUB3[cbin]->SetBinError(ebin+1, v1vale[ebin+i-12]);
+                } else if (i == 13) {
+                    gN1MCm18SUB3[cbin]->SetBinContent(ebin+1, v1val[ebin+i-12]);
+                    gN1MCm18SUB3[cbin]->SetBinError(ebin+1, v1vale[ebin+i-12]);
+                } else if (i == 14) {
+                    gN1MCm14SUB3[cbin]->SetBinContent(ebin+1, v1val[ebin+i-12]);
+                    gN1MCm14SUB3[cbin]->SetBinError(ebin+1, v1vale[ebin+i-12]);
+                } else if (i == 15) {
+                    gN1MCm10SUB3[cbin]->SetBinContent(ebin+1, v1val[ebin+i-12]);
+                    gN1MCm10SUB3[cbin]->SetBinError(ebin+1, v1vale[ebin+i-12]);
+                } else if (i == 16) {
+                    gN1MCm06SUB3[cbin]->SetBinContent(ebin+1, v1val[ebin+i-12]);
+                    gN1MCm06SUB3[cbin]->SetBinError(ebin+1, v1vale[ebin+i-12]);
+                } else if (i == 17) {
+                    gN1MCm02SUB3[cbin]->SetBinContent(ebin+1, v1val[ebin+i-12]);
+                    gN1MCm02SUB3[cbin]->SetBinError(ebin+1, v1vale[ebin+i-12]);
+                } else if (i == 18) { // pos side
+                    gN1MCp02SUB3[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-6]);
+                    gN1MCp02SUB3[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-6]);
+                } else if (i == 19) {
+                    gN1MCp06SUB3[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-5]);
+                    gN1MCp06SUB3[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-5]);
+                } else if (i == 20) {
+                    gN1MCp10SUB3[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-4]);
+                    gN1MCp10SUB3[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-4]);
+                } else if (i == 21) {
+                    gN1MCp14SUB3[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-3]);
+                    gN1MCp14SUB3[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-3]);
+                } else if (i == 22) {
+                    gN1MCp18SUB3[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-2]);
+                    gN1MCp18SUB3[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-2]);
+                } else if (i == 23) {
+                    gN1MCp22SUB3[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-1]);
+                    gN1MCp22SUB3[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-1]);
+                    // if (cbin == 0) cout<<"i: "<<i<<"\tebin: "<<ebin<<"\tdeltaEta: "<<deltaEta[ebin]<<"\tneta-ebin-1: "<<neta-ebin-1<<"\tv1val: "<<v1val[neta-ebin-1]<<endl;
                 } else {continue;}
             }
 
@@ -193,11 +257,11 @@ void EtaGap()
     if (!fopen("figures_MH/EtaGapStudy/","r")) system("mkdir figures_MH/EtaGapStudy");
 
     int setcent = 12;
-
+/*
     TCanvas * cMCmScan = new TCanvas("cMCmScan","cMCmScan",650,600);
     TPad * padMCmScan = (TPad *) cMCmScan->cd();
     padMCmScan->SetGrid();
-    TH1D * hMCmScan = new TH1D("hMCmScan", "hMCmScan", 100, 0, 4.8);
+    TH1D * hMCmScan = new TH1D("hMCmScan", "", 100, 0, 4.8);
     hMCmScan->SetTitle("");
     hMCmScan->SetStats(0);
     hMCmScan->GetYaxis()->SetRangeUser(0, 0.04);
@@ -230,7 +294,7 @@ void EtaGap()
     TCanvas * cMCpScan = new TCanvas("cMCpScan","cMCpScan",650,600);
     TPad * padMCpScan = (TPad *) cMCpScan->cd();
     padMCpScan->SetGrid();
-    TH1D * hMCpScan = new TH1D("hMCpScan", "hMCpScan", 100, 0, 4.8);
+    TH1D * hMCpScan = new TH1D("hMCpScan", "", 100, 0, 4.8);
     hMCpScan->SetTitle("");
     hMCpScan->SetStats(0);
     hMCpScan->GetYaxis()->SetRangeUser(0, 0.04);
@@ -263,7 +327,7 @@ void EtaGap()
     TCanvas * cMCmCent22 = new TCanvas("cMCmCent22","cMCmCent22",650,600);
     TPad * padMCmCent22 = (TPad *) cMCmCent22->cd();
     padMCmCent22->SetGrid();
-    TH1D * hMCmCent22 = new TH1D("hMCmCent22", "hMCmCent22", 100, 0, 4.8);
+    TH1D * hMCmCent22 = new TH1D("hMCmCent22", "", 100, 0, 4.8);
     hMCmCent22->SetTitle("");
     hMCmCent22->SetStats(0);
     hMCmCent22->GetYaxis()->SetRangeUser(0, 0.04);
@@ -312,7 +376,7 @@ void EtaGap()
     TCanvas * cMCpCent22 = new TCanvas("cMCpCent22","cMCpCent22",650,600);
     TPad * padMCpCent22 = (TPad *) cMCpCent22->cd();
     padMCpCent22->SetGrid();
-    TH1D * hMCpCent22 = new TH1D("hMCpCent22", "hMCpCent22", 100, 0, 4.8);
+    TH1D * hMCpCent22 = new TH1D("hMCpCent22", "", 100, 0, 4.8);
     hMCpCent22->SetTitle("");
     hMCpCent22->SetStats(0);
     hMCpCent22->GetYaxis()->SetRangeUser(0, 0.04);
@@ -361,7 +425,7 @@ void EtaGap()
     TCanvas * cMCmCent18 = new TCanvas("cMCmCent18","cMCmCent18",650,600);
     TPad * padMCmCent18 = (TPad *) cMCmCent18->cd();
     padMCmCent18->SetGrid();
-    TH1D * hMCmCent18 = new TH1D("hMCmCent18", "hMCmCent18", 100, 0, 4.8);
+    TH1D * hMCmCent18 = new TH1D("hMCmCent18", "", 100, 0, 4.8);
     hMCmCent18->SetTitle("");
     hMCmCent18->SetStats(0);
     hMCmCent18->GetYaxis()->SetRangeUser(0, 0.04);
@@ -410,7 +474,7 @@ void EtaGap()
     TCanvas * cMCpCent18 = new TCanvas("cMCpCent18","cMCpCent18",650,600);
     TPad * padMCpCent18 = (TPad *) cMCpCent18->cd();
     padMCpCent18->SetGrid();
-    TH1D * hMCpCent18 = new TH1D("hMCpCent18", "hMCpCent18", 100, 0, 4.8);
+    TH1D * hMCpCent18 = new TH1D("hMCpCent18", "", 100, 0, 4.8);
     hMCpCent18->SetTitle("");
     hMCpCent18->SetStats(0);
     hMCpCent18->GetYaxis()->SetRangeUser(0, 0.04);
@@ -460,7 +524,7 @@ void EtaGap()
     TCanvas * cComparepmMC22 = new TCanvas("cComparepmMC22","cComparepmMC22",650,600);
     TPad * padComparepmMC22_1 = (TPad *) cComparepmMC22->cd();
     padComparepmMC22_1->SetGrid();
-    TH1D * hComparepmMC22 = new TH1D("hComparepmMC22", "hComparepmMC22", 100, 0, 4.8);
+    TH1D * hComparepmMC22 = new TH1D("hComparepmMC22", "", 100, 0, 4.8);
     hComparepmMC22->SetTitle("");
     hComparepmMC22->SetStats(0);
     hComparepmMC22->GetYaxis()->SetRangeUser(0, 0.04);
@@ -485,7 +549,7 @@ void EtaGap()
     TCanvas * cComparepmMC18 = new TCanvas("cComparepmMC18","cComparepmMC18",650,600);
     TPad * padComparepmMC18_1 = (TPad *) cComparepmMC18->cd();
     padComparepmMC18_1->SetGrid();
-    TH1D * hComparepmMC18 = new TH1D("hComparepmMC18", "hComparepmMC18", 100, 0, 4.8);
+    TH1D * hComparepmMC18 = new TH1D("hComparepmMC18", "", 100, 0, 4.8);
     hComparepmMC18->SetTitle("");
     hComparepmMC18->SetStats(0);
     hComparepmMC18->GetYaxis()->SetRangeUser(0, 0.04);
@@ -510,7 +574,7 @@ void EtaGap()
     TCanvas * cComparepmMC14 = new TCanvas("cComparepmMC14","cComparepmMC14",650,600);
     TPad * padComparepmMC14_1 = (TPad *) cComparepmMC14->cd();
     padComparepmMC14_1->SetGrid();
-    TH1D * hComparepmMC14 = new TH1D("hComparepmMC14", "hComparepmMC14", 100, 0, 4.8);
+    TH1D * hComparepmMC14 = new TH1D("hComparepmMC14", "", 100, 0, 4.8);
     hComparepmMC14->SetTitle("");
     hComparepmMC14->SetStats(0);
     hComparepmMC14->GetYaxis()->SetRangeUser(0, 0.04);
@@ -530,6 +594,93 @@ void EtaGap()
     txComparepmMC14->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txComparepmMC14->Draw();
     cComparepmMC14->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC14_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+*/
+
+    TCanvas * cCompareSUBMC22 = new TCanvas("cCompareSUBMC22","cCompareSUBMC22",650,600);
+    TPad * padCompareSUBMC22 = (TPad *) cCompareSUBMC22->cd();
+    padCompareSUBMC22->SetGrid();
+    TH1D * hCompareSUBMC22 = new TH1D("hCompareSUBMC22", "", 100, 0, 4.8);
+    hCompareSUBMC22->SetTitle("");
+    hCompareSUBMC22->SetStats(0);
+    hCompareSUBMC22->GetYaxis()->SetRangeUser(0.0, 0.04);
+    hCompareSUBMC22->SetXTitle("#Delta#eta");
+    hCompareSUBMC22->SetYTitle("|v_{1}^{even}|");
+    hCompareSUBMC22->Draw();
+    gN1MCm22SUB2[setcent]->Draw("same");
+    gN1MCm22SUB3[setcent]->SetMarkerColor(kBlack);
+    gN1MCm22SUB3[setcent]->SetLineColor(kBlack);
+    gN1MCm22SUB3[setcent]->SetMarkerStyle(25);
+    gN1MCm22SUB3[setcent]->SetMarkerSize(1.3);
+    gN1MCm22SUB3[setcent]->Draw("same");
+    TLegend * legCompareSUBMC22 = new TLegend(0.63, 0.82, 0.93, 0.93);
+    SetLegend(legCompareSUBMC22, 18);
+    legCompareSUBMC22->AddEntry(gN1MCm22SUB2[setcent],"N1MCm22SUB2","p");
+    legCompareSUBMC22->AddEntry(gN1MCm22SUB3[setcent],"N1MCm22SUB3","p");
+    legCompareSUBMC22->Draw();
+    TPaveText * txCompareSUBMC22 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txCompareSUBMC22, 20);
+    txCompareSUBMC22->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txCompareSUBMC22->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txCompareSUBMC22->Draw();
+    cCompareSUBMC22->Print(Form("figures_MH/EtaGapStudy/Compare_sub_mMC22_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cCompareSUBMC18 = new TCanvas("cCompareSUBMC18","cCompareSUBMC18",650,600);
+    TPad * padCompareSUBMC18 = (TPad *) cCompareSUBMC18->cd();
+    padCompareSUBMC18->SetGrid();
+    TH1D * hCompareSUBMC18 = new TH1D("hCompareSUBMC18", "", 100, 0, 4.8);
+    hCompareSUBMC18->SetTitle("");
+    hCompareSUBMC18->SetStats(0);
+    hCompareSUBMC18->GetYaxis()->SetRangeUser(0.0, 0.04);
+    hCompareSUBMC18->SetXTitle("#Delta#eta");
+    hCompareSUBMC18->SetYTitle("|v_{1}^{even}|");
+    hCompareSUBMC18->Draw();
+    gN1MCm18SUB2[setcent]->Draw("same");
+    gN1MCm18SUB3[setcent]->SetMarkerColor(kBlack);
+    gN1MCm18SUB3[setcent]->SetLineColor(kBlack);
+    gN1MCm18SUB3[setcent]->SetMarkerStyle(25);
+    gN1MCm18SUB3[setcent]->SetMarkerSize(1.3);
+    gN1MCm18SUB3[setcent]->Draw("same");
+    TLegend * legCompareSUBMC18 = new TLegend(0.63, 0.82, 0.93, 0.93);
+    SetLegend(legCompareSUBMC18, 18);
+    legCompareSUBMC18->AddEntry(gN1MCm22SUB2[setcent],"N1MCm18SUB2","p");
+    legCompareSUBMC18->AddEntry(gN1MCm22SUB3[setcent],"N1MCm18SUB3","p");
+    legCompareSUBMC18->Draw();
+    TPaveText * txCompareSUBMC18 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txCompareSUBMC18, 20);
+    txCompareSUBMC18->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txCompareSUBMC18->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txCompareSUBMC18->Draw();
+    cCompareSUBMC18->Print(Form("figures_MH/EtaGapStudy/Compare_sub_mMC18_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cCompareSUBMC14 = new TCanvas("cCompareSUBMC14","cCompareSUBMC14",650,600);
+    TPad * padCompareSUBMC14 = (TPad *) cCompareSUBMC14->cd();
+    padCompareSUBMC14->SetGrid();
+    TH1D * hCompareSUBMC14 = new TH1D("hCompareSUBMC14", "", 100, 0, 4.8);
+    hCompareSUBMC14->SetTitle("");
+    hCompareSUBMC14->SetStats(0);
+    hCompareSUBMC14->GetYaxis()->SetRangeUser(0.0, 0.04);
+    hCompareSUBMC14->SetXTitle("#Delta#eta");
+    hCompareSUBMC14->SetYTitle("|v_{1}^{even}|");
+    hCompareSUBMC14->Draw();
+    gN1MCm14SUB2[setcent]->Draw("same");
+    gN1MCm14SUB3[setcent]->SetMarkerColor(kBlack);
+    gN1MCm14SUB3[setcent]->SetLineColor(kBlack);
+    gN1MCm14SUB3[setcent]->SetMarkerStyle(25);
+    gN1MCm14SUB3[setcent]->SetMarkerSize(1.3);
+    gN1MCm14SUB3[setcent]->Draw("same");
+    TLegend * legCompareSUBMC14 = new TLegend(0.63, 0.82, 0.93, 0.93);
+    SetLegend(legCompareSUBMC14, 14);
+    legCompareSUBMC14->AddEntry(gN1MCm22SUB2[setcent],"N1MCm14SUB2","p");
+    legCompareSUBMC14->AddEntry(gN1MCm22SUB3[setcent],"N1MCm14SUB3","p");
+    legCompareSUBMC14->Draw();
+    TPaveText * txCompareSUBMC14 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txCompareSUBMC14, 20);
+    txCompareSUBMC14->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txCompareSUBMC14->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txCompareSUBMC14->Draw();
+    cCompareSUBMC14->Print(Form("figures_MH/EtaGapStudy/Compare_sub_mMC14_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
 
 
 }
