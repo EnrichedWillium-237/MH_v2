@@ -84,7 +84,7 @@ void EtaGap()
             double eta, v1, v1e, v1A, v1Ae, v1B, v1Be;
             int neta = 0;
             while (fin >> eta >> v1 >> v1e >> v1A >> v1Ae >> v1B >> v1Be) {
-                if (i == 0 && cbin == 0) cout<<"neta = "<<neta<<"\tdeltaEta = "<<deltaEta[neta]<<"\tv1A = "<<v1A<<"\tv1Ae = "<<v1Ae<<endl;
+                // if (i == 0 && cbin == 0) cout<<"neta = "<<neta<<"\tdeltaEta = "<<deltaEta[neta]<<"\tv1A = "<<v1A<<"\tv1Ae = "<<v1Ae<<endl;
                 etaval[neta] = eta;
                 v1val[neta] = fabs(v1A);
                 v1vale[neta] = v1Ae;
@@ -124,22 +124,13 @@ void EtaGap()
                 } else if (i == 10) {
                     gN1MCp18SUB2[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-2]);
                     gN1MCp18SUB2[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-2]);
-                    if (cbin == 0) cout<<"i: "<<i<<"\tebin: "<<ebin<<"\tdeltaEta: "<<deltaEta[ebin]<<"\tv1val: "<<v1val[neta-ebin-2]<<endl;
+                    // if (cbin == 0) cout<<"i: "<<i<<"\tebin: "<<ebin<<"\tdeltaEta: "<<deltaEta[ebin]<<"\tv1val: "<<v1val[neta-ebin-2]<<endl;
                 } else if (i == 11) {
                     gN1MCp22SUB2[cbin]->SetBinContent(ebin+1, v1val[neta-ebin-1]);
                     gN1MCp22SUB2[cbin]->SetBinError(ebin+1, v1vale[neta-ebin-1]);
                 } else {continue;}
             }
 
-
-            /*for (int j = 0; j<neta; j++) {
-                cout<<"deltaEta = "<<deltaEta[j]<<"\tv1val = "<<v1val[j]<<"\tv1vale = "<<v1vale[j]<<endl;
-            }*/
-            // for (int j = 0; j<neta; j++) {
-            //     if (i == 11 && cbin == 0) {
-            //         cout<<"deltaEta: "<<deltaEta[j]<<"\tv1val: "<<v1val[j]<<"\tv1vale: "<<v1vale[j]<<endl;
-            //     }
-            // }
         }
     }
 
@@ -463,6 +454,82 @@ void EtaGap()
     txMCpCent18->AddText("0.3 < p_{T} < 3.0 GeV/c");
     txMCpCent18->Draw();
     cMCpCent18->Print("figures_MH/EtaGapStudy/MCp18_Cent.pdf","pdf");
+
+
+    setcent = 5;
+    TCanvas * cComparepmMC22 = new TCanvas("cComparepmMC22","cComparepmMC22",650,600);
+    TPad * padComparepmMC22_1 = (TPad *) cComparepmMC22->cd();
+    padComparepmMC22_1->SetGrid();
+    TH1D * hComparepmMC22 = new TH1D("hComparepmMC22", "hComparepmMC22", 100, 0, 4.8);
+    hComparepmMC22->SetTitle("");
+    hComparepmMC22->SetStats(0);
+    hComparepmMC22->GetYaxis()->SetRangeUser(0, 0.05);
+    hComparepmMC22->SetXTitle("#Delta#eta");
+    hComparepmMC22->SetYTitle("|v_{1}^{even}|");
+    hComparepmMC22->Draw();
+    gN1MCm22SUB2[setcent]->Draw("same");
+    gN1MCp22SUB2[setcent]->Draw("same");
+    TLegend * legComparepmMC22 = new TLegend(0.48, 0.82, 0.78, 0.93);
+    SetLegend(legComparepmMC22, 18);
+    legComparepmMC22->AddEntry(gN1MCm22SUB2[setcent],"N1MCm22SUB2 (-2.4 < #eta < -2.0)","p");
+    legComparepmMC22->AddEntry(gN1MCp22SUB2[setcent],"N1MCp22SUB2 (2.0 < #eta < 2.4)","p");
+    legComparepmMC22->Draw();
+    TPaveText * txComparepmMC22 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txComparepmMC22, 20);
+    txComparepmMC22->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txComparepmMC22->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txComparepmMC22->Draw();
+    cComparepmMC22->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC22_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
+
+
+    TCanvas * cComparepmMC18 = new TCanvas("cComparepmMC18","cComparepmMC18",650,600);
+    TPad * padComparepmMC18_1 = (TPad *) cComparepmMC18->cd();
+    padComparepmMC18_1->SetGrid();
+    TH1D * hComparepmMC18 = new TH1D("hComparepmMC18", "hComparepmMC18", 100, 0, 4.8);
+    hComparepmMC18->SetTitle("");
+    hComparepmMC18->SetStats(0);
+    hComparepmMC18->GetYaxis()->SetRangeUser(0, 0.05);
+    hComparepmMC18->SetXTitle("#Delta#eta");
+    hComparepmMC18->SetYTitle("|v_{1}^{even}|");
+    hComparepmMC18->Draw();
+    gN1MCm18SUB2[setcent]->Draw("same");
+    gN1MCp18SUB2[setcent]->Draw("same");
+    TLegend * legComparepmMC18 = new TLegend(0.48, 0.82, 0.78, 0.93);
+    SetLegend(legComparepmMC18, 18);
+    legComparepmMC18->AddEntry(gN1MCm22SUB2[setcent],"N1MCm18SUB2 (-2.0 < #eta < -1.6)","p");
+    legComparepmMC18->AddEntry(gN1MCp22SUB2[setcent],"N1MCp22SUB2 (1.6 < #eta < 2.0)","p");
+    legComparepmMC18->Draw();
+    TPaveText * txComparepmMC18 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txComparepmMC18, 20);
+    txComparepmMC18->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txComparepmMC18->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txComparepmMC18->Draw();
+    cComparepmMC18->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC18_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
+
+
+    TCanvas * cComparepmMC14 = new TCanvas("cComparepmMC14","cComparepmMC14",650,600);
+    TPad * padComparepmMC14_1 = (TPad *) cComparepmMC14->cd();
+    padComparepmMC14_1->SetGrid();
+    TH1D * hComparepmMC14 = new TH1D("hComparepmMC14", "hComparepmMC14", 100, 0, 4.8);
+    hComparepmMC14->SetTitle("");
+    hComparepmMC14->SetStats(0);
+    hComparepmMC14->GetYaxis()->SetRangeUser(0, 0.05);
+    hComparepmMC14->SetXTitle("#Delta#eta");
+    hComparepmMC14->SetYTitle("|v_{1}^{even}|");
+    hComparepmMC14->Draw();
+    gN1MCm14SUB2[setcent]->Draw("same");
+    gN1MCp14SUB2[setcent]->Draw("same");
+    TLegend * legComparepmMC14 = new TLegend(0.48, 0.82, 0.78, 0.93);
+    SetLegend(legComparepmMC14, 18);
+    legComparepmMC14->AddEntry(gN1MCm14SUB2[setcent],"N1MCm14SUB2 (-1.6 < #eta < -1.2)","p");
+    legComparepmMC14->AddEntry(gN1MCp14SUB2[setcent],"N1MCp14SUB2 (1.2 < #eta < 1.6)","p");
+    legComparepmMC14->Draw();
+    TPaveText * txComparepmMC14 = new TPaveText(0.2, 0.81, 0.49, 0.92, "NDC");
+    SetTPaveTxt(txComparepmMC14, 20);
+    txComparepmMC14->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txComparepmMC14->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
+    txComparepmMC14->Draw();
+    cComparepmMC14->Print(Form("figures_MH/EtaGapStudy/Compare_pm_MC14_%d_%d.pdf",cminCENT[setcent],cmaxCENT[setcent]),"pdf");
 
 
 }
