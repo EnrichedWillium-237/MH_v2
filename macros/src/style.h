@@ -8,7 +8,7 @@
 # include "TPaveText.h"
 
 void bug() {
-    cout << " !!! " << __LINE__ << endl;
+    cout << " !!! " << __LINE__ << " !!! " << endl;
 }
 
 void SetTPaveTxt( TPaveText * txtemplate, int txtsize ) {

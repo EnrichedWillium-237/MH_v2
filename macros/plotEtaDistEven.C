@@ -71,7 +71,7 @@ TH1D * gN1MC10SUB3_eta[ncentbins];
 TH1D * gN1MC06SUB3_eta[ncentbins];
 TH1D * gN1MC02SUB3_eta[ncentbins];
 
-void plotEtaDist()
+void plotEtaDistEven()
 {
 
     TH1::SetDefaultSumw2();
@@ -336,7 +336,7 @@ void plotEtaDist()
     if (!fopen("figures_MH/EtaDists","r")) system("mkdir figures_MH/EtaDists");
 
     int setcent = 5;
-
+/*
     TCanvas * cEtaCompareEP = new TCanvas("cEtaCompareEP","cEtaCompareEP",650,600);
     TPad * padEtaCompareEP = (TPad *) cEtaCompareEP->cd();
     padEtaCompareEP->SetGrid();
@@ -557,12 +557,12 @@ void plotEtaDist()
     txEtaCompareSUB_MC22->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txEtaCompareSUB_MC22->Draw();
     cEtaCompareSUB_MC22->Print(Form("figures_MH/EtaDists/CompareSUB_MC22_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
-
+*/
 
     TCanvas * cEtaCompareSUB_MC18 = new TCanvas("cEtaCompareSUB_MC18","cEtaCompareSUB_MC18",650,600);
     TPad * padEtaCompareSUB_MC18 = (TPad *) cEtaCompareSUB_MC18->cd();
     padEtaCompareSUB_MC18->SetGrid();
-    TH1D * hEtaCompareSUB_MC18 = new TH1D("hEtaCompareSUB_MC18", "hEtaCompareSUB_MC18", 100, -2.5, 2.5);
+    TH1D * hEtaCompareSUB_MC18 = new TH1D("hEtaCompareSUB_MC18", "", 100, -2.5, 2.5);
     hEtaCompareSUB_MC18->SetStats(0);
     hEtaCompareSUB_MC18->GetYaxis()->SetRangeUser(-0.02, 0.01);
     hEtaCompareSUB_MC18->SetXTitle("#eta");
@@ -583,5 +583,70 @@ void plotEtaDist()
     txEtaCompareSUB_MC18->AddText(Form("%d-%d%%",cminCENT[setcent],cmaxCENT[setcent]));
     txEtaCompareSUB_MC18->Draw();
     cEtaCompareSUB_MC18->Print(Form("figures_MH/EtaDists/CompareSUB_MC18_eta_%d_%d.png",cminCENT[setcent],cmaxCENT[setcent]),"png");
+
+
+    TCanvas * cEtapmMC22 = new TCanvas("cEtapmMC22","cEtapmMC22",800,600);
+    TPad * padEtapmMC22 = (TPad *) cEtapmMC22->cd();
+    padEtapmMC22->SetGrid();
+    TH1D * hEtapmMC22 = new TH1D("hEtapmMC22", "", 100, -2.5, 2.5);
+    hEtapmMC22->SetStats(0);
+    hEtapmMC22->GetYaxis()->SetRangeUser(-0.1, 0.2);
+    hEtapmMC22->SetXTitle("#eta");
+    hEtapmMC22->SetYTitle("v_{1}^{even}");
+    hEtapmMC22->Draw("same");
+    gN1MCm22SUB2_eta[setcent]->SetMarkerColor(kRed);
+    gN1MCm22SUB2_eta[setcent]->SetLineColor(kRed);
+    gN1MCm22SUB2_eta[setcent]->SetMarkerStyle(24);
+    gN1MCm22SUB2_eta[setcent]->SetMarkerSize(1.2);
+    gN1MCm22SUB2_eta[setcent]->Draw("same");
+    gN1MCp22SUB2_eta[setcent]->SetMarkerColor(kBlue);
+    gN1MCp22SUB2_eta[setcent]->SetLineColor(kBlue);
+    gN1MCp22SUB2_eta[setcent]->SetMarkerStyle(24);
+    gN1MCp22SUB2_eta[setcent]->SetMarkerSize(1.2);
+    gN1MCp22SUB2_eta[setcent]->Draw("same");
+    TLegend * legEtapmMC22 = new TLegend(0.2, 0.2, 0.4, 0.4);
+    SetLegend(legEtapmMC22, 18);
+    legEtapmMC22->AddEntry(gN1MCm22SUB2_eta[setcent],"#Psi_{1}^{trk} (-2.4 < #eta < -2.0)","p");
+    legEtapmMC22->AddEntry(gN1MCp22SUB2_eta[setcent],"#Psi_{1}^{trk} (2.0 < #eta < 2.4)","p");
+    legEtapmMC22->Draw();
+    TPaveText * txEtapmMC22 = new TPaveText(0.4, 0.4, 0.6, 0.6, "NDC");
+    SetTPaveTxt(xEtapmMC22, 20);
+    txEtapmMC22->AddEntry("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txEtapmMC22->AddEntry(Form("(%d-%d%%)",cminCENT[setcent],cmaxCENT[setcent]));
+    txEtapmMC22->Draw();
+    cEtapmMC22->Print(Form("EtapmMC22_%d_%d",cminCENT[setcent],cmaxCENT[setcent]));
+
+
+    TCanvas * cEtapmMC18 = new TCanvas("cEtapmMC18","cEtapmMC18",800,600);
+    TPad * padEtapmMC18 = (TPad *) cEtapmMC18->cd();
+    padEtapmMC18->SetGrid();
+    TH1D * hEtapmMC18 = new TH1D("hEtapmMC18", "", 100, -2.5, 2.5);
+    hEtapmMC18->SetStats(0);
+    hEtapmMC18->GetYaxis()->SetRangeUser(-0.1, 0.2);
+    hEtapmMC18->SetXTitle("#eta");
+    hEtapmMC18->SetYTitle("v_{1}^{even}");
+    hEtapmMC18->Draw("same");
+    gN1MCm18SUB2_eta[setcent]->SetMarkerColor(kRed);
+    gN1MCm18SUB2_eta[setcent]->SetLineColor(kRed);
+    gN1MCm18SUB2_eta[setcent]->SetMarkerStyle(24);
+    gN1MCm18SUB2_eta[setcent]->SetMarkerSize(1.2);
+    gN1MCm18SUB2_eta[setcent]->Draw("same");
+    gN1MCp18SUB2_eta[setcent]->SetMarkerColor(kBlue);
+    gN1MCp18SUB2_eta[setcent]->SetLineColor(kBlue);
+    gN1MCp18SUB2_eta[setcent]->SetMarkerStyle(24);
+    gN1MCp18SUB2_eta[setcent]->SetMarkerSize(1.2);
+    gN1MCp18SUB2_eta[setcent]->Draw("same");
+    TLegend * legEtapmMC18 = new TLegend(0.2, 0.2, 0.4, 0.4);
+    SetLegend(legEtapmMC18, 18);
+    legEtapmMC18->AddEntry(gN1MCm18SUB2_eta[setcent],"#Psi_{1}^{trk} (-2.0 < #eta < -1.6)","p");
+    legEtapmMC18->AddEntry(gN1MCp18SUB2_eta[setcent],"#Psi_{1}^{trk} (1.6 < #eta < 2.0)","p");
+    legEtapmMC18->Draw();
+    TPaveText * txEtapmMC18 = new TPaveText(0.4, 0.4, 0.6, 0.6, "NDC");
+    SetTPaveTxt(xEtapmMC18, 20);
+    txEtapmMC18->AddEntry("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txEtapmMC18->AddEntry(Form("(%d-%d%%)",cminCENT[setcent],cmaxCENT[setcent]));
+    txEtapmMC18->Draw();
+    cEtapmMC18->Print(Form("EtapmMC18_%d_%d",cminCENT[setcent],cmaxCENT[setcent]));
+
 
 }
