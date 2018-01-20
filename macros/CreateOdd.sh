@@ -1,4 +1,5 @@
 #!/bin/sh
+
 root -l -q -b 'GetVN.C+("../MH.root","N1SUB2",-2.4,2.4,false,-1,3,-0.05,0.05,-0.02,0.02)'
 root -l -q -b 'GetVN.C+("../MH.root","N1SUB3",-2.4,2.4,false,-1,3,-0.05,0.05,-0.02,0.02)'
 root -l -q -b 'GetVN.C+("../MH.root","N1ASUB2",-2.4,2.4,false,-1,3,-0.05,0.05,-0.02,0.02)'

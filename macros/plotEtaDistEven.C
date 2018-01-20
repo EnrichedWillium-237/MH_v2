@@ -587,7 +587,7 @@ void plotEtaDistEven()
 
     TCanvas * cEtapmMC22 = new TCanvas("cEtapmMC22","cEtapmMC22",800,500);
     TPad * padEtapmMC22 = (TPad *) cEtapmMC22->cd();
-    padEtapmMC22->SetGrid();
+    //padEtapmMC22->SetGrid();
     TH1D * hEtapmMC22 = new TH1D("hEtapmMC22", "", 100, -2.5, 2.5);
     hEtapmMC22->SetStats(0);
     hEtapmMC22->GetYaxis()->SetRangeUser(-0.08, 0.02);
@@ -620,7 +620,7 @@ void plotEtaDistEven()
 
     TCanvas * cEtapmMC18 = new TCanvas("cEtapmMC18","cEtapmMC18",800,500);
     TPad * padEtapmMC18 = (TPad *) cEtapmMC18->cd();
-    padEtapmMC18->SetGrid();
+    //padEtapmMC18->SetGrid();
     TH1D * hEtapmMC18 = new TH1D("hEtapmMC18", "", 100, -2.5, 2.5);
     hEtapmMC18->SetStats(0);
     hEtapmMC18->GetYaxis()->SetRangeUser(-0.08, 0.02);
