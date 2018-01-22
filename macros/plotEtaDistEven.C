@@ -709,6 +709,14 @@ void plotEtaDistEven()
     ratEtaMC22MC18->SetLineColor(kBlack);
     ratEtaMC22MC18->SetMarkerStyle(20);
     ratEtaMC22MC18->SetMarkerSize(1.2);
+    for (int i = 1; i<=ratEtaMC22MC18->GetNbinsX(); i++) {
+        double xin = gN1MC18SUB3_eta[setcent]->GetBinContent(i);
+        double yin = gN1MC22SUB3_eta[setcent]->GetBinContent(i);
+        double delxin = gN1MC18SUB3_eta[setcent]->GetBinError(i);
+        double delyin = gN1MC22SUB3_eta[setcent]->GetBinError(i);
+        double raterr = ErrorCalc( xin, yin, delxin, delyin );
+        ratEtaMC22MC18->SetBinError(i, raterr);
+    }
     ratEtaMC22MC18->Draw("same");
     TLine * lnratEtaMC22MC18 = new TLine(-2.5, 1.0, 2.5, 1.0);
     lnratEtaMC22MC18->SetLineWidth(2);
@@ -769,6 +777,14 @@ void plotEtaDistEven()
     ratEtaMC18MC14->SetLineColor(kBlack);
     ratEtaMC18MC14->SetMarkerStyle(20);
     ratEtaMC18MC14->SetMarkerSize(1.2);
+    for (int i = 1; i<=ratEtaMC18MC14->GetNbinsX(); i++) {
+        double xin = gN1MC14SUB3_eta[setcent]->GetBinContent(i);
+        double yin = gN1MC18SUB3_eta[setcent]->GetBinContent(i);
+        double delxin = gN1MC14SUB3_eta[setcent]->GetBinError(i);
+        double delyin = gN1MC18SUB3_eta[setcent]->GetBinError(i);
+        double raterr = ErrorCalc( xin, yin, delxin, delyin );
+        ratEtaMC18MC14->SetBinError(i, raterr);
+    }
     ratEtaMC18MC14->Draw("same");
     TLine * lnratEtaMC18MC14 = new TLine(-2.5, 1.0, 2.5, 1.0);
     lnratEtaMC18MC14->SetLineWidth(2);

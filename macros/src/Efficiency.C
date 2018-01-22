@@ -44,7 +44,7 @@ TrackType SetTracking( ) {
         sTrackReaction = reacUndefined;
         cout<<"System: undefined"<<endl;
     }
-    
+
     TFile * fin = new TFile(rootFile.data(),"read");
     string fname = fin->GetName();
     if (sTrackReaction==pPb) {
@@ -58,7 +58,7 @@ TrackType SetTracking( ) {
             sTrackOrientation = orientationUndefined;
         }
     }
-    
+
     TDirectory * d = (TDirectory *) fin->Get("vnanalyzer/Conditions");
     TList * l = (TList *) d->GetListOfKeys();
     int indx = 0;
@@ -86,7 +86,7 @@ TrackType SetTracking( ) {
         }
         if (condition == "vtx_-15.0_ 3.0") sTrackQuality = narrow;
         if (condition == "vtx_- 3.0_15.0") sTrackQuality = wide;
-        
+
     }
     if (sTrackReaction==pp || sTrackReaction==pPb) {
         ncentbins = ncentbinsNOFF;
@@ -160,7 +160,7 @@ TrackType SetTracking( ) {
     cen->SetDirectory(0);
     cene->SetDirectory(0);
     ceneXeXe->SetDirectory(0);
-    
+
     return sTrackType;
 }
 
@@ -195,9 +195,9 @@ double FakeAndEff( int cent, double pt, double emin, double emax, double &eff ) 
         }
         eff/=(double)(etabinmax-etabinmin+1);
         he->Delete();
-        
+
     }
-    
+
     if (fakeFile!=NULL) {
         string rc = "hfak_"+to_string((int)cb[ib])+"_"+to_string((int)cb[ib+1]);
         TH2D * hf = (TH2D *) fakeFile->Get(rc.data());

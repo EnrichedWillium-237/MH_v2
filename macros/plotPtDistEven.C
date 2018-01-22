@@ -187,6 +187,14 @@ void plotPtDistEven()
         rat_MCm22_MCm18[ebin]->SetLineColor(kBlack);
         rat_MCm22_MCm18[ebin]->SetMarkerStyle(20);
         rat_MCm22_MCm18[ebin]->SetMarkerSize(1.2);
+        for (int i = 1; i<=rat_MCm22_MCm18[ebin]->GetNbinsX(); i++) {
+            double xin = gN1MCm18SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double yin = gN1MCm22SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double delxin = gN1MCm18SUB3_pt[ebin][setcent]->GetBinError(i);
+            double delyin = gN1MCm22SUB3_pt[ebin][setcent]->GetBinError(i);
+            double raterr = ErrorCalc( xin, yin, delxin, delyin );
+            rat_MCm22_MCm18[ebin]->SetBinError(i, raterr);
+        }
         rat_MCm22_MCm18[ebin]->Draw("same");
         TLine * lnrat_MCm22_MCm18 = new TLine(0.0, 1.0, 12.0, 1.0);
         lnrat_MCm22_MCm18->SetLineWidth(2);
@@ -252,6 +260,14 @@ void plotPtDistEven()
         rat_MCm18_MCm14[ebin]->SetLineColor(kBlack);
         rat_MCm18_MCm14[ebin]->SetMarkerStyle(20);
         rat_MCm18_MCm14[ebin]->SetMarkerSize(1.2);
+        for (int i = 1; i<=rat_MCm18_MCm14[ebin]->GetNbinsX(); i++) {
+            double xin = gN1MCm14SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double yin = gN1MCm18SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double delxin = gN1MCm14SUB3_pt[ebin][setcent]->GetBinError(i);
+            double delyin = gN1MCm18SUB3_pt[ebin][setcent]->GetBinError(i);
+            double raterr = ErrorCalc( xin, yin, delxin, delyin );
+            rat_MCm18_MCm14[ebin]->SetBinError(i, raterr);
+        }
         rat_MCm18_MCm14[ebin]->Draw("same");
         TLine * lnrat_MCm18_MCm14 = new TLine(0.0, 1.0, 12.0, 1.0);
         lnrat_MCm18_MCm14->SetLineWidth(2);
@@ -320,6 +336,14 @@ void plotPtDistEven()
         rat_MCp22_MCp18[ebin]->SetLineColor(kBlack);
         rat_MCp22_MCp18[ebin]->SetMarkerStyle(20);
         rat_MCp22_MCp18[ebin]->SetMarkerSize(1.2);
+        for (int i = 1; i<=rat_MCp22_MCp18[ebin]->GetNbinsX(); i++) {
+            double xin = gN1MCp18SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double yin = gN1MCp22SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double delxin = gN1MCp18SUB3_pt[ebin][setcent]->GetBinError(i);
+            double delyin = gN1MCp22SUB3_pt[ebin][setcent]->GetBinError(i);
+            double raterr = ErrorCalc( xin, yin, delxin, delyin );
+            rat_MCp22_MCp18[ebin]->SetBinError(i, raterr);
+        }
         rat_MCp22_MCp18[ebin]->Draw("same");
         TLine * lnrat_MCp22_MCp18 = new TLine(0.0, 1.0, 12.0, 1.0);
         lnrat_MCp22_MCp18->SetLineWidth(2);
@@ -385,6 +409,14 @@ void plotPtDistEven()
         rat_MCp18_MCp14[ebin]->SetLineColor(kBlack);
         rat_MCp18_MCp14[ebin]->SetMarkerStyle(20);
         rat_MCp18_MCp14[ebin]->SetMarkerSize(1.2);
+        for (int i = 1; i<=rat_MCp18_MCp14[ebin]->GetNbinsX(); i++) {
+            double xin = gN1MCp14SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double yin = gN1MCp18SUB3_pt[ebin][setcent]->GetBinContent(i);
+            double delxin = gN1MCp14SUB3_pt[ebin][setcent]->GetBinError(i);
+            double delyin = gN1MCp18SUB3_pt[ebin][setcent]->GetBinError(i);
+            double raterr = ErrorCalc( xin, yin, delxin, delyin );
+            rat_MCp18_MCp14[ebin]->SetBinError(i, raterr);
+        }
         rat_MCp18_MCp14[ebin]->Draw("same");
         TLine * lnrat_MCp18_MCp14 = new TLine(0.0, 1.0, 12.0, 1.0);
         lnrat_MCp18_MCp14->SetLineWidth(2);
@@ -392,140 +424,6 @@ void plotPtDistEven()
         crat_MCp18_MCp14[ebin]->Print(Form("figures_MH/PtDists/eta_%1.1f_%1.1f/ratio_MCp18_MCp14_%d_%d.png",etabins[ebin],etabins[ebin+1],cminCENT[setcent],cmaxCENT[setcent]),"png");
         crat_MCp18_MCp14[ebin]->Close();
     }
-
-
-    ///-- average comparison
-
-/*
-    TCanvas * cPtDist_MC22_MC18[netabins];
-    for (int ebin = 0; ebin<netabins; ebin++) {
-        cPtDist_MC22_MC18[ebin] = new TCanvas(Form("cPtDist_MC22_MC18_%d",ebin),"",650,600);
-        TPad * padPtDist_MC22_MC18 = (TPad *) cPtDist_MC22_MC18[ebin]->cd();
-        padPtDist_MC22_MC18->SetGrid();
-        TH1D * hPtDist_MC22_MC18 = (TH1D *) hPtDummy->Clone(Form("hPtDist_MC22_MC18_%d",ebin));
-        hPtDist_MC22_MC18->Draw();
-        gN1MC22SUB3_pt[ebin][setcent]->SetMarkerColor(kRed);
-        gN1MC22SUB3_pt[ebin][setcent]->SetLineColor(kRed);
-        gN1MC22SUB3_pt[ebin][setcent]->SetMarkerStyle(20);
-        gN1MC22SUB3_pt[ebin][setcent]->SetMarkerSize(1.3);
-        gN1MC22SUB3_pt[ebin][setcent]->Draw("same");
-        gN1MC18SUB3_pt[ebin][setcent]->SetMarkerColor(kBlue);
-        gN1MC18SUB3_pt[ebin][setcent]->SetLineColor(kBlue);
-        gN1MC18SUB3_pt[ebin][setcent]->SetMarkerStyle(21);
-        gN1MC18SUB3_pt[ebin][setcent]->SetMarkerSize(1.2);
-        gN1MC18SUB3_pt[ebin][setcent]->Draw("same");
-        TLegend * legPtDist_MC22_MC18 = new TLegend(0.59, 0.18, 0.87, 0.28);
-        SetLegend(legPtDist_MC22_MC18, 18);
-        legPtDist_MC22_MC18->AddEntry(gN1MC22SUB3_pt[ebin][setcent],"#Psi_{1}^{trk}: 2.0 < |#eta| < 2.4","p");
-        legPtDist_MC22_MC18->AddEntry(gN1MC18SUB3_pt[ebin][setcent],"#Psi_{1}^{trk}: 1.6 < |#eta| < 2.0","p");
-        legPtDist_MC22_MC18->Draw();
-        TPaveText * txPtDist_MC22_MC18 = new TPaveText(0.59, 0.30, 0.88, 0.40, "NDC");
-        SetTPaveTxt(txPtDist_MC22_MC18, 18);
-        txPtDist_MC22_MC18->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
-        txPtDist_MC22_MC18->AddText(Form("%1.1f < #eta < %1.1f (%d - %d%%)",etabins[ebin],etabins[ebin+1],cminCENT[setcent],cmaxCENT[setcent]));
-        txPtDist_MC22_MC18->Draw();
-        cPtDist_MC22_MC18[ebin]->Print(Form("figures_MH/PtDists/eta_%1.1f_%1.1f/MC22_MC18_%d_%d.png",etabins[ebin],etabins[ebin+1],cminCENT[setcent],cmaxCENT[setcent]),"png");
-        //cPtDist_MC22_MC18[ebin]->Close();
-    }
-
-
-    TCanvas * crat_MC22_MC18[netabins];
-    TH1D * rat_MC22_MC18[netabins];
-    for (int ebin = 0; ebin<netabins; ebin++) {
-        crat_MC22_MC18[ebin] = new TCanvas(Form("crat_MC22_MC18_%d",ebin),"",800,300);
-        TPad * padrat_MC22_MC18 = (TPad *) crat_MC22_MC18[ebin]->cd();
-        padrat_MC22_MC18->SetGrid();
-        TH1D * hrat_MC22_MC18 = (TH1D *) hPtDummy->Clone(Form("hrat_MC22_MC18_%d",ebin));
-        hrat_MC22_MC18->GetYaxis()->SetRangeUser(-1.0, 3.0);
-        hrat_MC22_MC18->GetYaxis()->SetNdivisions(507);
-        hrat_MC22_MC18->SetXTitle("p_{T} (GeV/c)");
-        hrat_MC22_MC18->SetYTitle("N1MC18SUB3 / N1MC22SUB3");
-        hrat_MC22_MC18->GetXaxis()->SetTitleSize(0.08);
-        hrat_MC22_MC18->GetXaxis()->SetTitleOffset(0.90);
-        hrat_MC22_MC18->GetXaxis()->SetLabelSize(0.07);
-        hrat_MC22_MC18->GetYaxis()->SetTitleSize(0.07);
-        hrat_MC22_MC18->GetYaxis()->SetTitleOffset(0.80);
-        hrat_MC22_MC18->GetYaxis()->SetLabelSize(0.08);
-        hrat_MC22_MC18->Draw();
-        rat_MC22_MC18[ebin] = (TH1D *) gN1MC18SUB3_pt[ebin][setcent]->Clone(Form("rat_MC22_MC18_%d",ebin));
-        rat_MC22_MC18[ebin]->Divide(gN1MC22SUB3_pt[ebin][setcent]);
-        rat_MC22_MC18[ebin]->SetMarkerColor(kBlack);
-        rat_MC22_MC18[ebin]->SetLineColor(kBlack);
-        rat_MC22_MC18[ebin]->SetMarkerStyle(20);
-        rat_MC22_MC18[ebin]->SetMarkerSize(1.2);
-        rat_MC22_MC18[ebin]->Draw("same");
-        TLine * lnrat_MC22_MC18 = new TLine(0.0, 1.0, 12.0, 1.0);
-        lnrat_MC22_MC18->SetLineWidth(2);
-        lnrat_MC22_MC18->Draw();
-        crat_MC22_MC18[ebin]->Print(Form("figures_MH/PtDists/eta_%1.1f_%1.1f/MC22_MC18_%d_%d.png",etabins[ebin],etabins[ebin+1],cminCENT[setcent],cmaxCENT[setcent]),"png");
-        //crat_MC22_MC18[ebin]->Close();
-    }
-
-
-    TCanvas * cPtDist_MC18_MC14[netabins];
-    for (int ebin = 0; ebin<netabins; ebin++) {
-        cPtDist_MC18_MC14[ebin] = new TCanvas(Form("cPtDist_MC18_MC14_%d",ebin),"",650,600);
-        TPad * padPtDist_MC18_MC14 = (TPad *) cPtDist_MC18_MC14[ebin]->cd();
-        padPtDist_MC18_MC14->SetGrid();
-        TH1D * hPtDist_MC18_MC14 = (TH1D *) hPtDummy->Clone(Form("hPtDist_MC18_MC14_%d",ebin));
-        hPtDist_MC18_MC14->Draw();
-        gN1MC18SUB3_pt[ebin][setcent]->SetMarkerColor(kBlue);
-        gN1MC18SUB3_pt[ebin][setcent]->SetLineColor(kBlue);
-        gN1MC18SUB3_pt[ebin][setcent]->SetMarkerStyle(21);
-        gN1MC18SUB3_pt[ebin][setcent]->SetMarkerSize(1.2);
-        gN1MC18SUB3_pt[ebin][setcent]->Draw("same");
-        gN1MC14SUB3_pt[ebin][setcent]->SetMarkerColor(kGreen+2);
-        gN1MC14SUB3_pt[ebin][setcent]->SetLineColor(kGreen+2);
-        gN1MC14SUB3_pt[ebin][setcent]->SetMarkerStyle(20);
-        gN1MC14SUB3_pt[ebin][setcent]->SetMarkerSize(1.3);
-        gN1MC14SUB3_pt[ebin][setcent]->Draw("same");
-        TLegend * legPtDist_MC18_MC14 = new TLegend(0.59, 0.18, 0.87, 0.28);
-        SetLegend(legPtDist_MC18_MC14, 18);
-        legPtDist_MC18_MC14->AddEntry(gN1MC18SUB3_pt[ebin][setcent],"#Psi_{1}^{trk}: 1.6 < |#eta| < 2.0","p");
-        legPtDist_MC18_MC14->AddEntry(gN1MC14SUB3_pt[ebin][setcent],"#Psi_{1}^{trk}: 1.2 < |#eta| < 1.6","p");
-        legPtDist_MC18_MC14->Draw();
-        TPaveText * txPtDist_MC18_MC14 = new TPaveText(0.59, 0.30, 0.88, 0.40, "NDC");
-        SetTPaveTxt(txPtDist_MC18_MC14, 18);
-        txPtDist_MC18_MC14->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
-        txPtDist_MC18_MC14->AddText(Form("%1.1f < #eta < %1.1f (%d - %d%%)",etabins[ebin],etabins[ebin+1],cminCENT[setcent],cmaxCENT[setcent]));
-        txPtDist_MC18_MC14->Draw();
-        cPtDist_MC18_MC14[ebin]->Print(Form("figures_MH/PtDists/eta_%1.1f_%1.1f/MC18_MC14_%d_%d.png",etabins[ebin],etabins[ebin+1],cminCENT[setcent],cmaxCENT[setcent]),"png");
-        //cPtDist_MC18_MC14[ebin]->Close();
-    }
-
-
-    TCanvas * crat_MC18_MC14[netabins];
-    TH1D * rat_MC18_MC14[netabins];
-    for (int ebin = 0; ebin<netabins; ebin++) {
-        crat_MC18_MC14[ebin] = new TCanvas(Form("crat_MC18_MC14_%d",ebin),"",800,300);
-        TPad * padrat_MC18_MC14 = (TPad *) crat_MC18_MC14[ebin]->cd();
-        padrat_MC18_MC14->SetGrid();
-        TH1D * hrat_MC18_MC14 = (TH1D *) hPtDummy->Clone(Form("hrat_MC18_MC14_%d",ebin));
-        hrat_MC18_MC14->GetYaxis()->SetRangeUser(0.0, 2.0);
-        hrat_MC18_MC14->GetYaxis()->SetNdivisions(507);
-        hrat_MC18_MC14->SetXTitle("p_{T} (GeV/c)");
-        hrat_MC18_MC14->SetYTitle("N1MC14SUB3 / N1MC18SUB3");
-        hrat_MC18_MC14->GetXaxis()->SetTitleSize(0.08);
-        hrat_MC18_MC14->GetXaxis()->SetTitleOffset(0.90);
-        hrat_MC18_MC14->GetXaxis()->SetLabelSize(0.07);
-        hrat_MC18_MC14->GetYaxis()->SetTitleSize(0.07);
-        hrat_MC18_MC14->GetYaxis()->SetTitleOffset(0.80);
-        hrat_MC18_MC14->GetYaxis()->SetLabelSize(0.08);
-        hrat_MC18_MC14->Draw();
-        rat_MC18_MC14[ebin] = (TH1D *) gN1MC14SUB3_pt[ebin][setcent]->Clone(Form("rat_MC18_MC14_%d",ebin));
-        rat_MC18_MC14[ebin]->Divide(gN1MC18SUB3_pt[ebin][setcent]);
-        rat_MC18_MC14[ebin]->SetMarkerColor(kBlack);
-        rat_MC18_MC14[ebin]->SetLineColor(kBlack);
-        rat_MC18_MC14[ebin]->SetMarkerStyle(20);
-        rat_MC18_MC14[ebin]->SetMarkerSize(1.2);
-        rat_MC18_MC14[ebin]->Draw("same");
-        TLine * lnrat_MC18_MC14 = new TLine(0.0, 1.0, 12.0, 1.0);
-        lnrat_MC18_MC14->SetLineWidth(2);
-        lnrat_MC18_MC14->Draw();
-        crat_MC18_MC14[ebin]->Print(Form("figures_MH/PtDists/eta_%1.1f_%1.1f/MC18_MC14_%d_%d.png",etabins[ebin],etabins[ebin+1],cminCENT[setcent],cmaxCENT[setcent]),"png");
-        //crat_MC18_MC14[ebin]->Close();
-    }
-*/
 
 
 

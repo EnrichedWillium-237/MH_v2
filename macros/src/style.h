@@ -36,3 +36,10 @@ void GraphToHist( TGraphErrors * gin, TH1D * hout ) {
         hout->SetBinError(i+1, yerr[i]);
     }
 }
+
+double ErrorCalc( double x, double y, double delx, double dely ) {
+    double f = x;
+    f/=y;
+    double delf = f*sqrt( pow(delx/x,2) + pow(dely/y,2) - 2*(delx/x)*(dely/y) );
+    return delf;
+}

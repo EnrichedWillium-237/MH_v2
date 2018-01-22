@@ -212,10 +212,9 @@ void plotEtaDistOdd()
         TH1D * hratTight_Tight2_cent = new TH1D(Form("hratTight_Tight2_cent_%d",cbin), "", 100, -2.5, 2.5);
         hratTight_Tight2_cent->GetXaxis()->SetNdivisions(509);
         hratTight_Tight2_cent->GetYaxis()->SetNdivisions(509);
-        hratTight_Tight2_cent->GetYaxis()->SetRangeUser(0, 2);
+        hratTight_Tight2_cent->GetYaxis()->SetRangeUser(0.8, 1.2);
         hratTight_Tight2_cent->SetXTitle("#eta");
         hratTight_Tight2_cent->SetYTitle("v_{1}^{odd} {default} / v_{1}^{odd} {tight2}");
-        hratTight_Tight2_cent->GetYaxis()->SetRangeUser(0.00, 2.00);
         hratTight_Tight2_cent->Draw();
         TLine * lnratTight_Tight2_cent = new TLine(-2.5, 1.0, 2.5, 1.0);
         lnratTight_Tight2_cent->SetLineWidth(2);
@@ -226,6 +225,14 @@ void plotEtaDistOdd()
         gratN1SUB3_tight_tight2->SetLineColor(kBlack);
         gratN1SUB3_tight_tight2->SetMarkerStyle(20);
         gratN1SUB3_tight_tight2->SetMarkerSize(1.2);
+        for (int i = 1; i<=gratN1SUB3_tight_tight2->GetNbinsX(); i++) {
+            double xin = gN1SUB3_tight[cbin]->GetBinContent(i);
+            double yin = gN1SUB3_tight2[cbin]->GetBinContent(i);
+            double delxin = gN1SUB3_tight[cbin]->GetBinError(i);
+            double delyin = gN1SUB3_tight2[cbin]->GetBinError(i);
+            double raterr = ErrorCalc( xin, yin, delxin, delyin );
+            gratN1SUB3_tight_tight2->SetBinError(i, raterr);
+        }
         gratN1SUB3_tight_tight2->Draw("same");
         TPaveText * Tight_Tight2_centscan = new TPaveText(0.73, 0.83, 0.91, 0.95, "NDC");
         SetTPaveTxt(Tight_Tight2_centscan, 18);
@@ -284,10 +291,9 @@ void plotEtaDistOdd()
         TH1D * hratTight_narrow_cent = new TH1D(Form("hratTight_narrow_cent_%d",cbin), "", 100, -2.5, 2.5);
         hratTight_narrow_cent->GetXaxis()->SetNdivisions(509);
         hratTight_narrow_cent->GetYaxis()->SetNdivisions(509);
-        hratTight_narrow_cent->GetYaxis()->SetRangeUser(0, 2);
+        hratTight_narrow_cent->GetYaxis()->SetRangeUser(0.5, 1.5);
         hratTight_narrow_cent->SetXTitle("#eta");
         hratTight_narrow_cent->SetYTitle("v_{1}^{odd} {default} / v_{1}^{odd} {narrow}");
-        hratTight_narrow_cent->GetYaxis()->SetRangeUser(0.00, 2.00);
         hratTight_narrow_cent->Draw();
         TLine * lnratTight_narrow_cent = new TLine(-2.5, 1.0, 2.5, 1.0);
         lnratTight_narrow_cent->SetLineWidth(2);
@@ -298,6 +304,14 @@ void plotEtaDistOdd()
         gratN1SUB3_tight_narrow->SetLineColor(kBlack);
         gratN1SUB3_tight_narrow->SetMarkerStyle(20);
         gratN1SUB3_tight_narrow->SetMarkerSize(1.2);
+        for (int i = 1; i<=gratN1SUB3_tight_narrow->GetNbinsX(); i++) {
+            double xin = gN1SUB3_tight[cbin]->GetBinContent(i);
+            double yin = gN1SUB3_narrow[cbin]->GetBinContent(i);
+            double delxin = gN1SUB3_tight[cbin]->GetBinError(i);
+            double delyin = gN1SUB3_narrow[cbin]->GetBinError(i);
+            double raterr = ErrorCalc( xin, yin, delxin, delyin );
+            gratN1SUB3_tight_narrow->SetBinError(i, raterr);
+        }
         gratN1SUB3_tight_narrow->Draw("same");
         TPaveText * Tight_narrow_centscan = new TPaveText(0.73, 0.83, 0.91, 0.95, "NDC");
         SetTPaveTxt(Tight_narrow_centscan, 18);
@@ -312,10 +326,6 @@ void plotEtaDistOdd()
     txratTight_narrow_cent->Draw();
     cratTight_narrow_cent->cd(5);
     cratTight_narrow_cent->Print("figures_MH/systematics/v1odd_ratio_Tight_narrow_centscan.png","png");
-
-
-
-
 
 
     TCanvas * cTight_wide_cent = new TCanvas("cTight_wide_cent","",1100,500);
@@ -360,10 +370,9 @@ void plotEtaDistOdd()
         TH1D * hratTight_wide_cent = new TH1D(Form("hratTight_wide_cent_%d",cbin), "", 100, -2.5, 2.5);
         hratTight_wide_cent->GetXaxis()->SetNdivisions(509);
         hratTight_wide_cent->GetYaxis()->SetNdivisions(509);
-        hratTight_wide_cent->GetYaxis()->SetRangeUser(0, 2);
+        hratTight_wide_cent->GetYaxis()->SetRangeUser(0.8, 1.2);
         hratTight_wide_cent->SetXTitle("#eta");
         hratTight_wide_cent->SetYTitle("v_{1}^{odd} {default} / v_{1}^{odd} {wide}");
-        hratTight_wide_cent->GetYaxis()->SetRangeUser(0.00, 2.00);
         hratTight_wide_cent->Draw();
         TLine * lnratTight_wide_cent = new TLine(-2.5, 1.0, 2.5, 1.0);
         lnratTight_wide_cent->SetLineWidth(2);
@@ -374,6 +383,14 @@ void plotEtaDistOdd()
         gratN1SUB3_tight_wide->SetLineColor(kBlack);
         gratN1SUB3_tight_wide->SetMarkerStyle(20);
         gratN1SUB3_tight_wide->SetMarkerSize(1.2);
+        for (int i = 1; i<=gratN1SUB3_tight_wide->GetNbinsX(); i++) {
+            double xin = gN1SUB3_tight[cbin]->GetBinContent(i);
+            double yin = gN1SUB3_wide[cbin]->GetBinContent(i);
+            double delxin = gN1SUB3_tight[cbin]->GetBinError(i);
+            double delyin = gN1SUB3_wide[cbin]->GetBinError(i);
+            double raterr = ErrorCalc( xin, yin, delxin, delyin );
+            gratN1SUB3_tight_wide->SetBinError(i, raterr);
+        }
         gratN1SUB3_tight_wide->Draw("same");
         TPaveText * Tight_wide_centscan = new TPaveText(0.73, 0.83, 0.91, 0.95, "NDC");
         SetTPaveTxt(Tight_wide_centscan, 18);
@@ -388,5 +405,39 @@ void plotEtaDistOdd()
     txratTight_wide_cent->Draw();
     cratTight_wide_cent->cd(5);
     cratTight_wide_cent->Print("figures_MH/systematics/v1odd_ratio_Tight_wide_centscan.png","png");
+
+
+    TCanvas * cv1odd_syst = new TCanvas("cv1odd_syst","",1100,500);
+    cv1odd_syst->Divide(4,2,0,0);
+    for (int cbin = 0; cbin<8; cbin++) {
+        TPad * padv1odd_syst = (TPad *) cv1odd_syst->cd(cbin+1);
+        padv1odd_syst->SetGrid();
+        TH1D * hv1odd_syst = new TH1D(Form("hv1odd_syst_%d",cbin), "", 100, -2.5, 2.5);
+        hv1odd_syst->GetXaxis()->SetNdivisions(509);
+        hv1odd_syst->GetYaxis()->SetNdivisions(509);
+        hv1odd_syst->SetXTitle("#eta");
+        hv1odd_syst->SetYTitle("v_{1}^{odd}");
+        hv1odd_syst->GetYaxis()->SetRangeUser(-0.01, 0.01);
+        hv1odd_syst->Draw();
+        gN1SUB3_tight[cbin]->Draw("same");
+        gN1SUB3_wide[cbin]->Draw("same");
+        TPaveText * v1odd_systscan = new TPaveText(0.73, 0.83, 0.91, 0.95, "NDC");
+        SetTPaveTxt(v1odd_systscan, 18);
+        v1odd_systscan->AddText(Form("%d-%d%%",cminCENT[cbin],cmaxCENT[cbin]));
+        v1odd_systscan->Draw();
+    }
+    cv1odd_syst->cd(1);
+    TPaveText * txv1odd_syst = new TPaveText(0.23, 0.03, 0.77, 0.28, "NDC");
+    SetTPaveTxt(txv1odd_syst, 18);
+    txv1odd_syst->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txv1odd_syst->AddText("0.3 < p_{T} < 3.0 GeV/c");
+    txv1odd_syst->Draw();
+    cv1odd_syst->cd(5);
+    TLegend * legv1odd_syst = new TLegend(0.23, 0.21, 0.64, 0.43);
+    SetLegend(legv1odd_syst, 18);
+    legv1odd_syst->AddEntry(gN1SUB3_tight[0],"v_{1}^{even} (default)","p");
+    legv1odd_syst->AddEntry(gN1SUB3_wide[0],"v_{1}^{even} (wide)","p");
+    legv1odd_syst->Draw();
+    cv1odd_syst->Print("figures_MH/systematics/v1odd_v1odd_systscan.png","png");
 
 }
