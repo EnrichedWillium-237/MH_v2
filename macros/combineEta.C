@@ -121,7 +121,7 @@ void GetEtaDists( TString input = "MH" )
 
     for (int i = 0; i<NANALS; i++) {
         for (int cbin = 0; cbin<ncentbins; cbin++) {
-            TString mtag = Form("%s/%d_%d",ANAL[i].Data(),cminCENT[cbin],cmaxCENT[cbin]);
+            TString mtag = Form("%s/-4_0/%d_%d",ANAL[i].Data(),cminCENT[cbin],cmaxCENT[cbin]);
             //cout<<mtag.Data()<<endl;
             if (i == 0) gN1MCm22SUB2[cbin] = (TGraphErrors *) tfin->Get(Form("%s/A_%s",mtag.Data(),ANAL[i].Data()));
             if (i == 1) gN1MCm18SUB2[cbin] = (TGraphErrors *) tfin->Get(Form("%s/A_%s",mtag.Data(),ANAL[i].Data()));
@@ -153,10 +153,10 @@ void GetEtaDists( TString input = "MH" )
         }
     }
 
-    if (isTight2) cout << "processing MH_tight2_hists.root... " << endl;
-    else if (isWide) cout << "processing MH_wide_hists.root... " << endl;
-    else if (isNarrow) cout << "processing MH_narrow_hists.root... " << endl;
-    else cout << "processing MH_hists.root... " << endl;
+    if (isTight2) cout << "Accessing MH_tight2_hists.root... " << endl;
+    else if (isWide) cout << "Accessing MH_wide_hists.root... " << endl;
+    else if (isNarrow) cout << "Accessing MH_narrow_hists.root... " << endl;
+    else cout << "Accessing MH_hists.root... " << endl;
 
     for (int cbin = 0; cbin<ncentbins; cbin++) {
         TDirectory * tdcbin = (TDirectory *) tdir->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
@@ -173,6 +173,7 @@ void GetEtaDists( TString input = "MH" )
         hN1MCp18SUB2[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N1MCp18SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
         hN1MCp14SUB2[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N1MCp14SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
+        hN1MCm22SUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N1MCm22SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
         hN1MCm18SUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N1MCm18SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
         hN1MCm14SUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N1MCm14SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
         hN1MCp22SUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N1MCp22SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
@@ -195,15 +196,15 @@ void GetEtaDists( TString input = "MH" )
 
         // convert TGraphErrors to TH1Ds
         GraphToHist( gN1MCm22SUB2[cbin], hN1MCm22SUB2[cbin] );
-        GraphToHist( gN1MCm18SUB2[cbin], hN1MCp18SUB2[cbin] );
-        GraphToHist( gN1MCm14SUB2[cbin], hN1MCp14SUB2[cbin] );
+        GraphToHist( gN1MCm18SUB2[cbin], hN1MCm18SUB2[cbin] );
+        GraphToHist( gN1MCm14SUB2[cbin], hN1MCm14SUB2[cbin] );
         GraphToHist( gN1MCp22SUB2[cbin], hN1MCp22SUB2[cbin] );
         GraphToHist( gN1MCp18SUB2[cbin], hN1MCp18SUB2[cbin] );
         GraphToHist( gN1MCp14SUB2[cbin], hN1MCp14SUB2[cbin] );
 
         GraphToHist( gN1MCm22SUB3[cbin], hN1MCm22SUB3[cbin] );
-        GraphToHist( gN1MCm18SUB3[cbin], hN1MCp18SUB3[cbin] );
-        GraphToHist( gN1MCm14SUB3[cbin], hN1MCp14SUB3[cbin] );
+        GraphToHist( gN1MCm18SUB3[cbin], hN1MCm18SUB3[cbin] );
+        GraphToHist( gN1MCm14SUB3[cbin], hN1MCm14SUB3[cbin] );
         GraphToHist( gN1MCp22SUB3[cbin], hN1MCp22SUB3[cbin] );
         GraphToHist( gN1MCp18SUB3[cbin], hN1MCp18SUB3[cbin] );
         GraphToHist( gN1MCp14SUB3[cbin], hN1MCp14SUB3[cbin] );
@@ -281,7 +282,7 @@ void GetEtaDists( TString input = "MH" )
         hN112BSUB3[cbin]->Delete();
     }
 
-    tfout->Close();
+    tfin->Close();
 
 }
 
@@ -293,9 +294,9 @@ void combineEta() {
     tfout = new TFile("results/MH_combined_Eta.root","recreate");
 
     GetEtaDists( "MH_hists" );
-    // GetEtaDists( "MH_tight2_hists" );
-    // GetEtaDists( "MH_narrow_hists" );
-    // GetEtaDists( "MH_wide_hists" );
+    GetEtaDists( "MH_tight2_hists" );
+    GetEtaDists( "MH_narrow_hists" );
+    GetEtaDists( "MH_wide_hists" );
 
     cout << "Eta distributions saved to results/MH_combined_Eta.root" << endl;
     tfout->Close();
