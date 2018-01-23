@@ -423,17 +423,17 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3",  double mine
         leg2->SetTextSize(20);
         leg2->SetFillColor(kWhite);
         leg2->SetBorderSize(0);
-        if (strncmp(gint[bin]->GetTitle(),"Graph",5)!=0) {
+        if (strncmp(gint[bin]->GetTitle(),"g",5)!=0) {
             if (strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gint[bin],gint[bin]->GetTitle(),"lp");
         } else {
             if (strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0)leg2->AddEntry(gint[bin],"Adopted","lp");
         }
-        if (strncmp(gintA[bin]->GetTitle(),"Graph",5)!=0) {
+        if (strncmp(gintA[bin]->GetTitle(),"gA",5)!=0) {
             if (strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintA[bin],gintA[bin]->GetTitle(),"lp");
         } else {
             if (strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintA[bin],"A side","lp");
         }
-        if (strncmp(gintB[bin]->GetTitle(),"Graph",5)!=0) {
+        if (strncmp(gintB[bin]->GetTitle(),"gB",5)!=0) {
             if (strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintB[bin],gintB[bin]->GetTitle(),"lp");
         } else {
             if (strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintB[bin],"B side","lp");
