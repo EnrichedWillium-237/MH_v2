@@ -28,7 +28,7 @@ void SetLegend( TLegend * legtemplate, int legsize ) {
 
 void GraphToHist( TGraphErrors * gin, TH1D * hout ) {
     int num = gin->GetN();
-    Double_t x[100], y[100], yerr[100];
+    Double_t x[400], y[400], yerr[400];
     for (int i = 0; i<num; i++) {
         gin->GetPoint(i, x[i], y[i]);
         yerr[i] = gin->GetErrorY(i);

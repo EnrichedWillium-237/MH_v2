@@ -159,7 +159,7 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         leg->SetBorderSize(0);
 
         string s = "A+B only";
-        if (strncmp(g->GetTitle(),"g",5)!=0) {
+        if (strncmp(g->GetTitle(),"Graph",5)!=0) {
             s = g->GetTitle();
         }
         string append =Form("%5.4f#pm%5.4f",vint,vinte);
@@ -167,7 +167,7 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(g,s.data(),"lp");
 
         string sA = "A only";
-        if (strncmp(gA->GetTitle(),"gA",5)!=0) {
+        if (strncmp(gA->GetTitle(),"Graph",5)!=0) {
             sA = gA->GetTitle();
         }
         append =Form("%5.4f#pm%5.4f",vintA,vintAe);
@@ -175,7 +175,7 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         if (strncmp(gA->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(gA,sA.data(),"lp");
 
         string sB = "B only";
-        if (strncmp(gB->GetTitle(),"gB",5)!=0) {
+        if (strncmp(gB->GetTitle(),"Graph",5)!=0) {
             sB = gB->GetTitle();
         }
         append =Form("%5.4f#pm%5.4f",vintB,vintBe);
@@ -423,17 +423,17 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3",  double mine
         leg2->SetTextSize(20);
         leg2->SetFillColor(kWhite);
         leg2->SetBorderSize(0);
-        if (strncmp(gint[bin]->GetTitle(),"g",5)!=0) {
+        if (strncmp(gint[bin]->GetTitle(),"Graph",5)!=0) {
             if (strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gint[bin],gint[bin]->GetTitle(),"lp");
         } else {
             if (strncmp(gint[bin]->GetTitle(),"NOGOOD",6)!=0)leg2->AddEntry(gint[bin],"Adopted","lp");
         }
-        if (strncmp(gintA[bin]->GetTitle(),"gA",5)!=0) {
+        if (strncmp(gintA[bin]->GetTitle(),"Graph",5)!=0) {
             if (strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintA[bin],gintA[bin]->GetTitle(),"lp");
         } else {
             if (strncmp(gintA[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintA[bin],"A side","lp");
         }
-        if (strncmp(gintB[bin]->GetTitle(),"gB",5)!=0) {
+        if (strncmp(gintB[bin]->GetTitle(),"Graph",5)!=0) {
             if (strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintB[bin],gintB[bin]->GetTitle(),"lp");
         } else {
             if (strncmp(gintB[bin]->GetTitle(),"NOGOOD",6)!=0) leg2->AddEntry(gintB[bin],"B side","lp");

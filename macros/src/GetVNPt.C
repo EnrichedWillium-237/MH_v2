@@ -537,21 +537,25 @@ TGraphErrors * GetVNPt( int replay, int bin, int epindx,  double etamin, double 
     vintBe = wvnBe/wB;
 
     TGraphErrors * g = new TGraphErrors(npt, x, y, ex, ey);
+    g->SetName("g");
     g->SetMarkerStyle(20);
     g->SetMarkerColor(kBlue);
     g->SetLineColor(kBlue);
     g->SetLineWidth(2);
     gspec = new TGraphErrors(npt, xspec, yspec, exspec, eyspec);
+    gspec->SetName("gspec");
     gspec->SetMarkerStyle(20);
     gspec->SetMarkerColor(kBlue);
     gspec->SetLineColor(kBlue);
     gspec->SetLineWidth(2);
     gA = new TGraphErrors(npt, x, yA, ex, eyA);
+    gA->SetName("gA");
     gA->SetMarkerStyle(28);
     gA->SetMarkerColor(kMagenta);
     gA->SetLineColor(kMagenta);
     gA->SetLineWidth(2);
     gB = new TGraphErrors(npt ,x ,yB ,ex , eyB);
+    gB->SetName("gB");
     gB->SetMarkerStyle(28);
     gB->SetMarkerColor(kGreen+2);
     gB->SetLineColor(kGreen+2);

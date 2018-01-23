@@ -157,6 +157,33 @@ void plotPtDistEven()
 {
     TH1::SetDefaultSumw2();
 
+    tfin_nominal = new TFile("MH_hists.root","read");
+    tfin_tight2 = new TFile("MH_tight2_hists.root","read");
+    tfin_narrow = new TFile("MH_narrow_hists.root","read");
+    tfin_wide = new TFile("MH_wide_hists.root","read");
+
+    for (int i = 0; i<NANALS; i++) {
+        for (int ebin = 0; ebin<netabins; ebin++) {
+            for (int cbin = 0; cbin<ncentbins; cbin++) {
+                TString mtag = Form("%s/%s/%d_%d",ANAL[i].Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]);
+                //cout<<mtag.Data()<<endl;
+                if (i == 0) gN1MCm22SUB2[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 1) gN1MCm18SUB2[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 2) gN1MCm14SUB2[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 3) gN1MCp22SUB2[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 4) gN1MCp18SUB2[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 5) gN1MCp14SUB2[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+
+                if (i == 6) gN1MCm22SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 7) gN1MCm18SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 8) gN1MCm14SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 9) gN1MCp22SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 10) gN1MCp18SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 11) gN1MCp14SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+            }
+        }
+    }
+
     for (int ebin = 0; ebin<netabins; ebin++) {
         for (int cbin = 0; cbin<ncentbins; cbin++) {
             hN1MCm22SUB2[ebin][cbin] = new TH1D(Form("N1MCm22SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
@@ -229,21 +256,27 @@ void plotPtDistEven()
             hN1MCp22SUB3_wide[ebin][cbin] = (TH1D *) hN1MCm22SUB2_wide[ebin][cbin]->Clone(Form("N1MCp22SUB3_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             hN1MCp18SUB3_wide[ebin][cbin] = (TH1D *) hN1MCm22SUB2_wide[ebin][cbin]->Clone(Form("N1MCp18SUB3_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             hN1MCp14SUB3_wide[ebin][cbin] = (TH1D *) hN1MCm22SUB2_wide[ebin][cbin]->Clone(Form("N1MCp14SUB3_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+
+            GraphToHist( gN1MCm22SUB2[ebin][cbin], hN1MCm22SUB2[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB2[ebin][cbin], hN1MCp18SUB2[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB2[ebin][cbin], hN1MCp14SUB2[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB2[ebin][cbin], hN1MCp22SUB2[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB2[ebin][cbin], hN1MCp18SUB2[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB2[ebin][cbin], hN1MCp14SUB2[ebin][cbin] );
+
+            GraphToHist( gN1MCm22SUB3[ebin][cbin], hN1MCm22SUB3[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB3[ebin][cbin], hN1MCp18SUB3[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB3[ebin][cbin], hN1MCp14SUB3[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB3[ebin][cbin], hN1MCp22SUB3[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB3[ebin][cbin], hN1MCp18SUB3[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB3[ebin][cbin], hN1MCp14SUB3[ebin][cbin] );
         }
     }
+    tfin_nominal->Close();
+    tfin_tight2->Close();
+    tfin_narrow->Close();
+    tfin_wide->Close();
 
-    tfin_nominal = new TFile("MH_hists.root","read");
-    tfin_tight2 = new TFile("MH_tight2_hists.root","read");
-    tfin_narrow = new TFile("MH_narrow_hists.root","read");
-    tfin_wide = new TFile("MH_wide_hists.root","read");
 
-    for (int i = 0; i<NANALS; i++) {
-        for (int ebin = 0; ebin<netabins; ebin++) {
-            for (int cbin = 0; cbin<ncentbins; cbin++) {
-                string mtag = ANALS[i].Data()+"/"+etags[ebin].Data()+"/"+cminCENT[cbin]+"/"+cmaxCENT[cbin];
-                if (i == 0) gN1MCm22SUB2[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s",mtag.data()));
-            }
-        }
-    }
 
 }
