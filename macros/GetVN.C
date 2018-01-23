@@ -152,14 +152,14 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         h->SetYTitle(yt.data());
         if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) g->Draw("p");
 
-        TLegend * leg = new TLegend(0.45, 0.15, 0.95, 0.33);
+        TLegend * leg = new TLegend(0.20, 0.16, 0.70, 0.32);
         leg->SetTextFont(43);
         leg->SetTextSize(16);
         leg->SetFillColor(kWhite);
         leg->SetBorderSize(0);
 
         string s = "A+B only";
-        if (strncmp(g->GetTitle(),"Graph",5)!=0) {
+        if (strncmp(g->GetTitle(),"g",5)!=0) {
             s = g->GetTitle();
         }
         string append =Form("%5.4f#pm%5.4f",vint,vinte);
@@ -167,7 +167,7 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(g,s.data(),"lp");
 
         string sA = "A only";
-        if (strncmp(gA->GetTitle(),"Graph",5)!=0) {
+        if (strncmp(gA->GetTitle(),"gA",5)!=0) {
             sA = gA->GetTitle();
         }
         append =Form("%5.4f#pm%5.4f",vintA,vintAe);
@@ -175,7 +175,7 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         if (strncmp(gA->GetTitle(),"NOGOOD",6)!=0) leg->AddEntry(gA,sA.data(),"lp");
 
         string sB = "B only";
-        if (strncmp(gB->GetTitle(),"Graph",5)!=0) {
+        if (strncmp(gB->GetTitle(),"gB",5)!=0) {
             sB = gB->GetTitle();
         }
         append =Form("%5.4f#pm%5.4f",vintB,vintBe);
@@ -187,7 +187,7 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         if (strncmp(gA->GetTitle(),"NOGOOD",6)!=0) gA->Draw("p");
         if (strncmp(gB->GetTitle(),"NOGOOD",6)!=0) gB->Draw("p");
         if (strncmp(g->GetTitle(),"NOGOOD",6)!=0) g->Draw("p");
-        TPaveText * text = new TPaveText(0.18, 0.34, 0.30, 0.40, "NDC");
+        TPaveText * text = new TPaveText(0.21, 0.31, 0.41, 0.37, "NDC");
         text->SetTextFont(43);
         text->SetTextSize(18);
         text->SetFillColor(0);
@@ -210,14 +210,14 @@ void GetVNCreate( int replay , int bin , TGraphErrors * &gint, TGraphErrors * &g
         t2->AddText(Form("%4.1f < #eta < %4.1f",EtaMin,EtaMax));
         t2->Draw();
 
-        TPaveText * t3 = new TPaveText(0.8, 0.8, 0.95, 0.9, "NDC");
-        t3->SetTextFont(43);
-        t3->SetTextSize(18);
-        t3->SetFillColor(0);
-        t3->SetBorderSize(0);
-        t3->SetTextAlign(12);
-        t3->AddText(Form("%4.1f < #eta < %4.1f",EtaMin,EtaMax));
-        t3->Draw();
+        // TPaveText * t3 = new TPaveText(0.8, 0.8, 0.95, 0.9, "NDC");
+        // t3->SetTextFont(43);
+        // t3->SetTextSize(18);
+        // t3->SetFillColor(0);
+        // t3->SetBorderSize(0);
+        // t3->SetTextAlign(12);
+        // t3->AddText(Form("%4.1f < #eta < %4.1f",EtaMin,EtaMax));
+        // t3->Draw();
 
         TDirectory * save = gDirectory;
         toutsubsubsub->cd();
