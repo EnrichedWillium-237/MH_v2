@@ -7,9 +7,10 @@
 # include "TLegend.h"
 # include "TPaveText.h"
 
-void bug() {
-    cout << " !!! " << __LINE__ << " !!! " << endl;
-}
+// void bug() {
+//     cout << " !!! " << __LINE__ << " !!! " << endl;
+// }
+// need to work on this one some more
 
 void SetTPaveTxt( TPaveText * txtemplate, int txtsize ) {
     txtemplate->SetFillColor(0);
@@ -37,9 +38,18 @@ void GraphToHist( TGraphErrors * gin, TH1D * hout ) {
     }
 }
 
-double ErrorCalc( double x, double y, double delx, double dely ) {
+// propagate errors of ratios for partially correlated uncertainties
+double ErrRatCalc( double x, double y, double delx, double dely ) {
     double f = x;
     f/=y;
     double delf = f*sqrt( pow(delx/x,2) + pow(dely/y,2) - 2*(delx/x)*(dely/y) );
+    return delf;
+}
+
+// propagate errors of differences for partially correlated uncertainties
+double ErrDiffCalc( double x, double y, double delx, double dely ) {
+    double f = x;
+    f-=y;
+    double delf = sqrt( delx*delx + dely*dely - 2*delx*dely );
     return delf;
 }
