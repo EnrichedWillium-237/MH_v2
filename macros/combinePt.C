@@ -20,8 +20,6 @@ using namespace hi;
 static const int ncentbins = 13;
 static const int cminCENT[] = {0,  5, 10, 15, 20, 25, 30, 35, 40, 50, 60,  0, 20,  60};
 static const int cmaxCENT[] = {5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 20, 60, 100};
-// static const int netabins = 12;
-// static const double etabins[] = {-2.4, -2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0,  2.4};
 static const int netabins = 14;
 static const double eminETA[] = {-2.4, -2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0, -2.4,  0.0};
 static const double emaxETA[] = {-2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0,  2.4,  0.0,  2.4};
@@ -158,10 +156,10 @@ void GetPtDists( TString input = "MH" )
         }
     }
 
-    if (isTight2) cout << "processing MH_tight2_hists.root... " << endl;
-    else if (isWide) cout << "processing MH_wide_hists.root... " << endl;
-    else if (isNarrow) cout << "processing MH_narrow_hists.root... " << endl;
-    else cout << "processing MH_hists.root... " << endl;
+    if (isTight2) cout << "Accessing MH_tight2_hists.root... " << endl;
+    else if (isWide) cout << "Accessing MH_wide_hists.root... " << endl;
+    else if (isNarrow) cout << "Accessing MH_narrow_hists.root... " << endl;
+    else cout << "Accessing MH_hists.root... " << endl;
 
     for (int ebin = 0; ebin<netabins; ebin++) {
         TDirectory * tdebin = (TDirectory *) tdir->mkdir(Form("eta_%s",etags[ebin].Data()));
