@@ -1,4 +1,5 @@
 # include "TCanvas.h"
+# include "TDirectory.h"
 # include "TFile.h"
 # include "TGraphErrors.h"
 # include "TH1.h"
@@ -153,14 +154,12 @@ TFile * tfin_tight2;
 TFile * tfin_narrow;
 TFile * tfin_wide;
 
-void plotPtDistEven()
-{
-    TH1::SetDefaultSumw2();
+TFile * tfoutPt;
+TFile * tfoutEta;
 
-    tfin_nominal = new TFile("MH_hists.root","read");
-    tfin_tight2 = new TFile("MH_tight2_hists.root","read");
-    tfin_narrow = new TFile("MH_narrow_hists.root","read");
-    tfin_wide = new TFile("MH_wide_hists.root","read");
+void GetPtDists()
+{
+    tfoutPt = new TFile("results/MH_combined_Pt.root","recreate");
 
     for (int i = 0; i<NANALS; i++) {
         for (int ebin = 0; ebin<netabins; ebin++) {
@@ -180,6 +179,51 @@ void plotPtDistEven()
                 if (i == 9) gN1MCp22SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
                 if (i == 10) gN1MCp18SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
                 if (i == 11) gN1MCp14SUB3[cbin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+
+
+                if (i == 0) gN1MCm22SUB2_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 1) gN1MCm18SUB2_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 2) gN1MCm14SUB2_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 3) gN1MCp22SUB2_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 4) gN1MCp18SUB2_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 5) gN1MCp14SUB2_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+
+                if (i == 6) gN1MCm22SUB3_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 7) gN1MCm18SUB3_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 8) gN1MCm14SUB3_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 9) gN1MCp22SUB3_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 10) gN1MCp18SUB3_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 11) gN1MCp14SUB3_tight2[cbin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+
+
+                if (i == 0) gN1MCm22SUB2_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 1) gN1MCm18SUB2_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 2) gN1MCm14SUB2_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 3) gN1MCp22SUB2_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 4) gN1MCp18SUB2_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 5) gN1MCp14SUB2_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+
+                if (i == 6) gN1MCm22SUB3_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 7) gN1MCm18SUB3_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 8) gN1MCm14SUB3_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 9) gN1MCp22SUB3_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 10) gN1MCp18SUB3_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 11) gN1MCp14SUB3_narrow[cbin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+
+
+                if (i == 0) gN1MCm22SUB2_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 1) gN1MCm18SUB2_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 2) gN1MCm14SUB2_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 3) gN1MCp22SUB2_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 4) gN1MCp18SUB2_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 5) gN1MCp14SUB2_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+
+                if (i == 6) gN1MCm22SUB3_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 7) gN1MCm18SUB3_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 8) gN1MCm14SUB3_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 9) gN1MCp22SUB3_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 10) gN1MCp18SUB3_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 11) gN1MCp14SUB3_wide[cbin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
             }
         }
     }
@@ -257,6 +301,7 @@ void plotPtDistEven()
             hN1MCp18SUB3_wide[ebin][cbin] = (TH1D *) hN1MCm22SUB2_wide[ebin][cbin]->Clone(Form("N1MCp18SUB3_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             hN1MCp14SUB3_wide[ebin][cbin] = (TH1D *) hN1MCm22SUB2_wide[ebin][cbin]->Clone(Form("N1MCp14SUB3_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
 
+
             GraphToHist( gN1MCm22SUB2[ebin][cbin], hN1MCm22SUB2[ebin][cbin] );
             GraphToHist( gN1MCm18SUB2[ebin][cbin], hN1MCp18SUB2[ebin][cbin] );
             GraphToHist( gN1MCm14SUB2[ebin][cbin], hN1MCp14SUB2[ebin][cbin] );
@@ -270,13 +315,73 @@ void plotPtDistEven()
             GraphToHist( gN1MCp22SUB3[ebin][cbin], hN1MCp22SUB3[ebin][cbin] );
             GraphToHist( gN1MCp18SUB3[ebin][cbin], hN1MCp18SUB3[ebin][cbin] );
             GraphToHist( gN1MCp14SUB3[ebin][cbin], hN1MCp14SUB3[ebin][cbin] );
+
+
+            GraphToHist( gN1MCm22SUB2_tight2[ebin][cbin], hN1MCm22SUB2_tight2[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB2_tight2[ebin][cbin], hN1MCp18SUB2_tight2[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB2_tight2[ebin][cbin], hN1MCp14SUB2_tight2[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB2_tight2[ebin][cbin], hN1MCp22SUB2_tight2[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB2_tight2[ebin][cbin], hN1MCp18SUB2_tight2[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB2_tight2[ebin][cbin], hN1MCp14SUB2_tight2[ebin][cbin] );
+
+            GraphToHist( gN1MCm22SUB3_tight2[ebin][cbin], hN1MCm22SUB3_tight2[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB3_tight2[ebin][cbin], hN1MCp18SUB3_tight2[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB3_tight2[ebin][cbin], hN1MCp14SUB3_tight2[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB3_tight2[ebin][cbin], hN1MCp22SUB3_tight2[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB3_tight2[ebin][cbin], hN1MCp18SUB3_tight2[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB3_tight2[ebin][cbin], hN1MCp14SUB3_tight2[ebin][cbin] );
+
+
+            GraphToHist( gN1MCm22SUB2_narrow[ebin][cbin], hN1MCm22SUB2_narrow[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB2_narrow[ebin][cbin], hN1MCp18SUB2_narrow[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB2_narrow[ebin][cbin], hN1MCp14SUB2_narrow[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB2_narrow[ebin][cbin], hN1MCp22SUB2_narrow[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB2_narrow[ebin][cbin], hN1MCp18SUB2_narrow[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB2_narrow[ebin][cbin], hN1MCp14SUB2_narrow[ebin][cbin] );
+
+            GraphToHist( gN1MCm22SUB3_narrow[ebin][cbin], hN1MCm22SUB3_narrow[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB3_narrow[ebin][cbin], hN1MCp18SUB3_narrow[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB3_narrow[ebin][cbin], hN1MCp14SUB3_narrow[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB3_narrow[ebin][cbin], hN1MCp22SUB3_narrow[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB3_narrow[ebin][cbin], hN1MCp18SUB3_narrow[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB3_narrow[ebin][cbin], hN1MCp14SUB3_narrow[ebin][cbin] );
+
+
+            GraphToHist( gN1MCm22SUB2_wide[ebin][cbin], hN1MCm22SUB2_wide[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB2_wide[ebin][cbin], hN1MCp18SUB2_wide[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB2_wide[ebin][cbin], hN1MCp14SUB2_wide[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB2_wide[ebin][cbin], hN1MCp22SUB2_wide[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB2_wide[ebin][cbin], hN1MCp18SUB2_wide[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB2_wide[ebin][cbin], hN1MCp14SUB2_wide[ebin][cbin] );
+
+            GraphToHist( gN1MCm22SUB3_wide[ebin][cbin], hN1MCm22SUB3_wide[ebin][cbin] );
+            GraphToHist( gN1MCm18SUB3_wide[ebin][cbin], hN1MCp18SUB3_wide[ebin][cbin] );
+            GraphToHist( gN1MCm14SUB3_wide[ebin][cbin], hN1MCp14SUB3_wide[ebin][cbin] );
+            GraphToHist( gN1MCp22SUB3_wide[ebin][cbin], hN1MCp22SUB3_wide[ebin][cbin] );
+            GraphToHist( gN1MCp18SUB3_wide[ebin][cbin], hN1MCp18SUB3_wide[ebin][cbin] );
+            GraphToHist( gN1MCp14SUB3_wide[ebin][cbin], hN1MCp14SUB3_wide[ebin][cbin] );
         }
     }
+
+}
+
+void combineHists() {
+
+    TH1::SetDefaultSumw2();
+
+    tfin_nominal = new TFile("MH_hists.root","read");
+    tfin_tight2 = new TFile("MH_tight2_hists.root","read");
+    tfin_narrow = new TFile("MH_narrow_hists.root","read");
+    tfin_wide = new TFile("MH_wide_hists.root","read");
+
+    if (!fopen("results","r")) system("mkdir results");
+
+    GetPtDists();
+
+    GetEtaDists();
+
     tfin_nominal->Close();
     tfin_tight2->Close();
     tfin_narrow->Close();
     tfin_wide->Close();
-
-
-
 }
