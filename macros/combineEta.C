@@ -563,214 +563,207 @@ void GetEtaDists()
         hN112BSUB3_tight2[cbin]->Write();
     }
 
-        for (int cbin = 0; cbin<ncentbins; cbin++) {
-            TDirectory * tdcbin = (TDirectory *) tdir_narrow->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            tdcbin->cd();
+    for (int cbin = 0; cbin<ncentbins; cbin++) {
+        TDirectory * tdcbin = (TDirectory *) tdir_narrow->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        tdcbin->cd();
 
-            hN1MCm22SUB2_narrow[cbin] = new TH1D(Form("N1MCm22SUB2_narrow_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
-            hN1MCm22SUB2_narrow[cbin]->SetStats(0);
-            hN1MCm22SUB2_narrow[cbin]->SetXTitle("p_{T} (GeV/c)");
-            hN1MCm22SUB2_narrow[cbin]->SetYTitle("v_{1} (narrow cuts)");
+        hN1MCm22SUB2_narrow[cbin] = new TH1D(Form("N1MCm22SUB2_narrow_%s_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
+        hN1MCm22SUB2_narrow[cbin]->SetStats(0);
+        hN1MCm22SUB2_narrow[cbin]->SetXTitle("#eta");
+        hN1MCm22SUB2_narrow[cbin]->SetYTitle("v_{1} (narrow cuts)");
 
-            hN1MCm18SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm18SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCm14SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm14SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp22SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp22SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp18SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp18SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp14SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp14SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm18SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm18SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm14SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm14SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp22SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp22SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp18SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp18SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp14SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp14SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            hN1MCm18SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm18SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCm14SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm14SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp22SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp22SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp18SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp18SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp14SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp14SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm18SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm18SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm14SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCm14SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp22SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp22SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp18SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp18SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp14SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1MCp14SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            hN1SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1ASUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1ASUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1BSUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1BSUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112ASUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112ASUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112BSUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112BSUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1ASUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1ASUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1BSUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1BSUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112SUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112ASUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112ASUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112BSUB2_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112BSUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            hN1SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1ASUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1ASUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1BSUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1BSUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112ASUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112ASUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112BSUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112BSUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1ASUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1ASUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1BSUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N1BSUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112SUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112SUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112ASUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112ASUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112BSUB3_narrow[cbin] = (TH1D *) hN1MCm22SUB2_narrow[cbin]->Clone(Form("N112BSUB3_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            GraphToHist( gN1MCm22SUB2_narrow[cbin], hN1MCm22SUB2_narrow[cbin] );
-            GraphToHist( gN1MCm18SUB2_narrow[cbin], hN1MCp18SUB2_narrow[cbin] );
-            GraphToHist( gN1MCm14SUB2_narrow[cbin], hN1MCp14SUB2_narrow[cbin] );
-            GraphToHist( gN1MCp22SUB2_narrow[cbin], hN1MCp22SUB2_narrow[cbin] );
-            GraphToHist( gN1MCp18SUB2_narrow[cbin], hN1MCp18SUB2_narrow[cbin] );
-            GraphToHist( gN1MCp14SUB2_narrow[cbin], hN1MCp14SUB2_narrow[cbin] );
+        GraphToHist( gN1MCm22SUB2_narrow[cbin], hN1MCm22SUB2_narrow[cbin] );
+        GraphToHist( gN1MCm18SUB2_narrow[cbin], hN1MCp18SUB2_narrow[cbin] );
+        GraphToHist( gN1MCm14SUB2_narrow[cbin], hN1MCp14SUB2_narrow[cbin] );
+        GraphToHist( gN1MCp22SUB2_narrow[cbin], hN1MCp22SUB2_narrow[cbin] );
+        GraphToHist( gN1MCp18SUB2_narrow[cbin], hN1MCp18SUB2_narrow[cbin] );
+        GraphToHist( gN1MCp14SUB2_narrow[cbin], hN1MCp14SUB2_narrow[cbin] );
 
-            GraphToHist( gN1MCm22SUB3_narrow[cbin], hN1MCm22SUB3_narrow[cbin] );
-            GraphToHist( gN1MCm18SUB3_narrow[cbin], hN1MCp18SUB3_narrow[cbin] );
-            GraphToHist( gN1MCm14SUB3_narrow[cbin], hN1MCp14SUB3_narrow[cbin] );
-            GraphToHist( gN1MCp22SUB3_narrow[cbin], hN1MCp22SUB3_narrow[cbin] );
-            GraphToHist( gN1MCp18SUB3_narrow[cbin], hN1MCp18SUB3_narrow[cbin] );
-            GraphToHist( gN1MCp14SUB3_narrow[cbin], hN1MCp14SUB3_narrow[cbin] );
+        GraphToHist( gN1MCm22SUB3_narrow[cbin], hN1MCm22SUB3_narrow[cbin] );
+        GraphToHist( gN1MCm18SUB3_narrow[cbin], hN1MCp18SUB3_narrow[cbin] );
+        GraphToHist( gN1MCm14SUB3_narrow[cbin], hN1MCp14SUB3_narrow[cbin] );
+        GraphToHist( gN1MCp22SUB3_narrow[cbin], hN1MCp22SUB3_narrow[cbin] );
+        GraphToHist( gN1MCp18SUB3_narrow[cbin], hN1MCp18SUB3_narrow[cbin] );
+        GraphToHist( gN1MCp14SUB3_narrow[cbin], hN1MCp14SUB3_narrow[cbin] );
 
-            GraphToHist( gN1SUB2_narrow[cbin], hN1SUB2_narrow[cbin] );
-            GraphToHist( gN1ASUB2_narrow[cbin], hN1ASUB2_narrow[cbin] );
-            GraphToHist( gN1BSUB2_narrow[cbin], hN1BSUB2_narrow[cbin] );
-            GraphToHist( gN112SUB2_narrow[cbin], hN112SUB2_narrow[cbin] );
-            GraphToHist( gN112ASUB2_narrow[cbin], hN112ASUB2_narrow[cbin] );
-            GraphToHist( gN112BSUB2_narrow[cbin], hN112BSUB2_narrow[cbin] );
+        GraphToHist( gN1SUB2_narrow[cbin], hN1SUB2_narrow[cbin] );
+        GraphToHist( gN1ASUB2_narrow[cbin], hN1ASUB2_narrow[cbin] );
+        GraphToHist( gN1BSUB2_narrow[cbin], hN1BSUB2_narrow[cbin] );
+        GraphToHist( gN112SUB2_narrow[cbin], hN112SUB2_narrow[cbin] );
+        GraphToHist( gN112ASUB2_narrow[cbin], hN112ASUB2_narrow[cbin] );
+        GraphToHist( gN112BSUB2_narrow[cbin], hN112BSUB2_narrow[cbin] );
 
-            GraphToHist( gN1SUB3_narrow[cbin], hN1SUB3_narrow[cbin] );
-            GraphToHist( gN1ASUB3_narrow[cbin], hN1ASUB3_narrow[cbin] );
-            GraphToHist( gN1BSUB3_narrow[cbin], hN1BSUB3_narrow[cbin] );
-            GraphToHist( gN112SUB3_narrow[cbin], hN112SUB3_narrow[cbin] );
-            GraphToHist( gN112ASUB3_narrow[cbin], hN112ASUB3_narrow[cbin] );
-            GraphToHist( gN112BSUB3_narrow[cbin], hN112BSUB3_narrow[cbin] );
+        GraphToHist( gN1SUB3_narrow[cbin], hN1SUB3_narrow[cbin] );
+        GraphToHist( gN1ASUB3_narrow[cbin], hN1ASUB3_narrow[cbin] );
+        GraphToHist( gN1BSUB3_narrow[cbin], hN1BSUB3_narrow[cbin] );
+        GraphToHist( gN112SUB3_narrow[cbin], hN112SUB3_narrow[cbin] );
+        GraphToHist( gN112ASUB3_narrow[cbin], hN112ASUB3_narrow[cbin] );
+        GraphToHist( gN112BSUB3_narrow[cbin], hN112BSUB3_narrow[cbin] );
 
-            hN1MCm22SUB2_narrow[cbin]->Write();
-            hN1MCm18SUB2_narrow[cbin]->Write();
-            hN1MCm14SUB2_narrow[cbin]->Write();
-            hN1MCp22SUB2_narrow[cbin]->Write();
-            hN1MCp18SUB2_narrow[cbin]->Write();
-            hN1MCp14SUB2_narrow[cbin]->Write();
+        hN1MCm22SUB2_narrow[cbin]->Write();
+        hN1MCm18SUB2_narrow[cbin]->Write();
+        hN1MCm14SUB2_narrow[cbin]->Write();
+        hN1MCp22SUB2_narrow[cbin]->Write();
+        hN1MCp18SUB2_narrow[cbin]->Write();
+        hN1MCp14SUB2_narrow[cbin]->Write();
 
-            hN1MCm22SUB3_narrow[cbin]->Write();
-            hN1MCm18SUB3_narrow[cbin]->Write();
-            hN1MCm14SUB3_narrow[cbin]->Write();
-            hN1MCp22SUB3_narrow[cbin]->Write();
-            hN1MCp18SUB3_narrow[cbin]->Write();
-            hN1MCp14SUB3_narrow[cbin]->Write();
+        hN1MCm22SUB3_narrow[cbin]->Write();
+        hN1MCm18SUB3_narrow[cbin]->Write();
+        hN1MCm14SUB3_narrow[cbin]->Write();
+        hN1MCp22SUB3_narrow[cbin]->Write();
+        hN1MCp18SUB3_narrow[cbin]->Write();
+        hN1MCp14SUB3_narrow[cbin]->Write();
 
-            hN1SUB2_narrow[cbin]->Write();
-            hN1ASUB2_narrow[cbin]->Write();
-            hN1BSUB2_narrow[cbin]->Write();
-            hN112SUB2_narrow[cbin]->Write();
-            hN112ASUB2_narrow[cbin]->Write();
-            hN112BSUB2_narrow[cbin]->Write();
+        hN1SUB2_narrow[cbin]->Write();
+        hN1ASUB2_narrow[cbin]->Write();
+        hN1BSUB2_narrow[cbin]->Write();
+        hN112SUB2_narrow[cbin]->Write();
+        hN112ASUB2_narrow[cbin]->Write();
+        hN112BSUB2_narrow[cbin]->Write();
 
-            hN1SUB3_narrow[cbin]->Write();
-            hN1ASUB3_narrow[cbin]->Write();
-            hN1BSUB3_narrow[cbin]->Write();
-            hN112SUB3_narrow[cbin]->Write();
-            hN112ASUB3_narrow[cbin]->Write();
-            hN112BSUB3_narrow[cbin]->Write();
-        }
+        hN1SUB3_narrow[cbin]->Write();
+        hN1ASUB3_narrow[cbin]->Write();
+        hN1BSUB3_narrow[cbin]->Write();
+        hN112SUB3_narrow[cbin]->Write();
+        hN112ASUB3_narrow[cbin]->Write();
+        hN112BSUB3_narrow[cbin]->Write();
     }
 
-    for (int ebin = 0; ebin<netabins; ebin++) {
-        TDirectory * tdebin = (TDirectory *) tdir_wide->mkdir(Form("eta_%s",etags[ebin].Data()));
-        for (int cbin = 0; cbin<ncentbins; cbin++) {
-            tdir_wide * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            tdcbin->cd();
+    for (int cbin = 0; cbin<ncentbins; cbin++) {
+        TDirectory * tdcbin = (TDirectory *) tdir_wide->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        tdcbin->cd();
 
-            hN1MCm22SUB2_wide[cbin] = new TH1D(Form("N1MCm22SUB2_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
-            hN1MCm22SUB2_wide[cbin]->SetStats(0);
-            hN1MCm22SUB2_wide[cbin]->SetXTitle("p_{T} (GeV/c)");
-            hN1MCm22SUB2_wide[cbin]->SetYTitle("v_{1} (wide cuts)");
+        hN1MCm22SUB2_wide[cbin] = new TH1D(Form("N1MCm22SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
+        hN1MCm22SUB2_wide[cbin]->SetStats(0);
+        hN1MCm22SUB2_wide[cbin]->SetXTitle("#eta");
+        hN1MCm22SUB2_wide[cbin]->SetYTitle("v_{1} (wide cuts)");
 
-            hN1MCm18SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm18SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCm14SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm14SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp22SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp22SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp18SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp18SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp14SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp14SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm18SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm18SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm14SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm14SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp22SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp22SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp18SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp18SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp14SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp14SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            hN1MCm18SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm18SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCm14SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm14SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp22SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp22SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp18SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp18SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1MCp14SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp14SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm18SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm18SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCm14SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCm14SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp22SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp22SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp18SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp18SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MCp14SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1MCp14SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            hN1SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1ASUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1ASUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1BSUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1BSUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112ASUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112ASUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112BSUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112BSUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1ASUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1ASUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1BSUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1BSUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112SUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112ASUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112ASUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112BSUB2_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112BSUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            hN1SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1ASUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1ASUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN1BSUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1BSUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112ASUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112ASUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-            hN112BSUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112BSUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1ASUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1ASUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1BSUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N1BSUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112SUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112SUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112ASUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112ASUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN112BSUB3_wide[cbin] = (TH1D *) hN1MCm22SUB2_wide[cbin]->Clone(Form("N112BSUB3_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-            GraphToHist( gN1MCm22SUB2_wide[cbin], hN1MCm22SUB2_wide[cbin] );
-            GraphToHist( gN1MCm18SUB2_wide[cbin], hN1MCp18SUB2_wide[cbin] );
-            GraphToHist( gN1MCm14SUB2_wide[cbin], hN1MCp14SUB2_wide[cbin] );
-            GraphToHist( gN1MCp22SUB2_wide[cbin], hN1MCp22SUB2_wide[cbin] );
-            GraphToHist( gN1MCp18SUB2_wide[cbin], hN1MCp18SUB2_wide[cbin] );
-            GraphToHist( gN1MCp14SUB2_wide[cbin], hN1MCp14SUB2_wide[cbin] );
+        GraphToHist( gN1MCm22SUB2_wide[cbin], hN1MCm22SUB2_wide[cbin] );
+        GraphToHist( gN1MCm18SUB2_wide[cbin], hN1MCp18SUB2_wide[cbin] );
+        GraphToHist( gN1MCm14SUB2_wide[cbin], hN1MCp14SUB2_wide[cbin] );
+        GraphToHist( gN1MCp22SUB2_wide[cbin], hN1MCp22SUB2_wide[cbin] );
+        GraphToHist( gN1MCp18SUB2_wide[cbin], hN1MCp18SUB2_wide[cbin] );
+        GraphToHist( gN1MCp14SUB2_wide[cbin], hN1MCp14SUB2_wide[cbin] );
 
-            GraphToHist( gN1MCm22SUB3_wide[cbin], hN1MCm22SUB3_wide[cbin] );
-            GraphToHist( gN1MCm18SUB3_wide[cbin], hN1MCp18SUB3_wide[cbin] );
-            GraphToHist( gN1MCm14SUB3_wide[cbin], hN1MCp14SUB3_wide[cbin] );
-            GraphToHist( gN1MCp22SUB3_wide[cbin], hN1MCp22SUB3_wide[cbin] );
-            GraphToHist( gN1MCp18SUB3_wide[cbin], hN1MCp18SUB3_wide[cbin] );
-            GraphToHist( gN1MCp14SUB3_wide[cbin], hN1MCp14SUB3_wide[cbin] );
+        GraphToHist( gN1MCm22SUB3_wide[cbin], hN1MCm22SUB3_wide[cbin] );
+        GraphToHist( gN1MCm18SUB3_wide[cbin], hN1MCp18SUB3_wide[cbin] );
+        GraphToHist( gN1MCm14SUB3_wide[cbin], hN1MCp14SUB3_wide[cbin] );
+        GraphToHist( gN1MCp22SUB3_wide[cbin], hN1MCp22SUB3_wide[cbin] );
+        GraphToHist( gN1MCp18SUB3_wide[cbin], hN1MCp18SUB3_wide[cbin] );
+        GraphToHist( gN1MCp14SUB3_wide[cbin], hN1MCp14SUB3_wide[cbin] );
 
-            GraphToHist( gN1SUB2_wide[cbin], hN1SUB2_wide[cbin] );
-            GraphToHist( gN1ASUB2_wide[cbin], hN1ASUB2_wide[cbin] );
-            GraphToHist( gN1BSUB2_wide[cbin], hN1BSUB2_wide[cbin] );
-            GraphToHist( gN112SUB2_wide[cbin], hN112SUB2_wide[cbin] );
-            GraphToHist( gN112ASUB2_wide[cbin], hN112ASUB2_wide[cbin] );
-            GraphToHist( gN112BSUB2_wide[cbin], hN112BSUB2_wide[cbin] );
+        GraphToHist( gN1SUB2_wide[cbin], hN1SUB2_wide[cbin] );
+        GraphToHist( gN1ASUB2_wide[cbin], hN1ASUB2_wide[cbin] );
+        GraphToHist( gN1BSUB2_wide[cbin], hN1BSUB2_wide[cbin] );
+        GraphToHist( gN112SUB2_wide[cbin], hN112SUB2_wide[cbin] );
+        GraphToHist( gN112ASUB2_wide[cbin], hN112ASUB2_wide[cbin] );
+        GraphToHist( gN112BSUB2_wide[cbin], hN112BSUB2_wide[cbin] );
 
-            GraphToHist( gN1SUB3_wide[cbin], hN1SUB3_wide[cbin] );
-            GraphToHist( gN1ASUB3_wide[cbin], hN1ASUB3_wide[cbin] );
-            GraphToHist( gN1BSUB3_wide[cbin], hN1BSUB3_wide[cbin] );
-            GraphToHist( gN112SUB3_wide[cbin], hN112SUB3_wide[cbin] );
-            GraphToHist( gN112ASUB3_wide[cbin], hN112ASUB3_wide[cbin] );
-            GraphToHist( gN112BSUB3_wide[cbin], hN112BSUB3_wide[cbin] );
+        GraphToHist( gN1SUB3_wide[cbin], hN1SUB3_wide[cbin] );
+        GraphToHist( gN1ASUB3_wide[cbin], hN1ASUB3_wide[cbin] );
+        GraphToHist( gN1BSUB3_wide[cbin], hN1BSUB3_wide[cbin] );
+        GraphToHist( gN112SUB3_wide[cbin], hN112SUB3_wide[cbin] );
+        GraphToHist( gN112ASUB3_wide[cbin], hN112ASUB3_wide[cbin] );
+        GraphToHist( gN112BSUB3_wide[cbin], hN112BSUB3_wide[cbin] );
 
-            hN1MCm22SUB2_wide[cbin]->Write();
-            hN1MCm18SUB2_wide[cbin]->Write();
-            hN1MCm14SUB2_wide[cbin]->Write();
-            hN1MCp22SUB2_wide[cbin]->Write();
-            hN1MCp18SUB2_wide[cbin]->Write();
-            hN1MCp14SUB2_wide[cbin]->Write();
+        hN1MCm22SUB2_wide[cbin]->Write();
+        hN1MCm18SUB2_wide[cbin]->Write();
+        hN1MCm14SUB2_wide[cbin]->Write();
+        hN1MCp22SUB2_wide[cbin]->Write();
+        hN1MCp18SUB2_wide[cbin]->Write();
+        hN1MCp14SUB2_wide[cbin]->Write();
 
-            hN1MCm22SUB3_wide[cbin]->Write();
-            hN1MCm18SUB3_wide[cbin]->Write();
-            hN1MCm14SUB3_wide[cbin]->Write();
-            hN1MCp22SUB3_wide[cbin]->Write();
-            hN1MCp18SUB3_wide[cbin]->Write();
-            hN1MCp14SUB3_wide[cbin]->Write();
+        hN1MCm22SUB3_wide[cbin]->Write();
+        hN1MCm18SUB3_wide[cbin]->Write();
+        hN1MCm14SUB3_wide[cbin]->Write();
+        hN1MCp22SUB3_wide[cbin]->Write();
+        hN1MCp18SUB3_wide[cbin]->Write();
+        hN1MCp14SUB3_wide[cbin]->Write();
 
-            hN1SUB2_wide[cbin]->Write();
-            hN1ASUB2_wide[cbin]->Write();
-            hN1BSUB2_wide[cbin]->Write();
-            hN112SUB2_wide[cbin]->Write();
-            hN112ASUB2_wide[cbin]->Write();
-            hN112BSUB2_wide[cbin]->Write();
+        hN1SUB2_wide[cbin]->Write();
+        hN1ASUB2_wide[cbin]->Write();
+        hN1BSUB2_wide[cbin]->Write();
+        hN112SUB2_wide[cbin]->Write();
+        hN112ASUB2_wide[cbin]->Write();
+        hN112BSUB2_wide[cbin]->Write();
 
-            hN1SUB3_wide[cbin]->Write();
-            hN1ASUB3_wide[cbin]->Write();
-            hN1BSUB3_wide[cbin]->Write();
-            hN112SUB3_wide[cbin]->Write();
-            hN112ASUB3_wide[cbin]->Write();
-            hN112BSUB3_wide[cbin]->Write();
-        }
+        hN1SUB3_wide[cbin]->Write();
+        hN1ASUB3_wide[cbin]->Write();
+        hN1BSUB3_wide[cbin]->Write();
+        hN112SUB3_wide[cbin]->Write();
+        hN112ASUB3_wide[cbin]->Write();
+        hN112BSUB3_wide[cbin]->Write();
     }
 
     tfout->Close();
 
 }
 
-void combinePt() {
+void combineEta() {
 
     TH1::SetDefaultSumw2();
 
-    tfin_nominal = new TFile("MH_hists.root","read");
-    tfin_tight2 = new TFile("MH_tight2_hists.root","read");
-    tfin_narrow = new TFile("MH_narrow_hists.root","read");
-    tfin_wide = new TFile("MH_wide_hists.root","read");
-
     if (!fopen("results","r")) system("mkdir results");
+    tfout = new TFile("results/MH_combined_Pt.root","recreate");
 
-    GetPtDists();
+    GetPtDists( "MH_hists" );
+    GetPtDists( "MH_tight2_hists" );
+    GetPtDists( "MH_narrow_hists" );
+    GetPtDists( "MH_wide_hists" );
+
     cout << "Pt distributions saved to results/MH_combined_Pt.root" << endl;
+    tfout->Close();
 
-    tfin_nominal->Close();
-    tfin_tight2->Close();
-    tfin_narrow->Close();
-    tfin_wide->Close();
 }
