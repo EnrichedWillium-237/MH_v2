@@ -279,19 +279,19 @@ void GetPtDists()
                 if (i == 10) gN1MCp18SUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
                 if (i == 11) gN1MCp14SUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 12) gN1SUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 13) gN1ASUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 14) gN1BSUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 15) gN112SUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 16) gN112ASUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 17) gN112BSUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
+                if (i == 12) gN1SUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 13) gN1ASUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 14) gN1BSUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 15) gN112SUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 16) gN112ASUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 17) gN112BSUB2[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 18) gN1SUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 19) gN1ASUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 20) gN1BSUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 21) gN112SUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 22) gN112ASUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
-                if (i == 23) gN112BSUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA"))
+                if (i == 18) gN1SUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 19) gN1ASUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 20) gN1BSUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 21) gN112SUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 22) gN112ASUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
+                if (i == 23) gN112BSUB3[ebin][cbin] = (TGraphErrors *) tfin_nominal->Get(Form("%s/gA",mtag.data()));
 
 
                 if (i == 0) gN1MCm22SUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
@@ -308,19 +308,19 @@ void GetPtDists()
                 if (i == 10) gN1MCp18SUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
                 if (i == 11) gN1MCp14SUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 12) gN1SUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 13) gN1ASUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 14) gN1BSUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 15) gN112SUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 16) gN112ASUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 17) gN112BSUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
+                if (i == 12) gN1SUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 13) gN1ASUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 14) gN1BSUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 15) gN112SUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 16) gN112ASUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 17) gN112BSUB2_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 18) gN1SUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 19) gN1ASUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 20) gN1BSUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 21) gN112SUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 22) gN112ASUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
-                if (i == 23) gN112BSUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA"))
+                if (i == 18) gN1SUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 19) gN1ASUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 20) gN1BSUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 21) gN112SUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 22) gN112ASUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
+                if (i == 23) gN112BSUB3_tight2[ebin][cbin] = (TGraphErrors *) tfin_tight2->Get(Form("%s/gA",mtag.data()));
 
 
                 if (i == 0) gN1MCm22SUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
@@ -337,19 +337,19 @@ void GetPtDists()
                 if (i == 10) gN1MCp18SUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
                 if (i == 11) gN1MCp14SUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 12) gN1SUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 13) gN1ASUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 14) gN1BSUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 15) gN112SUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 16) gN112ASUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 17) gN112BSUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
+                if (i == 12) gN1SUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 13) gN1ASUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 14) gN1BSUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 15) gN112SUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 16) gN112ASUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 17) gN112BSUB2_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 18) gN1SUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 19) gN1ASUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 20) gN1BSUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 21) gN112SUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 22) gN112ASUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
-                if (i == 23) gN112BSUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA"))
+                if (i == 18) gN1SUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 19) gN1ASUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 20) gN1BSUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 21) gN112SUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 22) gN112ASUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
+                if (i == 23) gN112BSUB3_narrow[ebin][cbin] = (TGraphErrors *) tfin_narrow->Get(Form("%s/gA",mtag.data()));
 
 
                 if (i == 0) gN1MCm22SUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
@@ -366,33 +366,33 @@ void GetPtDists()
                 if (i == 10) gN1MCp18SUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
                 if (i == 11) gN1MCp14SUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 12) gN1SUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 13) gN1ASUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 14) gN1BSUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 15) gN112SUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 16) gN112ASUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 17) gN112BSUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
+                if (i == 12) gN1SUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 13) gN1ASUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 14) gN1BSUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 15) gN112SUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 16) gN112ASUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 17) gN112BSUB2_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
 
-                if (i == 18) gN1SUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 19) gN1ASUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 20) gN1BSUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 21) gN112SUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 22) gN112ASUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
-                if (i == 23) gN112BSUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA"))
+                if (i == 18) gN1SUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 19) gN1ASUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 20) gN1BSUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 21) gN112SUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 22) gN112ASUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
+                if (i == 23) gN112BSUB3_wide[ebin][cbin] = (TGraphErrors *) tfin_wide->Get(Form("%s/gA",mtag.data()));
             }
         }
     }
 
     for (int ebin = 0; ebin<netabins; ebin++) {
-        TDirectory * tdebin = (TDirectory *) tfout->mkdir(Form("eta_%s",etags[ebin].Data()));
+        TDirectory * tdebin = (TDirectory *) tdir->mkdir(Form("eta_%s",etags[ebin].Data()));
         for (int cbin = 0; cbin<ncentbins; cbin++) {
-            tdir_wide * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+            TDirectory * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
             tdcbin->cd();
 
             hN1MCm22SUB2[ebin][cbin] = new TH1D(Form("N1MCm22SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
             hN1MCm22SUB2[ebin][cbin]->SetStats(0);
             hN1MCm22SUB2[ebin][cbin]->SetXTitle("p_{T} (GeV/c)");
-            hN1MCm22SUB2[ebin][cbin]->SetYTitle("v_{1}^{even}");
+            hN1MCm22SUB2[ebin][cbin]->SetYTitle("v_{1}");
 
             hN1MCm18SUB2[ebin][cbin] = (TH1D *) hN1MCm22SUB2[ebin][cbin]->Clone(Form("N1MCm18SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             hN1MCm14SUB2[ebin][cbin] = (TH1D *) hN1MCm22SUB2[ebin][cbin]->Clone(Form("N1MCm14SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
@@ -481,13 +481,13 @@ void GetPtDists()
     for (int ebin = 0; ebin<netabins; ebin++) {
         TDirectory * tdebin = (TDirectory *) tdir_tight2->mkdir(Form("eta_%s",etags[ebin].Data()));
         for (int cbin = 0; cbin<ncentbins; cbin++) {
-            tdir_wide * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+            TDirectory * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
             tdcbin->cd();
 
             hN1MCm22SUB2_tight2[ebin][cbin] = new TH1D(Form("N1MCm22SUB2_tight2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
             hN1MCm22SUB2_tight2[ebin][cbin]->SetStats(0);
             hN1MCm22SUB2_tight2[ebin][cbin]->SetXTitle("p_{T} (GeV/c)");
-            hN1MCm22SUB2_tight2[ebin][cbin]->SetYTitle("v_{1}^{even} (tight2 cuts)");
+            hN1MCm22SUB2_tight2[ebin][cbin]->SetYTitle("v_{1} (tight2 cuts)");
 
             hN1MCm18SUB2_tight2[ebin][cbin] = (TH1D *) hN1MCm22SUB2_tight2[ebin][cbin]->Clone(Form("N1MCm18SUB2_tight2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             hN1MCm14SUB2_tight2[ebin][cbin] = (TH1D *) hN1MCm22SUB2_tight2[ebin][cbin]->Clone(Form("N1MCm14SUB2_tight2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
@@ -576,13 +576,13 @@ void GetPtDists()
     for (int ebin = 0; ebin<netabins; ebin++) {
         TDirectory * tdebin = (TDirectory *) tdir_narrow->mkdir(Form("eta_%s",etags[ebin].Data()));
         for (int cbin = 0; cbin<ncentbins; cbin++) {
-            tdir_wide * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+            TDirectory * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
             tdcbin->cd();
 
             hN1MCm22SUB2_narrow[ebin][cbin] = new TH1D(Form("N1MCm22SUB2_narrow_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
             hN1MCm22SUB2_narrow[ebin][cbin]->SetStats(0);
             hN1MCm22SUB2_narrow[ebin][cbin]->SetXTitle("p_{T} (GeV/c)");
-            hN1MCm22SUB2_narrow[ebin][cbin]->SetYTitle("v_{1}^{even} (narrow cuts)");
+            hN1MCm22SUB2_narrow[ebin][cbin]->SetYTitle("v_{1} (narrow cuts)");
 
             hN1MCm18SUB2_narrow[ebin][cbin] = (TH1D *) hN1MCm22SUB2_narrow[ebin][cbin]->Clone(Form("N1MCm18SUB2_narrow_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             hN1MCm14SUB2_narrow[ebin][cbin] = (TH1D *) hN1MCm22SUB2_narrow[ebin][cbin]->Clone(Form("N1MCm14SUB2_narrow_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
@@ -671,13 +671,13 @@ void GetPtDists()
     for (int ebin = 0; ebin<netabins; ebin++) {
         TDirectory * tdebin = (TDirectory *) tdir_wide->mkdir(Form("eta_%s",etags[ebin].Data()));
         for (int cbin = 0; cbin<ncentbins; cbin++) {
-            tdir_wide * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+            TDirectory * tdcbin = (TDirectory *) tdebin->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
             tdcbin->cd();
 
             hN1MCm22SUB2_wide[ebin][cbin] = new TH1D(Form("N1MCm22SUB2_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]), "", nptbins, ptbins);
             hN1MCm22SUB2_wide[ebin][cbin]->SetStats(0);
             hN1MCm22SUB2_wide[ebin][cbin]->SetXTitle("p_{T} (GeV/c)");
-            hN1MCm22SUB2_wide[ebin][cbin]->SetYTitle("v_{1}^{even} (wide cuts)");
+            hN1MCm22SUB2_wide[ebin][cbin]->SetYTitle("v_{1} (wide cuts)");
 
             hN1MCm18SUB2_wide[ebin][cbin] = (TH1D *) hN1MCm22SUB2_wide[ebin][cbin]->Clone(Form("N1MCm18SUB2_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             hN1MCm14SUB2_wide[ebin][cbin] = (TH1D *) hN1MCm22SUB2_wide[ebin][cbin]->Clone(Form("N1MCm14SUB2_wide_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
