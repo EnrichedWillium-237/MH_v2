@@ -63,6 +63,93 @@ TH1D * N112ASUB3[netabins][ncentbins];
 TH1D * N112BSUB3[netabins][ncentbins];
 TH1D * N112SUB3[netabins][ncentbins];
 
+
+TH1D * N1MCm22SUB2_tight2[netabins][ncentbins];
+TH1D * N1MCp22SUB2_tight2[netabins][ncentbins];
+TH1D * N1MC22SUB2_tight2[netabins][ncentbins];
+TH1D * N1MCm18SUB2_tight2[netabins][ncentbins];
+TH1D * N1MCp18SUB2_tight2[netabins][ncentbins];
+TH1D * N1MC18SUB2_tight2[netabins][ncentbins];
+
+TH1D * N1MCm22SUB3_tight2[netabins][ncentbins];
+TH1D * N1MCp22SUB3_tight2[netabins][ncentbins];
+TH1D * N1MC22SUB3_tight2[netabins][ncentbins];
+TH1D * N1MCm18SUB3_tight2[netabins][ncentbins];
+TH1D * N1MCp18SUB3_tight2[netabins][ncentbins];
+TH1D * N1MC18SUB3_tight2[netabins][ncentbins];
+
+TH1D * N1ASUB2_tight2[netabins][ncentbins];
+TH1D * N1BSUB2_tight2[netabins][ncentbins];
+TH1D * N1SUB2_tight2[netabins][ncentbins];
+TH1D * N112ASUB2_tight2[netabins][ncentbins];
+TH1D * N112BSUB2_tight2[netabins][ncentbins];
+TH1D * N112SUB2_tight2[netabins][ncentbins];
+
+TH1D * N1ASUB3_tight2[netabins][ncentbins];
+TH1D * N1BSUB3_tight2[netabins][ncentbins];
+TH1D * N1SUB3_tight2[netabins][ncentbins];
+TH1D * N112ASUB3_tight2[netabins][ncentbins];
+TH1D * N112BSUB3_tight2[netabins][ncentbins];
+TH1D * N112SUB3_tight2[netabins][ncentbins];
+
+
+TH1D * N1MCm22SUB2_wide[netabins][ncentbins];
+TH1D * N1MCp22SUB2_wide[netabins][ncentbins];
+TH1D * N1MC22SUB2_wide[netabins][ncentbins];
+TH1D * N1MCm18SUB2_wide[netabins][ncentbins];
+TH1D * N1MCp18SUB2_wide[netabins][ncentbins];
+TH1D * N1MC18SUB2_wide[netabins][ncentbins];
+
+TH1D * N1MCm22SUB3_wide[netabins][ncentbins];
+TH1D * N1MCp22SUB3_wide[netabins][ncentbins];
+TH1D * N1MC22SUB3_wide[netabins][ncentbins];
+TH1D * N1MCm18SUB3_wide[netabins][ncentbins];
+TH1D * N1MCp18SUB3_wide[netabins][ncentbins];
+TH1D * N1MC18SUB3_wide[netabins][ncentbins];
+
+TH1D * N1ASUB2_wide[netabins][ncentbins];
+TH1D * N1BSUB2_wide[netabins][ncentbins];
+TH1D * N1SUB2_wide[netabins][ncentbins];
+TH1D * N112ASUB2_wide[netabins][ncentbins];
+TH1D * N112BSUB2_wide[netabins][ncentbins];
+TH1D * N112SUB2_wide[netabins][ncentbins];
+
+TH1D * N1ASUB3_wide[netabins][ncentbins];
+TH1D * N1BSUB3_wide[netabins][ncentbins];
+TH1D * N1SUB3_wide[netabins][ncentbins];
+TH1D * N112ASUB3_wide[netabins][ncentbins];
+TH1D * N112BSUB3_wide[netabins][ncentbins];
+TH1D * N112SUB3_wide[netabins][ncentbins];
+
+
+TH1D * N1MCm22SUB2_narrow[netabins][ncentbins];
+TH1D * N1MCp22SUB2_narrow[netabins][ncentbins];
+TH1D * N1MC22SUB2_narrow[netabins][ncentbins];
+TH1D * N1MCm18SUB2_narrow[netabins][ncentbins];
+TH1D * N1MCp18SUB2_narrow[netabins][ncentbins];
+TH1D * N1MC18SUB2_narrow[netabins][ncentbins];
+
+TH1D * N1MCm22SUB3_narrow[netabins][ncentbins];
+TH1D * N1MCp22SUB3_narrow[netabins][ncentbins];
+TH1D * N1MC22SUB3_narrow[netabins][ncentbins];
+TH1D * N1MCm18SUB3_narrow[netabins][ncentbins];
+TH1D * N1MCp18SUB3_narrow[netabins][ncentbins];
+TH1D * N1MC18SUB3_narrow[netabins][ncentbins];
+
+TH1D * N1ASUB2_narrow[netabins][ncentbins];
+TH1D * N1BSUB2_narrow[netabins][ncentbins];
+TH1D * N1SUB2_narrow[netabins][ncentbins];
+TH1D * N112ASUB2_narrow[netabins][ncentbins];
+TH1D * N112BSUB2_narrow[netabins][ncentbins];
+TH1D * N112SUB2_narrow[netabins][ncentbins];
+
+TH1D * N1ASUB3_narrow[netabins][ncentbins];
+TH1D * N1BSUB3_narrow[netabins][ncentbins];
+TH1D * N1SUB3_narrow[netabins][ncentbins];
+TH1D * N112ASUB3_narrow[netabins][ncentbins];
+TH1D * N112BSUB3_narrow[netabins][ncentbins];
+TH1D * N112SUB3_narrow[netabins][ncentbins];
+
 TFile * tfin;
 
 void plotPtDist()
@@ -110,6 +197,129 @@ void plotPtDist()
             N112ASUB3[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             N112BSUB3[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             N112SUB3[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+
+
+            mtag = Form("MH_tight2/eta_%s/%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]);
+
+            N1MCm22SUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp22SUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB2_tight2[ebin][cbin] = (TH1D *) N1MCp22SUB2[ebin][cbin]->Clone(Form("N1MC22SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB2_tight2[ebin][cbin]->Add(N1MCm22SUB2[ebin][cbin]);
+            N1MC22SUB2_tight2[ebin][cbin]->Scale(0.5);
+
+            N1MCm18SUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm18SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp18SUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp18SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB2_tight2[ebin][cbin] = (TH1D *) N1MCp18SUB2[ebin][cbin]->Clone(Form("N1MC18SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB2_tight2[ebin][cbin]->Add(N1MCm18SUB2[ebin][cbin]);
+            N1MC18SUB2_tight2[ebin][cbin]->Scale(0.5);
+
+            N1MCm22SUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm22SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp22SUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp22SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB3_tight2[ebin][cbin] = (TH1D *) N1MCp22SUB3[ebin][cbin]->Clone(Form("N1MC22SUB3_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB3_tight2[ebin][cbin]->Add(N1MCm22SUB3[ebin][cbin]);
+            N1MC22SUB3_tight2[ebin][cbin]->Scale(0.5);
+
+            N1MCm18SUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm18SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp18SUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp18SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB3_tight2[ebin][cbin] = (TH1D *) N1MCp18SUB3[ebin][cbin]->Clone(Form("N1MC18SUB3_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB3_tight2[ebin][cbin]->Add(N1MCm18SUB3[ebin][cbin]);
+            N1MC18SUB3_tight2[ebin][cbin]->Scale(0.5);
+
+            N1ASUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1ASUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1BSUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1BSUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1SUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112ASUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112ASUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112BSUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112BSUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112SUB2_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+
+            N1ASUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1BSUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1SUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112ASUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112BSUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112SUB3_tight2[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+
+
+            mtag = Form("MH_wide/eta_%s/%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]);
+
+            N1MCm22SUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp22SUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB2_wide[ebin][cbin] = (TH1D *) N1MCp22SUB2[ebin][cbin]->Clone(Form("N1MC22SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB2_wide[ebin][cbin]->Add(N1MCm22SUB2[ebin][cbin]);
+            N1MC22SUB2_wide[ebin][cbin]->Scale(0.5);
+
+            N1MCm18SUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm18SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp18SUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp18SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB2_wide[ebin][cbin] = (TH1D *) N1MCp18SUB2[ebin][cbin]->Clone(Form("N1MC18SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB2_wide[ebin][cbin]->Add(N1MCm18SUB2[ebin][cbin]);
+            N1MC18SUB2_wide[ebin][cbin]->Scale(0.5);
+
+            N1MCm22SUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm22SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp22SUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp22SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB3_wide[ebin][cbin] = (TH1D *) N1MCp22SUB3[ebin][cbin]->Clone(Form("N1MC22SUB3_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB3_wide[ebin][cbin]->Add(N1MCm22SUB3[ebin][cbin]);
+            N1MC22SUB3_wide[ebin][cbin]->Scale(0.5);
+
+            N1MCm18SUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm18SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp18SUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp18SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB3_wide[ebin][cbin] = (TH1D *) N1MCp18SUB3[ebin][cbin]->Clone(Form("N1MC18SUB3_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB3_wide[ebin][cbin]->Add(N1MCm18SUB3[ebin][cbin]);
+            N1MC18SUB3_wide[ebin][cbin]->Scale(0.5);
+
+            N1ASUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1ASUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1BSUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1BSUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1SUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112ASUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112ASUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112BSUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112BSUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112SUB2_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+
+            N1ASUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1BSUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1SUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112ASUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112BSUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112SUB3_wide[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+
+
+            mtag = Form("MH_narrow/eta_%s/%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]);
+
+            N1MCm22SUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp22SUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB2_narrow[ebin][cbin] = (TH1D *) N1MCp22SUB2[ebin][cbin]->Clone(Form("N1MC22SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB2_narrow[ebin][cbin]->Add(N1MCm22SUB2[ebin][cbin]);
+            N1MC22SUB2_narrow[ebin][cbin]->Scale(0.5);
+
+            N1MCm18SUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm18SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp18SUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp18SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB2_narrow[ebin][cbin] = (TH1D *) N1MCp18SUB2[ebin][cbin]->Clone(Form("N1MC18SUB2_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB2_narrow[ebin][cbin]->Add(N1MCm18SUB2[ebin][cbin]);
+            N1MC18SUB2_narrow[ebin][cbin]->Scale(0.5);
+
+            N1MCm22SUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm22SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp22SUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp22SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB3_narrow[ebin][cbin] = (TH1D *) N1MCp22SUB3[ebin][cbin]->Clone(Form("N1MC22SUB3_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC22SUB3_narrow[ebin][cbin]->Add(N1MCm22SUB3[ebin][cbin]);
+            N1MC22SUB3_narrow[ebin][cbin]->Scale(0.5);
+
+            N1MCm18SUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCm18SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MCp18SUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1MCp18SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB3_narrow[ebin][cbin] = (TH1D *) N1MCp18SUB3[ebin][cbin]->Clone(Form("N1MC18SUB3_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1MC18SUB3_narrow[ebin][cbin]->Add(N1MCm18SUB3[ebin][cbin]);
+            N1MC18SUB3_narrow[ebin][cbin]->Scale(0.5);
+
+            N1ASUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1ASUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1BSUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1BSUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1SUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112ASUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112ASUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112BSUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112BSUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112SUB2_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+
+            N1ASUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1BSUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N1SUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N1SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112ASUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112BSUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
+            N112SUB3_narrow[ebin][cbin] = (TH1D *) tfin->Get(Form("%s/N112SUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
         }
     }
 
@@ -461,7 +671,7 @@ void plotPtDist()
     txratN1MC22SUB2_centscan->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
     txratN1MC22SUB2_centscan->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
     txratN1MC22SUB2_centscan->Draw();
-    cN1MC22SUB2_centscan->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_ratio.png","png");
+    cratN1MC22SUB2_centscan->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_ratio.png","png");
 
 
     TCanvas * cN1MC22SUB3_centscan = new TCanvas("cN1MC22SUB3_centscan","cN1MC22SUB3_centscan",1100,600);
@@ -533,7 +743,7 @@ void plotPtDist()
     txratN1MC22SUB3_centscan->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
     txratN1MC22SUB3_centscan->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
     txratN1MC22SUB3_centscan->Draw();
-    cN1MC22SUB3_centscan->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB3_ratio.png","png");
+    cratN1MC22SUB3_centscan->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB3_ratio.png","png");
 
 
     // cent scan (N1MC18)
@@ -608,7 +818,7 @@ void plotPtDist()
     txratN1MC18SUB2_centscan->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
     txratN1MC18SUB2_centscan->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
     txratN1MC18SUB2_centscan->Draw();
-    cN1MC18SUB2_centscan->Print("results/Pt_Distributions/N1MC18/centscan_N1MCpm18SUB2_ratio.png","png");
+    cratN1MC18SUB2_centscan->Print("results/Pt_Distributions/N1MC18/centscan_N1MCpm18SUB2_ratio.png","png");
 
 
     TCanvas * cN1MC18SUB3_centscan = new TCanvas("cN1MC18SUB3_centscan","cN1MC18SUB3_centscan",1100,600);
@@ -680,6 +890,255 @@ void plotPtDist()
     txratN1MC18SUB3_centscan->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
     txratN1MC18SUB3_centscan->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
     txratN1MC18SUB3_centscan->Draw();
-    cN1MC18SUB3_centscan->Print("results/Pt_Distributions/N1MC18/centscan_N1MCpm18SUB3_ratio.png","png");
+    cratN1MC18SUB3_centscan->Print("results/Pt_Distributions/N1MC18/centscan_N1MCpm18SUB3_ratio.png","png");
+
+
+    // compare nominal with tight2 cent scan (N1MC22)
+    erangeNeg = 13;
+    erangePos = 12;
+    TCanvas * cN1MCm22SUB2_centscan_tight2 = new TCanvas("cN1MCm22SUB2_centscan_tight2","cN1MCm22SUB2_centscan_tight2",1100,600);
+    cN1MCm22SUB2_centscan_tight2->Divide(4,2,0,0);
+    for (int cbin = 0; cbin<8; cbin++) {
+        TPad * padN1MCm22SUB2_centscan_tight2 = (TPad *) cN1MCm22SUB2_centscan_tight2->cd(cbin+1);
+        padN1MCm22SUB2_centscan_tight2->SetGrid();
+        TH1D * hN1MCm22SUB2_centscan_tight2 = (TH1D *) h0->Clone(Form("hN1MCm22SUB2_centscan_tight2_%d",cbin));
+        hN1MCm22SUB2_centscan_tight2->SetYTitle("v_{1}^{even}");
+        hN1MCm22SUB2_centscan_tight2->GetYaxis()->SetRangeUser(-0.03, 0.16);
+        hN1MCm22SUB2_centscan_tight2->Draw();
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerColor(kRed);
+        N1MCm22SUB2[erangeNeg][cbin]->SetLineColor(kRed);
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerStyle(24);
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerSize(1.2);
+        N1MCm22SUB2[erangeNeg][cbin]->Draw("same");
+        N1MCm22SUB2_tight2[erangeNeg][cbin]->SetMarkerColor(kGreen+2);
+        N1MCm22SUB2_tight2[erangeNeg][cbin]->SetLineColor(kGreen+2);
+        N1MCm22SUB2_tight2[erangeNeg][cbin]->SetMarkerStyle(28);
+        N1MCm22SUB2_tight2[erangeNeg][cbin]->SetMarkerSize(1.6);
+        N1MCm22SUB2_tight2[erangeNeg][cbin]->Draw("same");
+        TPaveText * txN1MCm22SUB2_centscan_tight2_c = new TPaveText(0.75, 0.89, 0.89, 0.98, "NDC");
+        SetTPaveTxt(txN1MCm22SUB2_centscan_tight2_c, 16);
+        txN1MCm22SUB2_centscan_tight2_c->AddText(Form("%d-%d%%",cminCENT[cbin],cmaxCENT[cbin]));
+        txN1MCm22SUB2_centscan_tight2_c->Draw();
+    }
+    cN1MCm22SUB2_centscan_tight2->cd(2);
+    TLegend * legN1MCm22SUB2_centscan_tight2 = new TLegend(0.05, 0.73, 0.39, 0.97);
+    SetLegend(legN1MCm22SUB2_centscan_tight2, 16);
+    legN1MCm22SUB2_centscan_tight2->SetHeader("#Psi_{1}^{trk}{2SUB}: -2.4<#eta<-2.0");
+    legN1MCm22SUB2_centscan_tight2->AddEntry(N1MCm22SUB2[erangeNeg][0],"nominal cuts","p");
+    legN1MCm22SUB2_centscan_tight2->AddEntry(N1MCm22SUB2_tight2[erangeNeg][0],"tight2 cuts","p");
+    legN1MCm22SUB2_centscan_tight2->Draw();
+    cN1MCm22SUB2_centscan_tight2->cd(1);
+    TPaveText * txN1MCm22SUB2_centscan_tight2 = new TPaveText(0.24, 0.77, 0.73, 0.97, "NDC");
+    SetTPaveTxt(txN1MCm22SUB2_centscan_tight2, 16);
+    txN1MCm22SUB2_centscan_tight2->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txN1MCm22SUB2_centscan_tight2->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
+    txN1MCm22SUB2_centscan_tight2->Draw();
+    cN1MCm22SUB2_centscan_tight2->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_nom_tight2.png","png");
+
+
+    TCanvas * cratN1MCm22SUB2_centscan_tight2 = new TCanvas("cratN1MCm22SUB2_centscan_tight2","cratN1MCm22SUB2_centscan_tight2",1100,600);
+    cratN1MCm22SUB2_centscan_tight2->Divide(4,2,0,0);
+    for (int cbin = 0; cbin<8; cbin++) {
+        TPad * padratN1MCm22SUB2_centscan_tight2 = (TPad *) cratN1MCm22SUB2_centscan_tight2->cd(cbin+1);
+        padratN1MCm22SUB2_centscan_tight2->SetGrid();
+        TH1D * hratN1MCm22SUB2_centscan_tight2 = (TH1D *) h0->Clone(Form("hratN1MCm22SUB2_centscan_tight2_%d",cbin));
+        hratN1MCm22SUB2_centscan_tight2->SetYTitle("v_{1}^{even}{tight2} / v_{1}^{even}{nominal}");
+        hratN1MCm22SUB2_centscan_tight2->GetYaxis()->SetRangeUser(0.95, 1.05);
+        hratN1MCm22SUB2_centscan_tight2->Draw();
+        TH1D * ratN1MCm22SUB2_centscan_tight2 = (TH1D *) N1MCm22SUB2_tight2[erangeNeg][cbin]->Clone(Form("ratN1MCpm22SUB2_tight2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        ratN1MCm22SUB2_centscan_tight2->Divide(N1MCm22SUB2[erangeNeg][cbin]);
+        for (int k = 1; k<=N1MCm22SUB2_tight2[erangeNeg][cbin]->GetNbinsX(); k++) {
+            double x = N1MCm22SUB2_tight2[erangeNeg][cbin]->GetBinContent(k);
+            double y = N1MCm22SUB2[erangeNeg][cbin]->GetBinContent(k);
+            double xe = N1MCm22SUB2_tight2[erangeNeg][cbin]->GetBinError(k);
+            double ye = N1MCm22SUB2[erangeNeg][cbin]->GetBinError(k);
+            ratN1MCm22SUB2_centscan_tight2->SetBinError(k, ErrRatCalc(x, y, xe, ye));
+        }
+        ratN1MCm22SUB2_centscan_tight2->SetMarkerColor(kBlack);
+        ratN1MCm22SUB2_centscan_tight2->SetLineColor(kBlack);
+        ratN1MCm22SUB2_centscan_tight2->SetMarkerStyle(20);
+        ratN1MCm22SUB2_centscan_tight2->SetMarkerSize(1.1);
+        ratN1MCm22SUB2_centscan_tight2->Draw("same");
+        TPaveText * txratN1MCm22SUB2_centscan_tight2_c = new TPaveText(0.75, 0.89, 0.89, 0.98, "NDC");
+        SetTPaveTxt(txratN1MCm22SUB2_centscan_tight2_c, 16);
+        txratN1MCm22SUB2_centscan_tight2_c->AddText(Form("%d-%d%%",cminCENT[cbin],cmaxCENT[cbin]));
+        txratN1MCm22SUB2_centscan_tight2_c->Draw();
+        TLine * lnratN1MCm22SUB2_centscan_tight2 = new TLine(0.0, 1.0, 12.0, 1.0);
+        lnratN1MCm22SUB2_centscan_tight2->SetLineWidth(2);
+        lnratN1MCm22SUB2_centscan_tight2->Draw();
+    }
+    cratN1MCm22SUB2_centscan_tight2->cd(1);
+    TPaveText * txratN1MCm22SUB2_centscan_tight2 = new TPaveText(0.24, 0.77, 0.73, 0.97, "NDC");
+    SetTPaveTxt(txratN1MCm22SUB2_centscan_tight2, 16);
+    txratN1MCm22SUB2_centscan_tight2->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txratN1MCm22SUB2_centscan_tight2->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
+    txratN1MCm22SUB2_centscan_tight2->Draw();
+    cratN1MCm22SUB2_centscan_tight2->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_nom_tight2_ratio.png","png");
+
+
+    // compare nominal with wide cent scan (N1MC22)
+    erangeNeg = 13;
+    erangePos = 12;
+    TCanvas * cN1MCm22SUB2_centscan_wide = new TCanvas("cN1MCm22SUB2_centscan_wide","cN1MCm22SUB2_centscan_wide",1100,600);
+    cN1MCm22SUB2_centscan_wide->Divide(4,2,0,0);
+    for (int cbin = 0; cbin<8; cbin++) {
+        TPad * padN1MCm22SUB2_centscan_wide = (TPad *) cN1MCm22SUB2_centscan_wide->cd(cbin+1);
+        padN1MCm22SUB2_centscan_wide->SetGrid();
+        TH1D * hN1MCm22SUB2_centscan_wide = (TH1D *) h0->Clone(Form("hN1MCm22SUB2_centscan_wide_%d",cbin));
+        hN1MCm22SUB2_centscan_wide->SetYTitle("v_{1}^{even}");
+        hN1MCm22SUB2_centscan_wide->GetYaxis()->SetRangeUser(-0.03, 0.16);
+        hN1MCm22SUB2_centscan_wide->Draw();
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerColor(kRed);
+        N1MCm22SUB2[erangeNeg][cbin]->SetLineColor(kRed);
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerStyle(24);
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerSize(1.2);
+        N1MCm22SUB2[erangeNeg][cbin]->Draw("same");
+        N1MCm22SUB2_wide[erangeNeg][cbin]->SetMarkerColor(kGreen+2);
+        N1MCm22SUB2_wide[erangeNeg][cbin]->SetLineColor(kGreen+2);
+        N1MCm22SUB2_wide[erangeNeg][cbin]->SetMarkerStyle(28);
+        N1MCm22SUB2_wide[erangeNeg][cbin]->SetMarkerSize(1.6);
+        N1MCm22SUB2_wide[erangeNeg][cbin]->Draw("same");
+        TPaveText * txN1MCm22SUB2_centscan_wide_c = new TPaveText(0.75, 0.89, 0.89, 0.98, "NDC");
+        SetTPaveTxt(txN1MCm22SUB2_centscan_wide_c, 16);
+        txN1MCm22SUB2_centscan_wide_c->AddText(Form("%d-%d%%",cminCENT[cbin],cmaxCENT[cbin]));
+        txN1MCm22SUB2_centscan_wide_c->Draw();
+    }
+    cN1MCm22SUB2_centscan_wide->cd(2);
+    TLegend * legN1MCm22SUB2_centscan_wide = new TLegend(0.05, 0.73, 0.39, 0.97);
+    SetLegend(legN1MCm22SUB2_centscan_wide, 16);
+    legN1MCm22SUB2_centscan_wide->SetHeader("#Psi_{1}^{trk}{2SUB}: -2.4<#eta<-2.0");
+    legN1MCm22SUB2_centscan_wide->AddEntry(N1MCm22SUB2[erangeNeg][0],"nominal cuts","p");
+    legN1MCm22SUB2_centscan_wide->AddEntry(N1MCm22SUB2_wide[erangeNeg][0],"wide cuts","p");
+    legN1MCm22SUB2_centscan_wide->Draw();
+    cN1MCm22SUB2_centscan_wide->cd(1);
+    TPaveText * txN1MCm22SUB2_centscan_wide = new TPaveText(0.24, 0.77, 0.73, 0.97, "NDC");
+    SetTPaveTxt(txN1MCm22SUB2_centscan_wide, 16);
+    txN1MCm22SUB2_centscan_wide->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txN1MCm22SUB2_centscan_wide->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
+    txN1MCm22SUB2_centscan_wide->Draw();
+    cN1MCm22SUB2_centscan_wide->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_nom_wide.png","png");
+
+
+    TCanvas * cratN1MCm22SUB2_centscan_wide = new TCanvas("cratN1MCm22SUB2_centscan_wide","cratN1MCm22SUB2_centscan_wide",1100,600);
+    cratN1MCm22SUB2_centscan_wide->Divide(4,2,0,0);
+    for (int cbin = 0; cbin<8; cbin++) {
+        TPad * padratN1MCm22SUB2_centscan_wide = (TPad *) cratN1MCm22SUB2_centscan_wide->cd(cbin+1);
+        padratN1MCm22SUB2_centscan_wide->SetGrid();
+        TH1D * hratN1MCm22SUB2_centscan_wide = (TH1D *) h0->Clone(Form("hratN1MCm22SUB2_centscan_wide_%d",cbin));
+        hratN1MCm22SUB2_centscan_wide->SetYTitle("v_{1}^{even}{wide} / v_{1}^{even}{nominal}");
+        hratN1MCm22SUB2_centscan_wide->GetYaxis()->SetRangeUser(0.98, 1.02);
+        hratN1MCm22SUB2_centscan_wide->Draw();
+        TH1D * ratN1MCm22SUB2_centscan_wide = (TH1D *) N1MCm22SUB2_wide[erangeNeg][cbin]->Clone(Form("ratN1MCpm22SUB2_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        ratN1MCm22SUB2_centscan_wide->Divide(N1MCm22SUB2[erangeNeg][cbin]);
+        for (int k = 1; k<=N1MCm22SUB2_wide[erangeNeg][cbin]->GetNbinsX(); k++) {
+            double x = N1MCm22SUB2_wide[erangeNeg][cbin]->GetBinContent(k);
+            double y = N1MCm22SUB2[erangeNeg][cbin]->GetBinContent(k);
+            double xe = N1MCm22SUB2_wide[erangeNeg][cbin]->GetBinError(k);
+            double ye = N1MCm22SUB2[erangeNeg][cbin]->GetBinError(k);
+            ratN1MCm22SUB2_centscan_wide->SetBinError(k, 0.3*ErrRatCalc(x, y, xe, ye));
+        }
+        ratN1MCm22SUB2_centscan_wide->SetMarkerColor(kBlack);
+        ratN1MCm22SUB2_centscan_wide->SetLineColor(kBlack);
+        ratN1MCm22SUB2_centscan_wide->SetMarkerStyle(20);
+        ratN1MCm22SUB2_centscan_wide->SetMarkerSize(1.1);
+        ratN1MCm22SUB2_centscan_wide->Draw("same");
+        TPaveText * txratN1MCm22SUB2_centscan_wide_c = new TPaveText(0.75, 0.89, 0.89, 0.98, "NDC");
+        SetTPaveTxt(txratN1MCm22SUB2_centscan_wide_c, 16);
+        txratN1MCm22SUB2_centscan_wide_c->AddText(Form("%d-%d%%",cminCENT[cbin],cmaxCENT[cbin]));
+        txratN1MCm22SUB2_centscan_wide_c->Draw();
+        TLine * lnratN1MCm22SUB2_centscan_wide = new TLine(0.0, 1.0, 12.0, 1.0);
+        lnratN1MCm22SUB2_centscan_wide->SetLineWidth(2);
+        lnratN1MCm22SUB2_centscan_wide->Draw();
+    }
+    cratN1MCm22SUB2_centscan_wide->cd(1);
+    TPaveText * txratN1MCm22SUB2_centscan_wide = new TPaveText(0.24, 0.77, 0.73, 0.97, "NDC");
+    SetTPaveTxt(txratN1MCm22SUB2_centscan_wide, 16);
+    txratN1MCm22SUB2_centscan_wide->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txratN1MCm22SUB2_centscan_wide->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
+    txratN1MCm22SUB2_centscan_wide->Draw();
+    cratN1MCm22SUB2_centscan_wide->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_nom_wide_ratio.png","png");
+
+
+    // compare nominal with narrow cent scan (N1MC22)
+    erangeNeg = 13;
+    erangePos = 12;
+    TCanvas * cN1MCm22SUB2_centscan_narrow = new TCanvas("cN1MCm22SUB2_centscan_narrow","cN1MCm22SUB2_centscan_narrow",1100,600);
+    cN1MCm22SUB2_centscan_narrow->Divide(4,2,0,0);
+    for (int cbin = 0; cbin<8; cbin++) {
+        TPad * padN1MCm22SUB2_centscan_narrow = (TPad *) cN1MCm22SUB2_centscan_narrow->cd(cbin+1);
+        padN1MCm22SUB2_centscan_narrow->SetGrid();
+        TH1D * hN1MCm22SUB2_centscan_narrow = (TH1D *) h0->Clone(Form("hN1MCm22SUB2_centscan_narrow_%d",cbin));
+        hN1MCm22SUB2_centscan_narrow->SetYTitle("v_{1}^{even}");
+        hN1MCm22SUB2_centscan_narrow->GetYaxis()->SetRangeUser(-0.03, 0.16);
+        hN1MCm22SUB2_centscan_narrow->Draw();
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerColor(kRed);
+        N1MCm22SUB2[erangeNeg][cbin]->SetLineColor(kRed);
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerStyle(24);
+        N1MCm22SUB2[erangeNeg][cbin]->SetMarkerSize(1.2);
+        N1MCm22SUB2[erangeNeg][cbin]->Draw("same");
+        N1MCm22SUB2_narrow[erangeNeg][cbin]->SetMarkerColor(kGreen+2);
+        N1MCm22SUB2_narrow[erangeNeg][cbin]->SetLineColor(kGreen+2);
+        N1MCm22SUB2_narrow[erangeNeg][cbin]->SetMarkerStyle(28);
+        N1MCm22SUB2_narrow[erangeNeg][cbin]->SetMarkerSize(1.6);
+        N1MCm22SUB2_narrow[erangeNeg][cbin]->Draw("same");
+        TPaveText * txN1MCm22SUB2_centscan_narrow_c = new TPaveText(0.75, 0.89, 0.89, 0.98, "NDC");
+        SetTPaveTxt(txN1MCm22SUB2_centscan_narrow_c, 16);
+        txN1MCm22SUB2_centscan_narrow_c->AddText(Form("%d-%d%%",cminCENT[cbin],cmaxCENT[cbin]));
+        txN1MCm22SUB2_centscan_narrow_c->Draw();
+    }
+    cN1MCm22SUB2_centscan_narrow->cd(2);
+    TLegend * legN1MCm22SUB2_centscan_narrow = new TLegend(0.05, 0.73, 0.39, 0.97);
+    SetLegend(legN1MCm22SUB2_centscan_narrow, 16);
+    legN1MCm22SUB2_centscan_narrow->SetHeader("#Psi_{1}^{trk}{2SUB}: -2.4<#eta<-2.0");
+    legN1MCm22SUB2_centscan_narrow->AddEntry(N1MCm22SUB2[erangeNeg][0],"nominal cuts","p");
+    legN1MCm22SUB2_centscan_narrow->AddEntry(N1MCm22SUB2_narrow[erangeNeg][0],"narrow cuts","p");
+    legN1MCm22SUB2_centscan_narrow->Draw();
+    cN1MCm22SUB2_centscan_narrow->cd(1);
+    TPaveText * txN1MCm22SUB2_centscan_narrow = new TPaveText(0.24, 0.77, 0.73, 0.97, "NDC");
+    SetTPaveTxt(txN1MCm22SUB2_centscan_narrow, 16);
+    txN1MCm22SUB2_centscan_narrow->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txN1MCm22SUB2_centscan_narrow->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
+    txN1MCm22SUB2_centscan_narrow->Draw();
+    cN1MCm22SUB2_centscan_narrow->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_nom_narrow.png","png");
+
+
+    TCanvas * cratN1MCm22SUB2_centscan_narrow = new TCanvas("cratN1MCm22SUB2_centscan_narrow","cratN1MCm22SUB2_centscan_narrow",1100,600);
+    cratN1MCm22SUB2_centscan_narrow->Divide(4,2,0,0);
+    for (int cbin = 0; cbin<8; cbin++) {
+        TPad * padratN1MCm22SUB2_centscan_narrow = (TPad *) cratN1MCm22SUB2_centscan_narrow->cd(cbin+1);
+        padratN1MCm22SUB2_centscan_narrow->SetGrid();
+        TH1D * hratN1MCm22SUB2_centscan_narrow = (TH1D *) h0->Clone(Form("hratN1MCm22SUB2_centscan_narrow_%d",cbin));
+        hratN1MCm22SUB2_centscan_narrow->SetYTitle("v_{1}^{even}{narrow} / v_{1}^{even}{nominal}");
+        hratN1MCm22SUB2_centscan_narrow->GetYaxis()->SetRangeUser(0.5, 1.5);
+        hratN1MCm22SUB2_centscan_narrow->Draw();
+        TH1D * ratN1MCm22SUB2_centscan_narrow = (TH1D *) N1MCm22SUB2_narrow[erangeNeg][cbin]->Clone(Form("ratN1MCpm22SUB2_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        ratN1MCm22SUB2_centscan_narrow->Divide(N1MCm22SUB2[erangeNeg][cbin]);
+        for (int k = 1; k<=N1MCm22SUB2_narrow[erangeNeg][cbin]->GetNbinsX(); k++) {
+            double x = N1MCm22SUB2_narrow[erangeNeg][cbin]->GetBinContent(k);
+            double y = N1MCm22SUB2[erangeNeg][cbin]->GetBinContent(k);
+            double xe = N1MCm22SUB2_narrow[erangeNeg][cbin]->GetBinError(k);
+            double ye = N1MCm22SUB2[erangeNeg][cbin]->GetBinError(k);
+            ratN1MCm22SUB2_centscan_narrow->SetBinError(k, ErrRatCalc(x, y, xe, ye));
+        }
+        ratN1MCm22SUB2_centscan_narrow->SetMarkerColor(kBlack);
+        ratN1MCm22SUB2_centscan_narrow->SetLineColor(kBlack);
+        ratN1MCm22SUB2_centscan_narrow->SetMarkerStyle(20);
+        ratN1MCm22SUB2_centscan_narrow->SetMarkerSize(1.1);
+        ratN1MCm22SUB2_centscan_narrow->Draw("same");
+        TPaveText * txratN1MCm22SUB2_centscan_narrow_c = new TPaveText(0.75, 0.89, 0.89, 0.98, "NDC");
+        SetTPaveTxt(txratN1MCm22SUB2_centscan_narrow_c, 16);
+        txratN1MCm22SUB2_centscan_narrow_c->AddText(Form("%d-%d%%",cminCENT[cbin],cmaxCENT[cbin]));
+        txratN1MCm22SUB2_centscan_narrow_c->Draw();
+        TLine * lnratN1MCm22SUB2_centscan_narrow = new TLine(0.0, 1.0, 12.0, 1.0);
+        lnratN1MCm22SUB2_centscan_narrow->SetLineWidth(2);
+        lnratN1MCm22SUB2_centscan_narrow->Draw();
+    }
+    cratN1MCm22SUB2_centscan_narrow->cd(1);
+    TPaveText * txratN1MCm22SUB2_centscan_narrow = new TPaveText(0.24, 0.77, 0.73, 0.97, "NDC");
+    SetTPaveTxt(txratN1MCm22SUB2_centscan_narrow, 16);
+    txratN1MCm22SUB2_centscan_narrow->AddText("PbPb #sqrt{s_{NN}}=5.02 TeV");
+    txratN1MCm22SUB2_centscan_narrow->AddText(Form("POI: %1.1f<|#eta|<%1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
+    txratN1MCm22SUB2_centscan_narrow->Draw();
+    cratN1MCm22SUB2_centscan_narrow->Print("results/Pt_Distributions/N1MC22/centscan_N1MCpm22SUB2_nom_narrow_ratio.png","png");
 
 }

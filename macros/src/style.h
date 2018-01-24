@@ -50,6 +50,6 @@ double ErrRatCalc( double x, double y, double delx, double dely ) {
 double ErrDiffCalc( double x, double y, double delx, double dely ) {
     double f = x;
     f-=y;
-    double delf = sqrt( delx*delx + dely*dely - 2*delx*dely );
+    double delf = sqrt( fabs(delx*delx - dely*dely) );
     return delf;
 }

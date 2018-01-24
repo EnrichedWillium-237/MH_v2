@@ -148,7 +148,6 @@ TGraphErrors * GetVNPt( int replay, int bin, int epindx,  double etamin, double 
             qCB += ((TH1D *) fin->Get(Form("vnanalyzer/Harmonics/%s/%s/qCB",crange.data(),strip.data())))->GetBinContent(1);
             qCBcnt+=((TH1D *) fin->Get(Form("vnanalyzer/Harmonics/%s/%s/qCBcnt",crange.data(),strip.data())))->GetBinContent(1);
 
-
             for (int i = 0; i<10; i++) {
                 qAe[i]->Add(flip2D( (TH2D *) fin->Get(Form("vnanalyzer/Harmonics/%s/%s/SubEvents/qA_%d",crange.data(),strip.data(),i+1))));
                 qBe[i]->Add( flip2D((TH2D *) fin->Get(Form("vnanalyzer/Harmonics/%s/%s/SubEvents/qB_%d",crange.data(),strip.data(),i+1))));
