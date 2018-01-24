@@ -66,6 +66,9 @@ TH1D * hN1MCm14SUB2[ncentbins];
 TH1D * hN1MCp22SUB2[ncentbins];
 TH1D * hN1MCp18SUB2[ncentbins];
 TH1D * hN1MCp14SUB2[ncentbins];
+TH1D * hN1MC22SUB2[ncentbins];
+TH1D * hN1MC18SUB2[ncentbins];
+TH1D * hN1MC14SUB2[ncentbins];
 TH1D * hN1SUB2[ncentbins];
 TH1D * hN1ASUB2[ncentbins];
 TH1D * hN1BSUB2[ncentbins];
@@ -79,6 +82,9 @@ TH1D * hN1MCm14SUB3[ncentbins];
 TH1D * hN1MCp22SUB3[ncentbins];
 TH1D * hN1MCp18SUB3[ncentbins];
 TH1D * hN1MCp14SUB3[ncentbins];
+TH1D * hN1MC22SUB3[ncentbins];
+TH1D * hN1MC18SUB3[ncentbins];
+TH1D * hN1MC14SUB3[ncentbins];
 TH1D * hN1SUB3[ncentbins];
 TH1D * hN1ASUB3[ncentbins];
 TH1D * hN1BSUB3[ncentbins];
@@ -194,6 +200,64 @@ void GetEtaDists( TString input = "MH" )
         hN112ASUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N112ASUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
         hN112BSUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N112BSUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
+        // get sides of v1even and combine
+        hN1MC22SUB2[cbin] = new TH1D(Form("N1MC22SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MC18SUB2[cbin] = new TH1D(Form("N1MC18SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MC14SUB2[cbin] = new TH1D(Form("N1MC14SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MC22SUB3[cbin] = new TH1D(Form("N1MC22SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MC18SUB3[cbin] = new TH1D(Form("N1MC18SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        hN1MC14SUB3[cbin] = new TH1D(Form("N1MC14SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+
+        double emin1 = -2.4;
+        double emax1 = -0.0001;
+        double emin2 = 0.0001;
+        double emax2 = 2.4;
+        for (int ebin = 1; ebin<netabins; ebin++) {
+            if (hN1MC22SUB2[cbin]->GetBinCenter(ebin)>emin1 && hN1MC22SUB2[cbin]->GetBinCenter(ebin)<emax1) {
+                hN1MC22SUB2[cbin]->SetBinContent(ebin, hN1MCp22SUB2[cbin]->GetBinContent(ebin));
+                hN1MC22SUB2[cbin]->SetBinError(ebin, hN1MCp22SUB2[cbin]->GetBinError(ebin));
+            } else {
+                hN1MC22SUB2[cbin]->SetBinContent(ebin, hN1MCm22SUB2[cbin]->GetBinContent(ebin));
+                hN1MC22SUB2[cbin]->SetBinError(ebin, hN1MCm22SUB2[cbin]->GetBinError(ebin));
+            }
+            if (hN1MC18SUB2[cbin]->GetBinCenter(ebin)>emin1 && hN1MC18SUB2[cbin]->GetBinCenter(ebin)<emax1) {
+                hN1MC18SUB2[cbin]->SetBinContent(ebin, hN1MCp18SUB2[cbin]->GetBinContent(ebin));
+                hN1MC18SUB2[cbin]->SetBinError(ebin, hN1MCp18SUB2[cbin]->GetBinError(ebin));
+            } else {
+                hN1MC18SUB2[cbin]->SetBinContent(ebin, hN1MCm18SUB2[cbin]->GetBinContent(ebin));
+                hN1MC18SUB2[cbin]->SetBinError(ebin, hN1MCm18SUB2[cbin]->GetBinError(ebin));
+            }
+            if (hN1MC14SUB2[cbin]->GetBinCenter(ebin)>emin1 && hN1MC14SUB2[cbin]->GetBinCenter(ebin)<emax1) {
+                hN1MC14SUB2[cbin]->SetBinContent(ebin, hN1MCp14SUB2[cbin]->GetBinContent(ebin));
+                hN1MC14SUB2[cbin]->SetBinError(ebin, hN1MCp14SUB2[cbin]->GetBinError(ebin));
+            } else {
+                hN1MC14SUB2[cbin]->SetBinContent(ebin, hN1MCm14SUB2[cbin]->GetBinContent(ebin));
+                hN1MC14SUB2[cbin]->SetBinError(ebin, hN1MCm14SUB2[cbin]->GetBinError(ebin));
+            }
+
+            if (hN1MC22SUB3[cbin]->GetBinCenter(ebin)>emin1 && hN1MC22SUB3[cbin]->GetBinCenter(ebin)<emax1) {
+                hN1MC22SUB3[cbin]->SetBinContent(ebin, hN1MCp22SUB3[cbin]->GetBinContent(ebin));
+                hN1MC22SUB3[cbin]->SetBinError(ebin, hN1MCp22SUB3[cbin]->GetBinError(ebin));
+            } else {
+                hN1MC22SUB3[cbin]->SetBinContent(ebin, hN1MCm22SUB3[cbin]->GetBinContent(ebin));
+                hN1MC22SUB3[cbin]->SetBinError(ebin, hN1MCm22SUB3[cbin]->GetBinError(ebin));
+            }
+            if (hN1MC18SUB3[cbin]->GetBinCenter(ebin)>emin1 && hN1MC18SUB3[cbin]->GetBinCenter(ebin)<emax1) {
+                hN1MC18SUB3[cbin]->SetBinContent(ebin, hN1MCp18SUB3[cbin]->GetBinContent(ebin));
+                hN1MC18SUB3[cbin]->SetBinError(ebin, hN1MCp18SUB3[cbin]->GetBinError(ebin));
+            } else {
+                hN1MC18SUB3[cbin]->SetBinContent(ebin, hN1MCm18SUB3[cbin]->GetBinContent(ebin));
+                hN1MC18SUB3[cbin]->SetBinError(ebin, hN1MCm18SUB3[cbin]->GetBinError(ebin));
+            }
+            if (hN1MC14SUB3[cbin]->GetBinCenter(ebin)>emin1 && hN1MC14SUB3[cbin]->GetBinCenter(ebin)<emax1) {
+                hN1MC14SUB3[cbin]->SetBinContent(ebin, hN1MCp14SUB3[cbin]->GetBinContent(ebin));
+                hN1MC14SUB3[cbin]->SetBinError(ebin, hN1MCp14SUB3[cbin]->GetBinError(ebin));
+            } else {
+                hN1MC14SUB3[cbin]->SetBinContent(ebin, hN1MCm14SUB3[cbin]->GetBinContent(ebin));
+                hN1MC14SUB3[cbin]->SetBinError(ebin, hN1MCm14SUB3[cbin]->GetBinError(ebin));
+            }
+        }
+
         // convert TGraphErrors to TH1Ds
         GraphToHist( gN1MCm22SUB2[cbin], hN1MCm22SUB2[cbin] );
         GraphToHist( gN1MCm18SUB2[cbin], hN1MCm18SUB2[cbin] );
@@ -238,6 +302,13 @@ void GetEtaDists( TString input = "MH" )
         hN1MCp18SUB3[cbin]->Write();
         hN1MCp14SUB3[cbin]->Write();
 
+        hN1MC22SUB2[cbin]->Write();
+        hN1MC18SUB2[cbin]->Write();
+        hN1MC14SUB2[cbin]->Write();
+        hN1MC22SUB3[cbin]->Write();
+        hN1MC18SUB3[cbin]->Write();
+        hN1MC14SUB3[cbin]->Write();
+
         hN1SUB2[cbin]->Write();
         hN1ASUB2[cbin]->Write();
         hN1BSUB2[cbin]->Write();
@@ -266,6 +337,13 @@ void GetEtaDists( TString input = "MH" )
         hN1MCp22SUB3[cbin]->Delete();
         hN1MCp18SUB3[cbin]->Delete();
         hN1MCp14SUB3[cbin]->Delete();
+
+        hN1MC22SUB2[cbin]->Delete();
+        hN1MC18SUB2[cbin]->Delete();
+        hN1MC14SUB2[cbin]->Delete();
+        hN1MC22SUB3[cbin]->Delete();
+        hN1MC18SUB3[cbin]->Delete();
+        hN1MC14SUB3[cbin]->Delete();
 
         hN1SUB2[cbin]->Delete();
         hN1ASUB2[cbin]->Delete();

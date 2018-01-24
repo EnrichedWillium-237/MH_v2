@@ -337,7 +337,7 @@ void plotPtDist()
 
     erangeNeg = 13;
     erangePos = 12;
-/*    for (int cbin = 0; cbin<ncentbins; cbin++) {
+    for (int cbin = 0; cbin<ncentbins; cbin++) {
         TCanvas * cN1MCpm22SUB2 = new TCanvas(Form("cN1MCpm22SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]),"cN1MCpm22SUB2",650,600);
         TPad * padN1MCpm22SUB2 = (TPad *) cN1MCpm22SUB2->cd();
         padN1MCpm22SUB2->SetGrid();
@@ -597,7 +597,7 @@ void plotPtDist()
         lnratN1MCpm18SUB3->Draw();
         cratN1MCpm18SUB3->Print(Form("results/Pt_Distributions/N1MC18/N1MCpm18SUB3_ratio_%d_%d.png",cminCENT[cbin],cmaxCENT[cbin]),"png");
         cratN1MCpm18SUB3->Close();
-    }*/
+    }
 
     // cent scan (N1MC22)
     erangeNeg = 13;
