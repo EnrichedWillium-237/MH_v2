@@ -125,7 +125,7 @@ void plotPtDist()
 
     erangeNeg = 13;
     erangePos = 12;
-    crange = 5;
+    crange = 1;
     TCanvas * cN1MCpm22SUB2 = new TCanvas("cN1MCpm22SUB2","cN1MCpm22SUB2",650,600);
     TPad * padN1MCpm22SUB2 = (TPad *) cN1MCpm22SUB2->cd();
     padN1MCpm22SUB2->SetGrid();
@@ -161,7 +161,7 @@ void plotPtDist()
     padratN1MCpm22SUB2->SetGrid();
     TH1D * hratN1MCpm22SUB2 = (TH1D *) h0->Clone("hratN1MCpm22SUB2");
     hratN1MCpm22SUB2->SetYTitle("v_{1}^{even}{+#eta} / v_{1}^{even}{-#eta}");
-    hratN1MCpm22SUB2->GetYaxis()->SetRangeUser(0.5, 1.5);
+    hratN1MCpm22SUB2->GetYaxis()->SetRangeUser(0.6, 1.4);
     hratN1MCpm22SUB2->Draw();
     TH1D * ratN1MCpm22SUB2 = (TH1D *) N1MCp22SUB2[erangePos][crange]->Clone(Form("ratN1MCpm22SUB2_%d_%d",cminCENT[crange],cmaxCENT[crange]));
     ratN1MCpm22SUB2->Divide(N1MCm22SUB2[erangeNeg][crange]);
@@ -177,6 +177,11 @@ void plotPtDist()
     ratN1MCpm22SUB2->SetMarkerStyle(20);
     ratN1MCpm22SUB2->SetMarkerSize(1.1);
     ratN1MCpm22SUB2->Draw("same");
+    TPaveText * txratN1MCpm22SUB2 = new TPaveText(0.19, 0.84, 0.44, 0.93, "NDC");
+    SetTPaveTxt(txratN1MCpm22SUB2, 18);
+    txratN1MCpm22SUB2->AddText(Form("POI: %1.1f < |#eta| < %1.1f",eminETA[erangeNeg],emaxETA[erangeNeg]));
+    txratN1MCpm22SUB2->AddText(Form("(%d-%d%%)",cminCENT[crange],cmaxCENT[crange]));
+    txratN1MCpm22SUB2->Draw();
     TLine * lnratN1MCpm22SUB2 = new TLine(0.0, 1.0, 12.0, 1.0);
     lnratN1MCpm22SUB2->SetLineWidth(2);
     lnratN1MCpm22SUB2->Draw();
