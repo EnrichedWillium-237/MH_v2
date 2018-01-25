@@ -200,19 +200,48 @@ void GetEtaDists( TString input = "MH" )
         hN112ASUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N112ASUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
         hN112BSUB3[cbin] = (TH1D *) hN1MCm22SUB2[cbin]->Clone(Form("N112BSUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
 
-        // get sides of v1even and combine
-        hN1MC22SUB2[cbin] = new TH1D(Form("N1MC22SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        hN1MC18SUB2[cbin] = new TH1D(Form("N1MC18SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        hN1MC14SUB2[cbin] = new TH1D(Form("N1MC14SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        hN1MC22SUB3[cbin] = new TH1D(Form("N1MC22SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        hN1MC18SUB3[cbin] = new TH1D(Form("N1MC18SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        hN1MC14SUB3[cbin] = new TH1D(Form("N1MC14SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        // convert TGraphErrors to TH1Ds
+        GraphToHist( gN1MCm22SUB2[cbin], hN1MCm22SUB2[cbin] );
+        GraphToHist( gN1MCm18SUB2[cbin], hN1MCm18SUB2[cbin] );
+        GraphToHist( gN1MCm14SUB2[cbin], hN1MCm14SUB2[cbin] );
+        GraphToHist( gN1MCp22SUB2[cbin], hN1MCp22SUB2[cbin] );
+        GraphToHist( gN1MCp18SUB2[cbin], hN1MCp18SUB2[cbin] );
+        GraphToHist( gN1MCp14SUB2[cbin], hN1MCp14SUB2[cbin] );
+
+        GraphToHist( gN1MCm22SUB3[cbin], hN1MCm22SUB3[cbin] );
+        GraphToHist( gN1MCm18SUB3[cbin], hN1MCm18SUB3[cbin] );
+        GraphToHist( gN1MCm14SUB3[cbin], hN1MCm14SUB3[cbin] );
+        GraphToHist( gN1MCp22SUB3[cbin], hN1MCp22SUB3[cbin] );
+        GraphToHist( gN1MCp18SUB3[cbin], hN1MCp18SUB3[cbin] );
+        GraphToHist( gN1MCp14SUB3[cbin], hN1MCp14SUB3[cbin] );
+
+        GraphToHist( gN1SUB2[cbin], hN1SUB2[cbin] );
+        GraphToHist( gN1ASUB2[cbin], hN1ASUB2[cbin] );
+        GraphToHist( gN1BSUB2[cbin], hN1BSUB2[cbin] );
+        GraphToHist( gN112SUB2[cbin], hN112SUB2[cbin] );
+        GraphToHist( gN112ASUB2[cbin], hN112ASUB2[cbin] );
+        GraphToHist( gN112BSUB2[cbin], hN112BSUB2[cbin] );
+
+        GraphToHist( gN1SUB3[cbin], hN1SUB3[cbin] );
+        GraphToHist( gN1ASUB3[cbin], hN1ASUB3[cbin] );
+        GraphToHist( gN1BSUB3[cbin], hN1BSUB3[cbin] );
+        GraphToHist( gN112SUB3[cbin], hN112SUB3[cbin] );
+        GraphToHist( gN112ASUB3[cbin], hN112ASUB3[cbin] );
+        GraphToHist( gN112BSUB3[cbin], hN112BSUB3[cbin] );
+
+        // combine sides of eta for N1MC measurement
+        hN1MC22SUB2[cbin] = new TH1D(Form("N1MC22SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", netabins, etabins);
+        hN1MC18SUB2[cbin] = new TH1D(Form("N1MC18SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", netabins, etabins);
+        hN1MC14SUB2[cbin] = new TH1D(Form("N1MC14SUB2_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", netabins, etabins);
+        hN1MC22SUB3[cbin] = new TH1D(Form("N1MC22SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", netabins, etabins);
+        hN1MC18SUB3[cbin] = new TH1D(Form("N1MC18SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", netabins, etabins);
+        hN1MC14SUB3[cbin] = new TH1D(Form("N1MC14SUB3_%d_%d",cminCENT[cbin],cmaxCENT[cbin]), "", netabins, etabins);
 
         double emin1 = -2.4;
         double emax1 = -0.0001;
         double emin2 = 0.0001;
         double emax2 = 2.4;
-        for (int ebin = 1; ebin<netabins; ebin++) {
+        for (int ebin = 1; ebin<=netabins; ebin++) {
             if (hN1MC22SUB2[cbin]->GetBinCenter(ebin)>emin1 && hN1MC22SUB2[cbin]->GetBinCenter(ebin)<emax1) {
                 hN1MC22SUB2[cbin]->SetBinContent(ebin, hN1MCp22SUB2[cbin]->GetBinContent(ebin));
                 hN1MC22SUB2[cbin]->SetBinError(ebin, hN1MCp22SUB2[cbin]->GetBinError(ebin));
@@ -257,35 +286,6 @@ void GetEtaDists( TString input = "MH" )
                 hN1MC14SUB3[cbin]->SetBinError(ebin, hN1MCm14SUB3[cbin]->GetBinError(ebin));
             }
         }
-
-        // convert TGraphErrors to TH1Ds
-        GraphToHist( gN1MCm22SUB2[cbin], hN1MCm22SUB2[cbin] );
-        GraphToHist( gN1MCm18SUB2[cbin], hN1MCm18SUB2[cbin] );
-        GraphToHist( gN1MCm14SUB2[cbin], hN1MCm14SUB2[cbin] );
-        GraphToHist( gN1MCp22SUB2[cbin], hN1MCp22SUB2[cbin] );
-        GraphToHist( gN1MCp18SUB2[cbin], hN1MCp18SUB2[cbin] );
-        GraphToHist( gN1MCp14SUB2[cbin], hN1MCp14SUB2[cbin] );
-
-        GraphToHist( gN1MCm22SUB3[cbin], hN1MCm22SUB3[cbin] );
-        GraphToHist( gN1MCm18SUB3[cbin], hN1MCm18SUB3[cbin] );
-        GraphToHist( gN1MCm14SUB3[cbin], hN1MCm14SUB3[cbin] );
-        GraphToHist( gN1MCp22SUB3[cbin], hN1MCp22SUB3[cbin] );
-        GraphToHist( gN1MCp18SUB3[cbin], hN1MCp18SUB3[cbin] );
-        GraphToHist( gN1MCp14SUB3[cbin], hN1MCp14SUB3[cbin] );
-
-        GraphToHist( gN1SUB2[cbin], hN1SUB2[cbin] );
-        GraphToHist( gN1ASUB2[cbin], hN1ASUB2[cbin] );
-        GraphToHist( gN1BSUB2[cbin], hN1BSUB2[cbin] );
-        GraphToHist( gN112SUB2[cbin], hN112SUB2[cbin] );
-        GraphToHist( gN112ASUB2[cbin], hN112ASUB2[cbin] );
-        GraphToHist( gN112BSUB2[cbin], hN112BSUB2[cbin] );
-
-        GraphToHist( gN1SUB3[cbin], hN1SUB3[cbin] );
-        GraphToHist( gN1ASUB3[cbin], hN1ASUB3[cbin] );
-        GraphToHist( gN1BSUB3[cbin], hN1BSUB3[cbin] );
-        GraphToHist( gN112SUB3[cbin], hN112SUB3[cbin] );
-        GraphToHist( gN112ASUB3[cbin], hN112ASUB3[cbin] );
-        GraphToHist( gN112BSUB3[cbin], hN112BSUB3[cbin] );
 
         // write histograms to output file
         hN1MCm22SUB2[cbin]->Write();
@@ -367,6 +367,7 @@ void GetEtaDists( TString input = "MH" )
 void combineEta() {
 
     TH1::SetDefaultSumw2();
+    cout << "Combining eta distributions from source files... " << endl;
 
     if (!fopen("results","r")) system("mkdir results");
     tfout = new TFile("results/MH_combined_Eta.root","recreate");
@@ -376,7 +377,7 @@ void combineEta() {
     GetEtaDists( "MH_narrow_hists" );
     GetEtaDists( "MH_wide_hists" );
 
-    cout << "Eta distributions saved to results/MH_combined_Eta.root" << endl;
+    cout << "Eta distributions saved to results/MH_combined_Eta.root \n" << endl;
     tfout->Close();
 
 }
