@@ -22,8 +22,8 @@ static const int cmaxCENT[] = {5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 20, 60
 static const int netabins = 12;
 static const double etabins[] = {-2.4, -2.0, -1.6, -1.2, -0.8, -0.4, 0.0,  0.4,  0.8,  1.2,  1.6,  2.0,  2.4};
 static const int nbinsETA = 16;
-static const double eminETA[] = {-2.4, -2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0, -2.4,  0.0, -2.4,  0.4};
-static const double emaxETA[] = {-2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0,  2.4,  0.0,  2.4, -0.4,  2.4};
+static const double eminETA[] = {-2.4, -2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0, -2.4,  0.0};
+static const double emaxETA[] = {-2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0,  2.4,  0.0,  2.4};
 static const double etaMid[] = {-2.2, -1.8, -1.4, -1.0, -0.6, -0.2,  0.2,  0.6,  1.0,  1.4,  1.8,  2.2};
 TString etags[] = {"-24_-20", "-20_-16", "-16_-12", "-12_-8", "-8_-4", "-4_0", "0_4", "4_8", "8_12", "12_16", "16_20", "20_24",
                    "-24_0", "0_24", "-24_-4", "4_24"};
@@ -38,8 +38,10 @@ TString ANAL[] = {"N1MCm22SUB2", "N1MCp22SUB2", "N1MCm22SUB3", "N1MCp22SUB3",
 
 TH1D * N1MCm22SUB2_pT[nbinsETA][ncentbins];
 TH1D * N1MCp22SUB2_pT[nbinsETA][ncentbins];
+TH1D * N1MC22SUB2_pT[nbinsETA][ncentbins];
 TH1D * N1MCm22SUB3_pT[nbinsETA][ncentbins];
 TH1D * N1MCp22SUB3_pT[nbinsETA][ncentbins];
+TH1D * N1MC22SUB3_pT[nbinsETA][ncentbins];
 TH1D * N1SUB2_pT[nbinsETA][ncentbins];
 TH1D * N1ASUB2_pT[nbinsETA][ncentbins];
 TH1D * N1BSUB2_pT[nbinsETA][ncentbins];
@@ -55,8 +57,10 @@ TH1D * N112BSUB3_pT[nbinsETA][ncentbins];
 
 TH1D * N1MCm22SUB2_eta[ncentbins];
 TH1D * N1MCp22SUB2_eta[ncentbins];
+TH1D * N1MC22SUB2_eta[ncentbins];
 TH1D * N1MCm22SUB3_eta[ncentbins];
 TH1D * N1MCp22SUB3_eta[ncentbins];
+TH1D * N1MC22SUB3_eta[ncentbins];
 TH1D * N1SUB2_eta[ncentbins];
 TH1D * N1ASUB2_eta[ncentbins];
 TH1D * N1BSUB2_eta[ncentbins];
@@ -77,7 +81,7 @@ void plotFigures()
 {
     tfinPt = new TFile("results/MH_combined_Pt.root","read");
 
-    for (int ebin = 0; ebin<netabins; ebin++) {
+    for (int ebin = 0; ebin<nbinsETA; ebin++) {
         for (int cbin = 0; cbin<ncentbins; cbin++) {
             TString mtag = Form("MH_nominal/eta_%s/%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]);
 
@@ -96,6 +100,30 @@ void plotFigures()
             N1BSUB3_pT[ebin][cbin] = (TH1D *) tfinPt->Get(Form("%s/N1BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
         }
     }
-    
+
+    tfinEta = new TFile("results/MH_combined_Eta.root","read");
+
+    for (int cbin = 0; cbin<ncentbins; cbin++) {
+        TString mtag = Form("MH_nominal/%d_%d",cminCENT[cbin],cmaxCENT[cbin]);
+
+        N1MCm22SUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1MCm22SUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1MCp22SUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1MCp22SUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1MC22SUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1MC22SUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1MCm22SUB3_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1MCm22SUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1MCp22SUB3_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1MCp22SUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1MC22SUB3_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1MC22SUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1SUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1SUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1ASUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1ASUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1BSUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1BSUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N112SUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N112SUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N112ASUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N122ASUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N112BSUB2_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N122BSUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1SUB3_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1SUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1ASUB3_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1ASUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+        N1BSUB3_eta[cbin] = (TH1D *) tfinEta->Get(Form("%s/N1BSUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
+    }
+
+
+
 
 }
