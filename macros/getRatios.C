@@ -115,6 +115,7 @@ void getRatios()
         }
     }
 
+    cout << "Calculating ratios for tight, wide, and narrow cuts... " << endl;
     finEta = new TFile("hists/MH_combined_Eta.root","read");
 
     for (int cbin = 0; cbin<ncentbins; cbin++) {
@@ -828,143 +829,142 @@ void getRatios()
             rat_N1BSUB3_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
         }
 
+        ///
 
-                ///
-
-                rat_N1MCm22SUB2_nom_wide_eta[cbin] = (TH1D *) N1MCm22SUB2_eta[cbin]->Clone(Form("rat_N1MCm22SUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1MCm22SUB2_nom_wide_eta[cbin]->Divide(N1MCm22SUB2_wide_eta[cbin]);
-                for (int k = 0; k<N1MCm22SUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1MCm22SUB2_eta[cbin]->GetBinContent(k);
-                    double y = N1MCm22SUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1MCm22SUB2_eta[cbin]->GetBinError(k);
-                    double ye = N1MCm22SUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N1MCm22SUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1MCp22SUB2_nom_wide_eta[cbin] = (TH1D *) N1MCp22SUB2_eta[cbin]->Clone(Form("rat_N1MCp22SUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1MCp22SUB2_nom_wide_eta[cbin]->Divide(N1MCp22SUB2_wide_eta[cbin]);
-                for (int k = 0; k<N1MCp22SUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1MCp22SUB2_eta[cbin]->GetBinContent(k);
-                    double y = N1MCp22SUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1MCp22SUB2_eta[cbin]->GetBinError(k);
-                    double ye = N1MCp22SUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N1MCp22SUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1MC22SUB2_nom_wide_eta[cbin] = (TH1D *) N1MC22SUB2_eta[cbin]->Clone(Form("rat_N1MC22SUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1MC22SUB2_nom_wide_eta[cbin]->Divide(N1MC22SUB2_wide_eta[cbin]);
-                for (int k = 0; k<N1MC22SUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1MC22SUB2_eta[cbin]->GetBinContent(k);
-                    double y = N1MC22SUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1MC22SUB2_eta[cbin]->GetBinError(k);
-                    double ye = N1MC22SUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N1MC22SUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1MCm22SUB3_nom_wide_eta[cbin] = (TH1D *) N1MCm22SUB3_eta[cbin]->Clone(Form("rat_N1MCm22SUB3_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1MCm22SUB3_nom_wide_eta[cbin]->Divide(N1MCm22SUB3_wide_eta[cbin]);
-                for (int k = 0; k<N1MCm22SUB3_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1MCm22SUB3_eta[cbin]->GetBinContent(k);
-                    double y = N1MCm22SUB3_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1MCm22SUB3_eta[cbin]->GetBinError(k);
-                    double ye = N1MCm22SUB3_wide_eta[cbin]->GetBinError(k);
-                    rat_N1MCm22SUB3_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1MCp22SUB3_nom_wide_eta[cbin] = (TH1D *) N1MCp22SUB3_eta[cbin]->Clone(Form("rat_N1MCp22SUB3_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1MCp22SUB3_nom_wide_eta[cbin]->Divide(N1MCp22SUB3_wide_eta[cbin]);
-                for (int k = 0; k<N1MCp22SUB3_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1MCp22SUB3_eta[cbin]->GetBinContent(k);
-                    double y = N1MCp22SUB3_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1MCp22SUB3_eta[cbin]->GetBinError(k);
-                    double ye = N1MCp22SUB3_wide_eta[cbin]->GetBinError(k);
-                    rat_N1MCp22SUB3_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1MC22SUB3_nom_wide_eta[cbin] = (TH1D *) N1MC22SUB3_eta[cbin]->Clone(Form("rat_N1MC22SUB3_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1MC22SUB3_nom_wide_eta[cbin]->Divide(N1MC22SUB3_wide_eta[cbin]);
-                for (int k = 0; k<N1MC22SUB3_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1MC22SUB3_eta[cbin]->GetBinContent(k);
-                    double y = N1MC22SUB3_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1MC22SUB3_eta[cbin]->GetBinError(k);
-                    double ye = N1MC22SUB3_wide_eta[cbin]->GetBinError(k);
-                    rat_N1MC22SUB3_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1SUB2_nom_wide_eta[cbin] = (TH1D *) N1SUB2_eta[cbin]->Clone(Form("rat_N1SUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1SUB2_nom_wide_eta[cbin]->Divide(N1SUB2_wide_eta[cbin]);
-                for (int k = 0; k<N1SUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1SUB2_eta[cbin]->GetBinContent(k);
-                    double y = N1SUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1SUB2_eta[cbin]->GetBinError(k);
-                    double ye = N1SUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N1SUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1ASUB2_nom_wide_eta[cbin] = (TH1D *) N1ASUB2_eta[cbin]->Clone(Form("rat_N1ASUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1ASUB2_nom_wide_eta[cbin]->Divide(N1ASUB2_wide_eta[cbin]);
-                for (int k = 0; k<N1ASUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1ASUB2_eta[cbin]->GetBinContent(k);
-                    double y = N1ASUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1ASUB2_eta[cbin]->GetBinError(k);
-                    double ye = N1ASUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N1ASUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N1BSUB2_nom_wide_eta[cbin] = (TH1D *) N1BSUB2_eta[cbin]->Clone(Form("rat_N1BSUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N1BSUB2_nom_wide_eta[cbin]->Divide(N1BSUB2_wide_eta[cbin]);
-                for (int k = 0; k<N1BSUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N1BSUB2_eta[cbin]->GetBinContent(k);
-                    double y = N1BSUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N1BSUB2_eta[cbin]->GetBinError(k);
-                    double ye = N1BSUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N1BSUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N112SUB2_nom_wide_eta[cbin] = (TH1D *) N112SUB2_eta[cbin]->Clone(Form("rat_N112SUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N112SUB2_nom_wide_eta[cbin]->Divide(N112SUB2_wide_eta[cbin]);
-                for (int k = 0; k<N112SUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N112SUB2_eta[cbin]->GetBinContent(k);
-                    double y = N112SUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N112SUB2_eta[cbin]->GetBinError(k);
-                    double ye = N112SUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N112SUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N112ASUB2_nom_wide_eta[cbin] = (TH1D *) N112ASUB2_eta[cbin]->Clone(Form("rat_N112ASUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N112ASUB2_nom_wide_eta[cbin]->Divide(N112ASUB2_wide_eta[cbin]);
-                for (int k = 0; k<N112ASUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N112ASUB2_eta[cbin]->GetBinContent(k);
-                    double y = N112ASUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N112ASUB2_eta[cbin]->GetBinError(k);
-                    double ye = N112ASUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N112ASUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
-                }
-                rat_N112BSUB2_nom_wide_eta[cbin] = (TH1D *) N112BSUB2_eta[cbin]->Clone(Form("rat_N112BSUB2_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-                rat_N112BSUB2_nom_wide_eta[cbin]->Divide(N112BSUB2_wide_eta[cbin]);
-                for (int k = 0; k<N112BSUB2_eta[cbin]->GetNbinsX(); k++) {
-                    double x = N112BSUB2_eta[cbin]->GetBinContent(k);
-                    double y = N112BSUB2_wide_eta[cbin]->GetBinContent(k);
-                    double xe = N112BSUB2_eta[cbin]->GetBinError(k);
-                    double ye = N112BSUB2_wide_eta[cbin]->GetBinError(k);
-                    rat_N112BSUB2_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        rat_N1MCm22SUB2_nom_narrow_eta[cbin] = (TH1D *) N1MCm22SUB2_eta[cbin]->Clone(Form("rat_N1MCm22SUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1MCm22SUB2_nom_narrow_eta[cbin]->Divide(N1MCm22SUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N1MCm22SUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1MCm22SUB2_eta[cbin]->GetBinContent(k);
+            double y = N1MCm22SUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1MCm22SUB2_eta[cbin]->GetBinError(k);
+            double ye = N1MCm22SUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N1MCm22SUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
         }
-        rat_N1SUB3_nom_wide_eta[cbin] = (TH1D *) N1SUB3_eta[cbin]->Clone(Form("rat_N1SUB3_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        rat_N1SUB3_nom_wide_eta[cbin]->Divide(N1SUB3_wide_eta[cbin]);
+        rat_N1MCp22SUB2_nom_narrow_eta[cbin] = (TH1D *) N1MCp22SUB2_eta[cbin]->Clone(Form("rat_N1MCp22SUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1MCp22SUB2_nom_narrow_eta[cbin]->Divide(N1MCp22SUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N1MCp22SUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1MCp22SUB2_eta[cbin]->GetBinContent(k);
+            double y = N1MCp22SUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1MCp22SUB2_eta[cbin]->GetBinError(k);
+            double ye = N1MCp22SUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N1MCp22SUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1MC22SUB2_nom_narrow_eta[cbin] = (TH1D *) N1MC22SUB2_eta[cbin]->Clone(Form("rat_N1MC22SUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1MC22SUB2_nom_narrow_eta[cbin]->Divide(N1MC22SUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N1MC22SUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1MC22SUB2_eta[cbin]->GetBinContent(k);
+            double y = N1MC22SUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1MC22SUB2_eta[cbin]->GetBinError(k);
+            double ye = N1MC22SUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N1MC22SUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1MCm22SUB3_nom_narrow_eta[cbin] = (TH1D *) N1MCm22SUB3_eta[cbin]->Clone(Form("rat_N1MCm22SUB3_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1MCm22SUB3_nom_narrow_eta[cbin]->Divide(N1MCm22SUB3_narrow_eta[cbin]);
+        for (int k = 0; k<N1MCm22SUB3_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1MCm22SUB3_eta[cbin]->GetBinContent(k);
+            double y = N1MCm22SUB3_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1MCm22SUB3_eta[cbin]->GetBinError(k);
+            double ye = N1MCm22SUB3_narrow_eta[cbin]->GetBinError(k);
+            rat_N1MCm22SUB3_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1MCp22SUB3_nom_narrow_eta[cbin] = (TH1D *) N1MCp22SUB3_eta[cbin]->Clone(Form("rat_N1MCp22SUB3_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1MCp22SUB3_nom_narrow_eta[cbin]->Divide(N1MCp22SUB3_narrow_eta[cbin]);
+        for (int k = 0; k<N1MCp22SUB3_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1MCp22SUB3_eta[cbin]->GetBinContent(k);
+            double y = N1MCp22SUB3_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1MCp22SUB3_eta[cbin]->GetBinError(k);
+            double ye = N1MCp22SUB3_narrow_eta[cbin]->GetBinError(k);
+            rat_N1MCp22SUB3_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1MC22SUB3_nom_narrow_eta[cbin] = (TH1D *) N1MC22SUB3_eta[cbin]->Clone(Form("rat_N1MC22SUB3_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1MC22SUB3_nom_narrow_eta[cbin]->Divide(N1MC22SUB3_narrow_eta[cbin]);
+        for (int k = 0; k<N1MC22SUB3_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1MC22SUB3_eta[cbin]->GetBinContent(k);
+            double y = N1MC22SUB3_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1MC22SUB3_eta[cbin]->GetBinError(k);
+            double ye = N1MC22SUB3_narrow_eta[cbin]->GetBinError(k);
+            rat_N1MC22SUB3_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1SUB2_nom_narrow_eta[cbin] = (TH1D *) N1SUB2_eta[cbin]->Clone(Form("rat_N1SUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1SUB2_nom_narrow_eta[cbin]->Divide(N1SUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N1SUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1SUB2_eta[cbin]->GetBinContent(k);
+            double y = N1SUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1SUB2_eta[cbin]->GetBinError(k);
+            double ye = N1SUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N1SUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1ASUB2_nom_narrow_eta[cbin] = (TH1D *) N1ASUB2_eta[cbin]->Clone(Form("rat_N1ASUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1ASUB2_nom_narrow_eta[cbin]->Divide(N1ASUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N1ASUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1ASUB2_eta[cbin]->GetBinContent(k);
+            double y = N1ASUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1ASUB2_eta[cbin]->GetBinError(k);
+            double ye = N1ASUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N1ASUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1BSUB2_nom_narrow_eta[cbin] = (TH1D *) N1BSUB2_eta[cbin]->Clone(Form("rat_N1BSUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1BSUB2_nom_narrow_eta[cbin]->Divide(N1BSUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N1BSUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N1BSUB2_eta[cbin]->GetBinContent(k);
+            double y = N1BSUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N1BSUB2_eta[cbin]->GetBinError(k);
+            double ye = N1BSUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N1BSUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N112SUB2_nom_narrow_eta[cbin] = (TH1D *) N112SUB2_eta[cbin]->Clone(Form("rat_N112SUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N112SUB2_nom_narrow_eta[cbin]->Divide(N112SUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N112SUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N112SUB2_eta[cbin]->GetBinContent(k);
+            double y = N112SUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N112SUB2_eta[cbin]->GetBinError(k);
+            double ye = N112SUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N112SUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N112ASUB2_nom_narrow_eta[cbin] = (TH1D *) N112ASUB2_eta[cbin]->Clone(Form("rat_N112ASUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N112ASUB2_nom_narrow_eta[cbin]->Divide(N112ASUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N112ASUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N112ASUB2_eta[cbin]->GetBinContent(k);
+            double y = N112ASUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N112ASUB2_eta[cbin]->GetBinError(k);
+            double ye = N112ASUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N112ASUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N112BSUB2_nom_narrow_eta[cbin] = (TH1D *) N112BSUB2_eta[cbin]->Clone(Form("rat_N112BSUB2_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N112BSUB2_nom_narrow_eta[cbin]->Divide(N112BSUB2_narrow_eta[cbin]);
+        for (int k = 0; k<N112BSUB2_eta[cbin]->GetNbinsX(); k++) {
+            double x = N112BSUB2_eta[cbin]->GetBinContent(k);
+            double y = N112BSUB2_narrow_eta[cbin]->GetBinContent(k);
+            double xe = N112BSUB2_eta[cbin]->GetBinError(k);
+            double ye = N112BSUB2_narrow_eta[cbin]->GetBinError(k);
+            rat_N112BSUB2_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+        }
+        rat_N1SUB3_nom_narrow_eta[cbin] = (TH1D *) N1SUB3_eta[cbin]->Clone(Form("rat_N1SUB3_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1SUB3_nom_narrow_eta[cbin]->Divide(N1SUB3_narrow_eta[cbin]);
         for (int k = 0; k<N1SUB3_eta[cbin]->GetNbinsX(); k++) {
             double x = N1SUB3_eta[cbin]->GetBinContent(k);
-            double y = N1SUB3_wide_eta[cbin]->GetBinContent(k);
+            double y = N1SUB3_narrow_eta[cbin]->GetBinContent(k);
             double xe = N1SUB3_eta[cbin]->GetBinError(k);
-            double ye = N1SUB3_wide_eta[cbin]->GetBinError(k);
-            rat_N1SUB3_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+            double ye = N1SUB3_narrow_eta[cbin]->GetBinError(k);
+            rat_N1SUB3_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
         }
-        rat_N1ASUB3_nom_wide_eta[cbin] = (TH1D *) N1ASUB3_eta[cbin]->Clone(Form("rat_N1ASUB3_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        rat_N1ASUB3_nom_wide_eta[cbin]->Divide(N1ASUB3_wide_eta[cbin]);
+        rat_N1ASUB3_nom_narrow_eta[cbin] = (TH1D *) N1ASUB3_eta[cbin]->Clone(Form("rat_N1ASUB3_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1ASUB3_nom_narrow_eta[cbin]->Divide(N1ASUB3_narrow_eta[cbin]);
         for (int k = 0; k<N1ASUB3_eta[cbin]->GetNbinsX(); k++) {
             double x = N1ASUB3_eta[cbin]->GetBinContent(k);
-            double y = N1ASUB3_wide_eta[cbin]->GetBinContent(k);
+            double y = N1ASUB3_narrow_eta[cbin]->GetBinContent(k);
             double xe = N1ASUB3_eta[cbin]->GetBinError(k);
-            double ye = N1ASUB3_wide_eta[cbin]->GetBinError(k);
-            rat_N1ASUB3_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+            double ye = N1ASUB3_narrow_eta[cbin]->GetBinError(k);
+            rat_N1ASUB3_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
         }
-        rat_N1BSUB3_nom_wide_eta[cbin] = (TH1D *) N1BSUB3_eta[cbin]->Clone(Form("rat_N1BSUB3_nom_wide_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
-        rat_N1BSUB3_nom_wide_eta[cbin]->Divide(N1BSUB3_wide_eta[cbin]);
+        rat_N1BSUB3_nom_narrow_eta[cbin] = (TH1D *) N1BSUB3_eta[cbin]->Clone(Form("rat_N1BSUB3_nom_narrow_%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
+        rat_N1BSUB3_nom_narrow_eta[cbin]->Divide(N1BSUB3_narrow_eta[cbin]);
         for (int k = 0; k<N1BSUB3_eta[cbin]->GetNbinsX(); k++) {
             double x = N1BSUB3_eta[cbin]->GetBinContent(k);
-            double y = N1BSUB3_wide_eta[cbin]->GetBinContent(k);
+            double y = N1BSUB3_narrow_eta[cbin]->GetBinContent(k);
             double xe = N1BSUB3_eta[cbin]->GetBinError(k);
-            double ye = N1BSUB3_wide_eta[cbin]->GetBinError(k);
-            rat_N1BSUB3_nom_wide_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
+            double ye = N1BSUB3_narrow_eta[cbin]->GetBinError(k);
+            rat_N1BSUB3_nom_narrow_eta[cbin]->SetBinError(k, ErrRatCalc( x, y, xe, ye ));
         }
     }
 
@@ -1021,21 +1021,18 @@ void getRatios()
         }
         TDirectory * tdEta = (TDirectory *) tdcent->mkdir("vn_eta");
         tdEta->cd();
-        cout<<"here0"<<endl;
 
         rat_N1MCm22SUB2_nom_tight_eta[cbin]->Write();
         rat_N1MCp22SUB2_nom_tight_eta[cbin]->Write();
         rat_N1MC22SUB2_nom_tight_eta[cbin]->Write();
         rat_N1MCm22SUB3_nom_tight_eta[cbin]->Write();
         rat_N1MCp22SUB3_nom_tight_eta[cbin]->Write();
-        cout<<"here1"<<endl;
         rat_N1MC22SUB3_nom_tight_eta[cbin]->Write();
         rat_N1SUB2_nom_tight_eta[cbin]->Write();
         rat_N1ASUB2_nom_tight_eta[cbin]->Write();
         rat_N1BSUB2_nom_tight_eta[cbin]->Write();
         rat_N112SUB2_nom_tight_eta[cbin]->Write();
         rat_N112ASUB2_nom_tight_eta[cbin]->Write();
-        cout<<"here2"<<endl;
         rat_N112BSUB2_nom_tight_eta[cbin]->Write();
         rat_N1SUB3_nom_tight_eta[cbin]->Write();
         rat_N1ASUB3_nom_tight_eta[cbin]->Write();
@@ -1047,7 +1044,6 @@ void getRatios()
         rat_N1MCm22SUB3_nom_wide_eta[cbin]->Write();
         rat_N1MCp22SUB3_nom_wide_eta[cbin]->Write();
         rat_N1MC22SUB3_nom_wide_eta[cbin]->Write();
-        cout<<"here3"<<endl;
         rat_N1SUB2_nom_wide_eta[cbin]->Write();
         rat_N1ASUB2_nom_wide_eta[cbin]->Write();
         rat_N1BSUB2_nom_wide_eta[cbin]->Write();
@@ -1057,19 +1053,13 @@ void getRatios()
         rat_N1SUB3_nom_wide_eta[cbin]->Write();
         rat_N1ASUB3_nom_wide_eta[cbin]->Write();
         rat_N1BSUB3_nom_wide_eta[cbin]->Write();
-        cout<<"here4"<<endl;
 
         rat_N1MCm22SUB2_nom_narrow_eta[cbin]->Write();
-        cout<<"here5"<<endl;
         rat_N1MCp22SUB2_nom_narrow_eta[cbin]->Write();
-        cout<<"here6"<<endl;
         rat_N1MC22SUB2_nom_narrow_eta[cbin]->Write();
-        cout<<"here7"<<endl;
         rat_N1MCm22SUB3_nom_narrow_eta[cbin]->Write();
-        cout<<"here8"<<endl;
         rat_N1MCp22SUB3_nom_narrow_eta[cbin]->Write();
         rat_N1MC22SUB3_nom_narrow_eta[cbin]->Write();
-        cout<<"here5"<<endl;
         rat_N1SUB2_nom_narrow_eta[cbin]->Write();
         rat_N1ASUB2_nom_narrow_eta[cbin]->Write();
         rat_N1BSUB2_nom_narrow_eta[cbin]->Write();
@@ -1083,97 +1073,6 @@ void getRatios()
 
     fout->Close();
 
-    for (int cbin = 0; cbin<ncentbins; cbin++) {
-        for (int ebin = 0; ebin<netabins; ebin++) {
-            rat_N1MCm22SUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1MCp22SUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1MCm22SUB3_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1MCp22SUB3_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1SUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1ASUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1BSUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N112SUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N112ASUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N112BSUB2_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1SUB3_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1ASUB3_nom_tight_pT[ebin][cbin]->Delete();
-            rat_N1BSUB3_nom_tight_pT[ebin][cbin]->Delete();
-
-            rat_N1MCm22SUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1MCp22SUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1MCm22SUB3_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1MCp22SUB3_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1SUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1ASUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1BSUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N112SUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N112ASUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N112BSUB2_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1SUB3_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1ASUB3_nom_wide_pT[ebin][cbin]->Delete();
-            rat_N1BSUB3_nom_wide_pT[ebin][cbin]->Delete();
-
-            rat_N1MCm22SUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1MCp22SUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1MCm22SUB3_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1MCp22SUB3_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1SUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1ASUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1BSUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N112SUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N112ASUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N112BSUB2_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1SUB3_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1ASUB3_nom_narrow_pT[ebin][cbin]->Delete();
-            rat_N1BSUB3_nom_narrow_pT[nbinsETA][cbin]->Delete();
-        }
-        rat_N1MCm22SUB2_nom_tight_eta[cbin]->Delete();
-        rat_N1MCp22SUB2_nom_tight_eta[cbin]->Delete();
-        rat_N1MC22SUB2_nom_tight_eta[cbin]->Delete();
-        rat_N1MCm22SUB3_nom_tight_eta[cbin]->Delete();
-        rat_N1MCp22SUB3_nom_tight_eta[cbin]->Delete();
-        rat_N1MC22SUB3_nom_tight_eta[cbin]->Delete();
-        rat_N1SUB2_nom_tight_eta[cbin]->Delete();
-        rat_N1ASUB2_nom_tight_eta[cbin]->Delete();
-        rat_N1BSUB2_nom_tight_eta[cbin]->Delete();
-        rat_N112SUB2_nom_tight_eta[cbin]->Delete();
-        rat_N112ASUB2_nom_tight_eta[cbin]->Delete();
-        rat_N112BSUB2_nom_tight_eta[cbin]->Delete();
-        rat_N1SUB3_nom_tight_eta[cbin]->Delete();
-        rat_N1ASUB3_nom_tight_eta[cbin]->Delete();
-        rat_N1BSUB3_nom_tight_eta[cbin]->Delete();
-
-        rat_N1MCm22SUB2_nom_wide_eta[cbin]->Delete();
-        rat_N1MCp22SUB2_nom_wide_eta[cbin]->Delete();
-        rat_N1MC22SUB2_nom_wide_eta[cbin]->Delete();
-        rat_N1MCm22SUB3_nom_wide_eta[cbin]->Delete();
-        rat_N1MCp22SUB3_nom_wide_eta[cbin]->Delete();
-        rat_N1MC22SUB3_nom_wide_eta[cbin]->Delete();
-        rat_N1SUB2_nom_wide_eta[cbin]->Delete();
-        rat_N1ASUB2_nom_wide_eta[cbin]->Delete();
-        rat_N1BSUB2_nom_wide_eta[cbin]->Delete();
-        rat_N112SUB2_nom_wide_eta[cbin]->Delete();
-        rat_N112ASUB2_nom_wide_eta[cbin]->Delete();
-        rat_N112BSUB2_nom_wide_eta[cbin]->Delete();
-        rat_N1SUB3_nom_wide_eta[cbin]->Delete();
-        rat_N1ASUB3_nom_wide_eta[cbin]->Delete();
-        rat_N1BSUB3_nom_wide_eta[cbin]->Delete();
-
-        rat_N1MCm22SUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N1MCp22SUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N1MC22SUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N1MCm22SUB3_nom_narrow_eta[cbin]->Delete();
-        rat_N1MCp22SUB3_nom_narrow_eta[cbin]->Delete();
-        rat_N1MC22SUB3_nom_narrow_eta[cbin]->Delete();
-        rat_N1SUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N1ASUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N1BSUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N112SUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N112ASUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N112BSUB2_nom_narrow_eta[cbin]->Delete();
-        rat_N1SUB3_nom_narrow_eta[cbin]->Delete();
-        rat_N1ASUB3_nom_narrow_eta[cbin]->Delete();
-        rat_N1BSUB3_nom_narrow_eta[cbin]->Delete();
-    }
+    cout << "vn cut ratios written out to hists/MH_ratios.root \n" << endl;
 
 }
