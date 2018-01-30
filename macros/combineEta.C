@@ -373,8 +373,8 @@ void combineEta() {
 
     GetEtaDists( "MH_hists" );
     GetEtaDists( "MH_tight2_hists" );
-    GetEtaDists( "MH_narrow_hists" );
     GetEtaDists( "MH_wide_hists" );
+    GetEtaDists( "MH_narrow_hists" );
 
     cout << "Eta distributions saved to hists/MH_combined_Eta.root \n" << endl;
     tfout->Close();
