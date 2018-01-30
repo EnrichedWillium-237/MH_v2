@@ -21,7 +21,7 @@ static const int cminCENT[] = {0,  5, 10, 15, 20, 25, 30, 35, 40, 50, 60,  0, 20
 static const int cmaxCENT[] = {5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 20, 60, 100};
 static const int netabins = 12;
 static const double etabins[] = {-2.4, -2.0, -1.6, -1.2, -0.8, -0.4, 0.0,  0.4,  0.8,  1.2,  1.6,  2.0,  2.4};
-static const int nbinsETA = 16;
+static const int nbinsETA = 14;
 static const double eminETA[] = {-2.4, -2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0, -2.4,  0.0};
 static const double emaxETA[] = {-2.0, -1.6, -1.2, -0.8, -0.4,  0.0,  0.4,  0.8,  1.2,  1.6,  2.0,  2.4,  0.0,  2.4};
 static const double etaMid[] = {-2.2, -1.8, -1.4, -1.0, -0.6, -0.2,  0.2,  0.6,  1.0,  1.4,  1.8,  2.2};
@@ -192,7 +192,7 @@ void getRatios()
         N1BSUB3_narrow_eta[cbin] = (TH1D *) finEta->Get(Form("%s/N1BSUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
     }
 
-    for (int ebin = 0; ebin<netabins; ebin++) {
+    for (int ebin = 0; ebin<nbinsETA; ebin++) {
         for (int cbin = 0; cbin<ncentbins; cbin++) {
             rat_N1MCm22SUB2_nom_tight_pT[ebin][cbin] = (TH1D *) N1MCm22SUB2_pT[ebin][cbin]->Clone(Form("rat_N1MCm22SUB2_nom_tight_eta_%s_%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             rat_N1MCm22SUB2_nom_tight_pT[ebin][cbin]->Divide(N1MCm22SUB2_tight_pT[ebin][cbin]);
@@ -973,7 +973,7 @@ void getRatios()
     for (int cbin = 0; cbin<ncentbins; cbin++) {
         TDirectory * tdcent = (TDirectory *) fout->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
         TDirectory * tdPt = (TDirectory *) tdcent->mkdir("vn_pT");
-        for (int ebin = 0; ebin<netabins; ebin++) {
+        for (int ebin = 0; ebin<nbinsETA; ebin++) {
             TDirectory * tdPt_ebin = (TDirectory *) tdPt->mkdir(Form("eta_%s",etags[ebin].Data()));
             tdPt_ebin->cd();
 
