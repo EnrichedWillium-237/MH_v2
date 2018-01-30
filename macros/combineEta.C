@@ -112,16 +112,16 @@ void GetEtaDists( TString input = "MH" )
     if (input.Contains("wide")) isWide = true;
     if (input.Contains("narrow")) isNarrow = true;
     if (isTight2) {
-        tfin = new TFile("MH_tight2_hists.root","read");
+        tfin = new TFile("hists/MH_tight2_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_tight2");
     } else if (isWide) {
-        tfin = new TFile("MH_wide_hists.root","read");
+        tfin = new TFile("hists/MH_wide_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_wide");
     } else if (isNarrow) {
-        tfin = new TFile("MH_narrow_hists.root","read");
+        tfin = new TFile("hists/MH_narrow_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_narrow");
     } else {
-        tfin = new TFile("MH_hists.root","read");
+        tfin = new TFile("hists/MH_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_nominal");
     }
 
@@ -159,10 +159,10 @@ void GetEtaDists( TString input = "MH" )
         }
     }
 
-    if (isTight2) cout << "Accessing MH_tight2_hists.root... " << endl;
-    else if (isWide) cout << "Accessing MH_wide_hists.root... " << endl;
-    else if (isNarrow) cout << "Accessing MH_narrow_hists.root... " << endl;
-    else cout << "Accessing MH_hists.root... " << endl;
+    if (isTight2) cout << "hists/Accessing MH_tight2_hists.root... " << endl;
+    else if (isWide) cout << "hists/Accessing MH_wide_hists.root... " << endl;
+    else if (isNarrow) cout << "hists/Accessing MH_narrow_hists.root... " << endl;
+    else cout << "hists/Accessing MH_hists.root... " << endl;
 
     for (int cbin = 0; cbin<ncentbins; cbin++) {
         TDirectory * tdcbin = (TDirectory *) tdir->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
@@ -369,15 +369,14 @@ void combineEta() {
     TH1::SetDefaultSumw2();
     cout << "Combining eta distributions from source files... " << endl;
 
-    if (!fopen("results","r")) system("mkdir results");
-    tfout = new TFile("results/MH_combined_Eta.root","recreate");
+    tfout = new TFile("hists/MH_combined_Eta.root","recreate");
 
     GetEtaDists( "MH_hists" );
     GetEtaDists( "MH_tight2_hists" );
     GetEtaDists( "MH_narrow_hists" );
     GetEtaDists( "MH_wide_hists" );
 
-    cout << "Eta distributions saved to results/MH_combined_Eta.root \n" << endl;
+    cout << "Eta distributions saved to hists/MH_combined_Eta.root \n" << endl;
     tfout->Close();
 
 }

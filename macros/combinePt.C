@@ -108,16 +108,16 @@ void GetPtDists( TString input = "MH" )
     if (input.Contains("wide")) isWide = true;
     if (input.Contains("narrow")) isNarrow = true;
     if (isTight2) {
-        tfin = new TFile("MH_tight2_hists.root","read");
+        tfin = new TFile("hists/MH_tight2_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_tight2");
     } else if (isWide) {
-        tfin = new TFile("MH_wide_hists.root","read");
+        tfin = new TFile("hists/MH_wide_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_wide");
     } else if (isNarrow) {
-        tfin = new TFile("MH_narrow_hists.root","read");
+        tfin = new TFile("hists/MH_narrow_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_narrow");
     } else {
-        tfin = new TFile("MH_hists.root","read");
+        tfin = new TFile("hists/MH_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_nominal");
     }
 
@@ -157,10 +157,10 @@ void GetPtDists( TString input = "MH" )
         }
     }
 
-    if (isTight2) cout << "Accessing MH_tight2_hists.root... " << endl;
-    else if (isWide) cout << "Accessing MH_wide_hists.root... " << endl;
-    else if (isNarrow) cout << "Accessing MH_narrow_hists.root... " << endl;
-    else cout << "Accessing MH_hists.root... " << endl;
+    if (isTight2) cout << "hists/Accessing MH_tight2_hists.root... " << endl;
+    else if (isWide) cout << "hists/Accessing MH_wide_hists.root... " << endl;
+    else if (isNarrow) cout << "hists/Accessing MH_narrow_hists.root... " << endl;
+    else cout << "hists/Accessing MH_hists.root... " << endl;
 
     for (int ebin = 0; ebin<netabins; ebin++) {
         TDirectory * tdebin = (TDirectory *) tdir->mkdir(Form("eta_%s",etags[ebin].Data()));
@@ -297,15 +297,14 @@ void combinePt() {
 
     TH1::SetDefaultSumw2();
 
-    if (!fopen("results","r")) system("mkdir results");
-    tfout = new TFile("results/MH_combined_Pt.root","recreate");
+    tfout = new TFile("hists/MH_combined_Pt.root","recreate");
 
     GetPtDists( "MH_hists" );
     GetPtDists( "MH_tight2_hists" );
     GetPtDists( "MH_narrow_hists" );
     GetPtDists( "MH_wide_hists" );
 
-    cout << "Pt distributions saved to results/MH_combined_Pt.root" << endl;
+    cout << "Pt distributions saved to hists/MH_combined_Pt.root" << endl;
     tfout->Close();
 
 }

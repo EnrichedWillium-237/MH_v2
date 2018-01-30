@@ -12,6 +12,8 @@
 # include <iostream>
 # include <string>
 
+using namespace std;
+
 # include "src/HiEvtPlaneList.h"
 
 using namespace hi;
@@ -271,8 +273,9 @@ void GetVN( string rootfile = "../MH.root", string name = "N2SUB3",  double mine
     if (Decor) nlabel+="_decor";
     rootFile = rootfile;
     SetTracking();
+    if (!fopen("hists","r")) system("mkdir hists");
     tag = rootfile.substr(rootfile.find("/")+1,rootfile.find(".root")-rootfile.find("/")-1);
-    string outname = tag+"_hists.root";
+    string outname = "hists/"+tag+"_hists.root";
     tout = new TFile(outname.data(),"UPDATE");
     TGraphErrors * gint[cbins];
     TGraphErrors * gintA[cbins];
