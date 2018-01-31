@@ -94,22 +94,22 @@ TFile * tfout;
 TDirectory * tdir;
 
 bool isNominal = true;
-bool isTight2 = false;
+bool istight = false;
 bool isWide = false;
 bool isNarrow = false;
 
 void GetPtDists( TString input = "MH" )
 {
     isNominal = true;
-    isTight2 = false;
+    istight = false;
     isWide = false;
     isNarrow = false;
-    if (input.Contains("tight2")) isTight2 = true;
+    if (input.Contains("tight")) istight = true;
     if (input.Contains("wide")) isWide = true;
     if (input.Contains("narrow")) isNarrow = true;
-    if (isTight2) {
-        tfin = new TFile("hists/MH_tight2_hists.root","read");
-        tdir = (TDirectory *) tfout->mkdir("MH_tight2");
+    if (istight) {
+        tfin = new TFile("hists/MH_tight_hists.root","read");
+        tdir = (TDirectory *) tfout->mkdir("MH_tight");
     } else if (isWide) {
         tfin = new TFile("hists/MH_wide_hists.root","read");
         tdir = (TDirectory *) tfout->mkdir("MH_wide");
@@ -157,7 +157,7 @@ void GetPtDists( TString input = "MH" )
         }
     }
 
-    if (isTight2) cout << "hists/Accessing MH_tight2_hists.root... " << endl;
+    if (istight) cout << "hists/Accessing MH_tight_hists.root... " << endl;
     else if (isWide) cout << "hists/Accessing MH_wide_hists.root... " << endl;
     else if (isNarrow) cout << "hists/Accessing MH_narrow_hists.root... " << endl;
     else cout << "hists/Accessing MH_hists.root... " << endl;
@@ -300,7 +300,7 @@ void combinePt() {
     tfout = new TFile("hists/MH_combined_Pt.root","recreate");
 
     GetPtDists( "MH_hists" );
-    GetPtDists( "MH_tight2_hists" );
+    GetPtDists( "MH_tight_hists" );
     GetPtDists( "MH_narrow_hists" );
     GetPtDists( "MH_wide_hists" );
 

@@ -65,7 +65,7 @@ void getRatios()
             N1ASUB3_pT[ebin][cbin] = (TH1D *) finPt->Get(Form("%s/N1ASUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             N1BSUB3_pT[ebin][cbin] = (TH1D *) finPt->Get(Form("%s/N1BSUB3_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
 
-            mtag = Form("MH_tight2/eta_%s/%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]);
+            mtag = Form("MH_tight/eta_%s/%d_%d",etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]);
 
             N1MCm22SUB2_tight_pT[ebin][cbin] = (TH1D *) finPt->Get(Form("%s/N1MCm22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
             N1MCp22SUB2_tight_pT[ebin][cbin] = (TH1D *) finPt->Get(Form("%s/N1MCp22SUB2_eta_%s_%d_%d",mtag.Data(),etags[ebin].Data(),cminCENT[cbin],cmaxCENT[cbin]));
@@ -137,7 +137,7 @@ void getRatios()
         N1ASUB3_eta[cbin] = (TH1D *) finEta->Get(Form("%s/N1ASUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
         N1BSUB3_eta[cbin] = (TH1D *) finEta->Get(Form("%s/N1BSUB3_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
 
-        mtag = Form("MH_tight2/%d_%d",cminCENT[cbin],cmaxCENT[cbin]);
+        mtag = Form("MH_tight/%d_%d",cminCENT[cbin],cmaxCENT[cbin]);
 
         N1MCm22SUB2_tight_eta[cbin] = (TH1D *) finEta->Get(Form("%s/N1MCm22SUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
         N1MCp22SUB2_tight_eta[cbin] = (TH1D *) finEta->Get(Form("%s/N1MCp22SUB2_%d_%d",mtag.Data(),cminCENT[cbin],cmaxCENT[cbin]));
