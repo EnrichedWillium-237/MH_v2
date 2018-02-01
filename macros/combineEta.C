@@ -159,10 +159,10 @@ void GetEtaDists( TString input = "MH" )
         }
     }
 
-    if (istight) cout << "hists/Accessing MH_tight_hists.root... " << endl;
-    else if (isWide) cout << "hists/Accessing MH_wide_hists.root... " << endl;
-    else if (isNarrow) cout << "hists/Accessing MH_narrow_hists.root... " << endl;
-    else cout << "hists/Accessing MH_hists.root... " << endl;
+    if (istight) cout << "Accessing hists/MH_tight_hists.root... " << endl;
+    else if (isWide) cout << "Accessing hists/MH_wide_hists.root... " << endl;
+    else if (isNarrow) cout << "Accessing hists/MH_narrow_hists.root... " << endl;
+    else cout << "Accessing hists/MH_hists.root... " << endl;
 
     for (int cbin = 0; cbin<ncentbins; cbin++) {
         TDirectory * tdcbin = (TDirectory *) tdir->mkdir(Form("%d_%d",cminCENT[cbin],cmaxCENT[cbin]));
