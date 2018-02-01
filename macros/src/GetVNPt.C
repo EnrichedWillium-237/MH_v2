@@ -516,13 +516,13 @@ TGraphErrors * GetVNPt( int replay, int bin, int epindx,  double etamin, double 
                 double fake = FakeAndEff( cent, pt, etamin, etamax, eff );
                 wvn   += y[npt]*yld->GetBinContent(i)/eff;
                 wvne  += ey[npt]*yld->GetBinContent(i)/eff;
-                w     += yld->GetBinContent(i)/eff;;
+                w     += yld->GetBinContent(i)/eff;
                 wvnA  += yA[npt]*yld->GetBinContent(i)/eff;
                 wvnAe += eyA[npt]*yld->GetBinContent(i)/eff;
-                wA    += yld->GetBinContent(i)/eff;;
+                wA    += yld->GetBinContent(i)/eff;
                 wvnB  += yB[npt]*yld->GetBinContent(i)/eff;
                 wvnBe += eyB[npt]*yld->GetBinContent(i)/eff;
-                wB    += yld->GetBinContent(i)/eff;;
+                wB    += yld->GetBinContent(i)/eff;
             }
             ++npt;
         }
