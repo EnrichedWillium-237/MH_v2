@@ -1075,4 +1075,53 @@ void getRatios()
 
     cout << "vn cut ratios written out to hists/MH_ratios.root \n" << endl;
 
+    TCanvas * c0 = new TCanvas("c0","c0",600,550);
+    TPad * pad0 = (TPad *) c0->cd();
+    pad0->SetGrid();
+    TH1D * h0 = new TH1D("h0", "", 100, -2.5, 2.5);
+    h0->SetXTitle("#eta");
+    h0->SetYTitle("v_{1}^{odd}");
+    h0->GetYaxis()->SetRangeUser(-0.008, 0.008);
+    h0->Draw();
+    N1SUB2_eta[0]->SetMarkerColor(kBlue);
+    N1SUB2_eta[0]->SetLineColor(kBlue);
+    N1SUB2_eta[0]->SetMarkerStyle(21);
+    N1SUB2_eta[0]->SetMarkerSize(1.2);
+    N1SUB2_eta[0]->Draw("same");
+    N1SUB2_tight_eta[0]->SetMarkerColor(kRed);
+    N1SUB2_tight_eta[0]->SetLineColor(kRed);
+    N1SUB2_tight_eta[0]->SetMarkerStyle(24);
+    N1SUB2_tight_eta[0]->SetMarkerSize(1.3);
+    N1SUB2_tight_eta[0]->Draw("same");
+    TLegend * leg0 = new TLegend(0.69, 0.81, 0.92, 0.92);
+    SetLegend(leg0, 18);
+    leg0->AddEntry(N1SUB2_eta[0],"Nominal cuts","p");
+    leg0->AddEntry(N1SUB2_tight_eta[0],"Tight cuts","p");
+    leg0->Draw();
+    TPaveText * tx0 = new TPaveText(0.21, 0.81, 0.52, 0.91, "NDC");
+    SetTPaveTxt(tx0, 18);
+    tx0->AddText("PbPb #sqrt{s_{NN}} = 5.02 TeV");
+    tx0->AddText("0-5%");
+    tx0->Draw();
+    c0->Print("v1_compare_nom_to_tight_0_5.png","png");
+
+
+    TCanvas * c1 = new TCanvas("c1","c1",600,550);
+    TPad * pad1 = (TPad *) c1->cd();
+    pad1->SetGrid();
+    TH1D * h1 = new TH1D("h1", "", 100, -2.5, 2.5);
+    h1->SetXTitle("#eta");
+    h1->SetYTitle("v_{1}^{odd}{nominal} / v_{1}^{odd}{tight}");
+    h1->GetYaxis()->SetRangeUser(0.7, 1.3);
+    h1->Draw();
+    rat_N1SUB2_nom_tight_eta[2]->Draw("same");
+    c1->Print("v1_compare_nom_to_tight_0_5_ratio.png","png");
+
+    // 
+    // TCanvas * c2 = new TCanvas("c2","c2",1100,600);
+    // c2->Divide(5,2);
+    // for (int cbin = 0; cbin<10; cbin++) {
+    //
+    // }
+
 }
