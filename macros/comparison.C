@@ -255,6 +255,7 @@ void comparison()
     leg0->AddEntry(STAR_v1_3PC_200GeV,"STAR 3PC #sqrt{s_{NN}}=200 GeV (10-70%)","p");
     leg0->AddEntry(STAR_v1_mix_200GeV,"STAR mixed #sqrt{s_{NN}}=200 GeV (20-60%)","p");
     leg0->Draw();
+    c0->Print("plot_comparison_00.png","png");
 
 
     TCanvas * c1 = new TCanvas("c1","c1",750,700);
@@ -288,5 +289,32 @@ void comparison()
     leg1->AddEntry(STAR_v1_mix_62GeV_eta,"STAR AuAu 62.4GeV, mixed (10-70%)","p");
     leg1->AddEntry(STAR_v1_ZDC_62GeV_eta,"STAR AuAu 62.4GeV, ZDC (10-70%)","p");
     leg1->Draw();
+    c1->Print("plot_comparison_01.png","png");
+
+
+    TCanvas * c2 = new TCanvas("c2","c2",750,700);
+    TPad * pad2 = (TPad *) c2->cd();
+    pad2->SetGrid();
+    TH1D * h2 = new TH1D("h1", "", 100, 0, 5);
+    h2->SetXTitle("p_{T} (GeV/c)");
+    h2->SetYTitle("v_{1}^{odd}");
+    h2->GetYaxis()->SetRangeUser(-0.015, 0.015);
+    h2->Draw();
+    STAR_v1_ZDC_200GeV_pt_0_5->Draw("same p");
+    STAR_v1_ZDC_200GeV_pt_5_40->Draw("same p");
+    STAR_v1_ZDC_200GeV_pt_40_80->Draw("same p");
+    ALICE_v1odd_pT_5_80->Draw("same");
+    // N1SUB2_pT[12][13]->SetMarkerColor(kBlue);
+    // N1SUB2_pT[12][13]->SetLineColor(kBlue);
+    // N1SUB2_pT[12][13]->SetMarkerStyle(21);
+    // N1SUB2_pT[12][13]->SetMarkerSize(1.2);
+    // N1SUB2_pT[12][13]->Draw("same");
+    TLegend * leg2 = new TLegend(0.20, 0.18, 0.60, 0.38);
+    SetLegend(leg2, 18);
+    leg2->AddEntry(ALICE_v1odd_pT_5_80,"ALICE PbPb 2.76TeV, SP (5-80%)","p");
+    leg2->AddEntry(STAR_v1_ZDC_200GeV_pt_0_5,"STAR AuAu 200GeV, ZDC (0-5%)","p");
+    leg2->AddEntry(STAR_v1_ZDC_200GeV_pt_5_40,"STAR AuAu 200GeV, ZDC (5-40%)","p");
+    leg2->AddEntry(STAR_v1_ZDC_200GeV_pt_40_80,"STAR AuAu 200GeV, ZDC (40-80%)","p");
+    leg2->Draw();
 
 }
